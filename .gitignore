@@ -21,3 +21,9 @@ web/out/
 
 # WordPress uploads (ne pas versionner les médias)
 wordpress/uploads/
+
+# Legacy archive
+esimplu_global/
+
+# Docker
+mysql_data/
