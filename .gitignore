@@ -22,3 +22,5 @@ esimplu_global/
 
 # Prisma
 prisma/migrations/**/migration_lock.toml
+
+/lib/generated/prisma
