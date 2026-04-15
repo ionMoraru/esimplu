@@ -1,106 +1,32 @@
-export type Locale = "fr" | "de" | "it" | "uk"
+// === Country ===
 
-export type Role = "reader" | "seller" | "buyer" | "carrier"
+export type Country = "fr" | "de" | "it" | "uk"
 
-export type User = {
-  id: string         // WP user ID (numérique sous forme de string)
-  email: string
-  displayName: string
-  locales: Locale[]  // pays où l'utilisateur est actif
-  roles: Role[]      // rôles cumulables
-}
+export const COUNTRIES: { code: Country; name: string; flag: string }[] = [
+  { code: "fr", name: "Franța", flag: "🇫🇷" },
+  { code: "de", name: "Germania", flag: "🇩🇪" },
+  { code: "it", name: "Italia", flag: "🇮🇹" },
+  { code: "uk", name: "Marea Britanie", flag: "🇬🇧" },
+]
 
-export type Seller = {
-  userId: string
-  businessName: string
-  country: "ro" | "md"
-  deliveriesTo: Locale[]
-  description: string
-  verified: boolean
-}
+// === Service ===
 
-export type Product = {
-  id: string
-  sellerId: string
-  name: string
-  description: string
-  price: number
-  currency: "EUR" | "RON" | "MDL"
-  category: string
-  attributes: Record<string, unknown>
-  availableIn: Locale[]
-  stock: number
-  images: string[]
-}
+export type ServiceStatus = "PENDING" | "PUBLISHED" | "REJECTED"
+
+// === Marketplace (Phase 2) ===
 
 export type OrderStatus = "pending" | "confirmed" | "shipped" | "delivered" | "cancelled"
 
-export type OrderItem = {
-  productId: string
-  quantity: number
-  unitPrice: number
-}
+export type Currency = "EUR" | "RON" | "MDL"
 
-export type Order = {
-  id: string
-  buyerId: string
-  sellerId: string
-  items: OrderItem[]
-  status: OrderStatus
-  deliveryLocale: Locale
-  createdAt: Date
-}
+// === Delivery (Phase 3) ===
 
-export type Carrier = {
-  userId: string
-  name: string
-  phone: string
-  vehicleType: string
-  rating: number
-}
+export type TripStatus = "open" | "full" | "completed" | "cancelled"
+
+export type BookingStatus = "pending" | "confirmed" | "delivered"
 
 export type Location = {
   city: string
   country: string
   address?: string
-}
-
-export type TripStatus = "open" | "full" | "completed" | "cancelled"
-
-export type Trip = {
-  id: string
-  carrierId: string
-  origin: Location
-  destination: Location
-  departureDate: Date
-  arrivalDate: Date
-  availableCapacity: number  // kg
-  pricePerKg: number
-  currency: "EUR" | "RON" | "MDL"
-  status: TripStatus
-}
-
-export type BookingStatus = "pending" | "confirmed" | "delivered"
-
-export type Booking = {
-  id: string
-  tripId: string
-  userId: string
-  weight: number
-  description: string
-  status: BookingStatus
-  createdAt: Date
-}
-
-// Payload décodé du JWT WordPress
-export type WpJwtPayload = {
-  iss: string   // URL du site WP
-  iat: number   // issued at (timestamp)
-  nbf: number   // not before
-  exp: number   // expiration
-  data: {
-    user: {
-      id: string
-    }
-  }
 }
