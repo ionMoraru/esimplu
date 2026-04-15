@@ -13,7 +13,16 @@
       "Bash(docker-compose config:*)",
       "Bash(cp -r web/app .)",
       "Bash(cp -r web/lib .)",
-      "Bash(cp -r web/public .)"
+      "Bash(cp -r web/public .)",
+      "Bash(npx prisma:*)",
+      "Bash(docker compose:*)",
+      "Bash(docker --version)",
+      "Bash(/Applications/Docker.app/Contents/Resources/bin/docker --version)",
+      "Bash(/Applications/Docker.app/Contents/Resources/bin/docker compose:*)",
+      "Bash(/Applications/Docker.app/Contents/Resources/bin/docker volume:*)",
+      "Bash(npm search:*)",
+      "Bash(npm view:*)",
+      "Bash(npx shadcn@latest init --yes --defaults)"
     ]
   }
 }
