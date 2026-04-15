@@ -1,11 +1,9 @@
 # Dependencies
 node_modules/
-.pnp
-.pnp.js
 
 # Next.js
-web/.next/
-web/out/
+.next/
+out/
 
 # Env
 .env
@@ -19,11 +17,8 @@ web/out/
 .idea/
 .vscode/
 
-# WordPress uploads (ne pas versionner les médias)
-wordpress/uploads/
-
 # Legacy archive
 esimplu_global/
 
-# Docker
-mysql_data/
+# Prisma
+prisma/migrations/**/migration_lock.toml

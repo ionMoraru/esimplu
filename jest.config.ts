@@ -5,7 +5,6 @@ const config: Config = {
   testEnvironment: "node",
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/$1",
-    "^@esimplu/types$": "<rootDir>/../packages/types/index.ts",
   },
 }
 
