@@ -56,43 +56,42 @@ Un seul service, une seule base, une seule app. Nginx fait juste du reverse prox
 
 ```
 esimplu/
-├── package.json                      ← Monorepo workspaces
+├── package.json
+├── next.config.ts
 ├── docker-compose.yml                ← PostgreSQL (dev local)
 ├── .github/workflows/deploy.yml      ← CI/CD
-├── web/
-│   ├── package.json
-│   ├── next.config.ts
-│   ├── middleware.ts                 ← Auth.js middleware
-│   ├── app/
-│   │   ├── layout.tsx                ← Root layout + providers
-│   │   ├── page.tsx                  ← Landing page
-│   │   ├── articles/
-│   │   │   ├── page.tsx              ← Liste articles (filtré par pays)
-│   │   │   └── [slug]/page.tsx       ← Article détail
-│   │   ├── services/
-│   │   │   ├── page.tsx              ← Répertoire services (filtré par pays)
-│   │   │   └── proposer/page.tsx     ← Formulaire soumission
-│   │   ├── marketplace/
-│   │   │   └── page.tsx              ← Phase 2
-│   │   ├── delivery/
-│   │   │   └── page.tsx              ← Phase 3
-│   │   ├── login/page.tsx            ← Page connexion
-│   │   └── api/
-│   │       └── auth/[...nextauth]/route.ts
-│   ├── components/
-│   │   ├── ui/                       ← shadcn/ui
-│   │   ├── country-selector.tsx      ← Sélecteur de pays (header)
-│   │   └── country-modal.tsx         ← Modale première visite
-│   ├── lib/
-│   │   ├── prisma.ts                 ← Client Prisma singleton
-│   │   ├── auth.ts                   ← Config Auth.js
-│   │   └── countries.ts              ← Constantes pays + helpers
-│   └── prisma/
-│       └── schema.prisma             ← Schéma BDD
-└── packages/
-    └── types/
-        └── index.ts                  ← Types partagés (à mettre à jour)
+├── middleware.ts                      ← Auth.js middleware
+├── app/
+│   ├── layout.tsx                    ← Root layout + providers
+│   ├── page.tsx                      ← Landing page
+│   ├── articles/
+│   │   ├── page.tsx                  ← Liste articles (filtré par pays)
+│   │   └── [slug]/page.tsx           ← Article détail
+│   ├── services/
+│   │   ├── page.tsx                  ← Répertoire services (filtré par pays)
+│   │   └── proposer/page.tsx         ← Formulaire soumission
+│   ├── marketplace/
+│   │   └── page.tsx                  ← Phase 2
+│   ├── delivery/
+│   │   └── page.tsx                  ← Phase 3
+│   ├── login/page.tsx                ← Page connexion
+│   └── api/
+│       └── auth/[...nextauth]/route.ts
+├── components/
+│   ├── ui/                           ← shadcn/ui
+│   ├── country-selector.tsx          ← Sélecteur de pays (header)
+│   └── country-modal.tsx             ← Modale première visite
+├── lib/
+│   ├── prisma.ts                     ← Client Prisma singleton
+│   ├── auth.ts                       ← Config Auth.js
+│   └── countries.ts                  ← Constantes pays + helpers
+├── prisma/
+│   └── schema.prisma                 ← Schéma BDD
+└── types/
+    └── index.ts                      ← Types partagés
 ```
+
+> **Plus de monorepo / workspaces.** Le contenu de `web/` est remonté à la racine. `packages/types/` devient `types/`. Un seul `package.json`.
 
 ---
 
@@ -289,16 +288,15 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 | Fichier | Raison |
 |---|---|
-| `web/lib/jwt.ts` | Plus de JWT custom — Auth.js gère les sessions |
-| `web/lib/jwt.test.ts` | Tests associés |
-| `web/middleware.ts` | Sera réécrit pour Auth.js |
-| `web/app/page.tsx` | Boilerplate Next.js, remplacé par landing page |
-| `web/public/vercel.svg` | Asset boilerplate |
-| `web/public/file.svg` | Asset boilerplate |
-| `web/public/globe.svg` | Asset boilerplate |
-| `web/public/next.svg` | Asset boilerplate |
-| `web/public/window.svg` | Asset boilerplate |
+| `web/` | Dossier entier — contenu remonté à la racine |
+| `packages/` | Dossier workspace — supprimé, types déplacés dans `types/` |
 | `docker/wordpress/uploads.ini` | Plus de WordPress |
+
+**Fichiers supprimés lors de la remontée (ne pas recréer) :**
+- `lib/jwt.ts` — plus de JWT custom, Auth.js gère les sessions
+- `lib/jwt.test.ts` — tests associés
+- `middleware.ts` — sera réécrit pour Auth.js
+- `public/vercel.svg`, `file.svg`, `globe.svg`, `next.svg`, `window.svg` — assets boilerplate
 
 ---
 
@@ -307,17 +305,17 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 | Fichier | Changement |
 |---|---|
 | `docker-compose.yml` | Remplacer WordPress + MySQL par PostgreSQL |
-| `web/package.json` | Retirer `jose`, ajouter `next-auth`, `@auth/prisma-adapter`, `prisma`, `@prisma/client` |
-| `web/app/layout.tsx` | Metadata eSimplu, `lang="ro"`, providers (session, country) |
+| `package.json` | Retirer workspaces, merger les dépendances, retirer `jose`, ajouter `next-auth`, `@auth/prisma-adapter`, `prisma`, `@prisma/client` |
+| `app/layout.tsx` | Metadata eSimplu, `lang="ro"`, providers (session, country) |
 | `.env.example` | Variables PostgreSQL + Auth.js |
-| `packages/types/index.ts` | Retirer `WpJwtPayload`, adapter les types |
-| `.gitignore` | Retirer les entrées WordPress |
+| `types/index.ts` | Retirer `WpJwtPayload`, adapter les types |
+| `.gitignore` | Retirer les entrées WordPress, adapter les chemins (plus de `web/`) |
 
 ---
 
 ## Ce qui ne change PAS
 
-- Monorepo structure (`web/`, `packages/`)
+- Repo Git + GitHub privé
 - Cloudflare en façade (DNS, CDN, SSL)
 - VPS OVH (même serveur)
 - GitHub privé + GitHub Actions CI/CD
