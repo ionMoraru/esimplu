@@ -24,3 +24,4 @@ esimplu_global/
 prisma/migrations/**/migration_lock.toml
 
 /lib/generated/prisma
+settings.local.json
