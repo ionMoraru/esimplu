@@ -1,45 +1,15 @@
 services:
-  mysql:
-    image: mysql:8
+  postgres:
+    image: postgres:16
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: esimplu_wp
-      MYSQL_USER: esimplu
-      MYSQL_PASSWORD: esimplu_local
+      POSTGRES_DB: esimplu
+      POSTGRES_USER: esimplu
+      POSTGRES_PASSWORD: esimplu_local
     volumes:
-      - esimplu_db_data:/var/lib/mysql
+      - esimplu_db_data:/var/lib/postgresql/data
     ports:
-      - "3306:3306"
-
-  wordpress:
-    image: wordpress:6-php8.3-apache
-    restart: unless-stopped
-    depends_on:
-      - mysql
-    ports:
-      - "8080:80"
-    environment:
-      WORDPRESS_DB_HOST: mysql
-      WORDPRESS_DB_NAME: esimplu_wp
-      WORDPRESS_DB_USER: esimplu
-      WORDPRESS_DB_PASSWORD: esimplu_local
-      WORDPRESS_TABLE_PREFIX: wp_
-    volumes:
-      - esimplu_wp_data:/var/www/html
-
-  phpmyadmin:
-    image: phpmyadmin:latest
-    restart: unless-stopped
-    depends_on:
-      - mysql
-    ports:
-      - "8081:80"
-    environment:
-      PMA_HOST: mysql
-      PMA_USER: esimplu
-      PMA_PASSWORD: esimplu_local
+      - "5432:5432"
 
 volumes:
   esimplu_db_data:
-  esimplu_wp_data:
