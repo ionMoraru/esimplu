@@ -25,9 +25,10 @@ Le contenu (articles) sera généré par IA. Les utilisateurs s'authentifient vi
 | UI | shadcn/ui + Tailwind CSS |
 | Auth | Auth.js (NextAuth) — Google, Facebook |
 | ORM | Prisma |
-| Base de données | PostgreSQL 16 |
+| Base de données | PostgreSQL 17 |
 | Hébergement | VPS-1 OVH (Ubuntu 25.04, Allemagne) |
-| CDN / DNS / SSL | Cloudflare (plan Free) |
+| Reverse proxy / SSL | Caddy 2 (HTTPS auto via Let's Encrypt) |
+| DNS | OVH (A records → VPS) |
 | Process manager | PM2 |
 | CI/CD | GitHub Actions (SSH deploy) |
 
@@ -36,19 +37,17 @@ Le contenu (articles) sera généré par IA. Les utilisateurs s'authentifient vi
 ## Architecture
 
 ```
-Cloudflare (esimplu.com) — DNS + CDN + SSL
-│
-└── VPS-1 OVH
-    │
-    Nginx (reverse proxy)
-    └── /* → Next.js (port 3000, PM2)
+DNS OVH (esimplu.com)
+└── VPS OVH (57.129.122.163)
+    └── Caddy (HTTPS auto)
+        └── Next.js (port 3000, PM2)
               ├── App Router (pages publiques)
               ├── API Routes (CRUD)
-              ├── Auth.js (Google, Facebook)
-              └── Prisma → PostgreSQL
+              ├── Auth.js (Google, Facebook, email/password)
+              └── Prisma → PostgreSQL 17
 ```
 
-Un seul service, une seule base, une seule app. Nginx fait juste du reverse proxy vers Next.js.
+Un seul service, une seule base, une seule app. Caddy gère le reverse proxy et le HTTPS automatiquement.
 
 ---
 
@@ -316,8 +315,8 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ## Ce qui ne change PAS
 
 - Repo Git + GitHub privé
-- Cloudflare en façade (DNS, CDN, SSL)
 - VPS OVH (même serveur)
+- Caddy en reverse proxy (HTTPS auto)
 - GitHub privé + GitHub Actions CI/CD
 - PM2 pour le process management
 - Tailwind CSS (déjà installé)
