@@ -1,19 +1,27 @@
-import { signIn } from "@/lib/auth"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { login, loginWithGoogle, loginWithFacebook } from "./actions"
 
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ registered?: string }>
+  searchParams: Promise<{ registered?: string; error?: string }>
 }) {
   const params = await searchParams
   const justRegistered = params.registered === "1"
+  const hasError = params.error === "invalid"
 
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="rounded-2xl bg-card px-8 py-10 flex flex-col gap-6">
+
+          {/* Error banner on failed login */}
+          {hasError && (
+            <p className="rounded-lg bg-destructive/10 border border-destructive/20 px-3 py-2 text-sm text-destructive text-center">
+              Email sau parolă incorectă.
+            </p>
+          )}
 
           {/* Success banner after registration */}
           {justRegistered && (
@@ -32,12 +40,7 @@ export default async function LoginPage({
 
           {/* OAuth buttons */}
           <div className="flex flex-col gap-3">
-            <form
-              action={async () => {
-                "use server"
-                await signIn("google", { redirectTo: "/" })
-              }}
-            >
+            <form action={loginWithGoogle}>
               <Button
                 type="submit"
                 variant="outline"
@@ -54,12 +57,7 @@ export default async function LoginPage({
               </Button>
             </form>
 
-            <form
-              action={async () => {
-                "use server"
-                await signIn("facebook", { redirectTo: "/" })
-              }}
-            >
+            <form action={loginWithFacebook}>
               <Button
                 type="submit"
                 size="lg"
@@ -81,17 +79,7 @@ export default async function LoginPage({
           </div>
 
           {/* Credentials form */}
-          <form
-            className="flex flex-col gap-3"
-            action={async (formData: FormData) => {
-              "use server"
-              await signIn("credentials", {
-                email: formData.get("email"),
-                password: formData.get("password"),
-                redirectTo: "/",
-              })
-            }}
-          >
+          <form className="flex flex-col gap-3" action={login}>
             <div className="flex flex-col gap-1.5">
               <label htmlFor="email" className="text-sm font-medium">
                 Email
