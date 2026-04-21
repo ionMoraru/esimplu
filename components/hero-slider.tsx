@@ -4,19 +4,19 @@ import { useEffect, useState } from "react"
 
 const slides = [
   {
-    gradient: "from-blue-900 via-blue-800 to-blue-600",
+    gradient: "from-[#1b4332] via-[#2D6A4F] to-[#40916C]",
     label: "Franța",
   },
   {
-    gradient: "from-emerald-900 via-emerald-800 to-teal-600",
+    gradient: "from-[#1b4332] via-[#2d6a4f] to-[#74c69d]",
     label: "Germania",
   },
   {
-    gradient: "from-rose-900 via-rose-800 to-orange-600",
+    gradient: "from-[#7f4f24] via-[#b5631a] to-[#F4A261]",
     label: "Italia",
   },
   {
-    gradient: "from-purple-900 via-purple-800 to-indigo-600",
+    gradient: "from-[#1b4332] via-[#2D6A4F] to-[#52b788]",
     label: "Marea Britanie",
   },
 ]
