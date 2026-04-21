@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { Providers } from "@/components/providers"
-import { CountrySelector } from "@/components/country-selector"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,6 +13,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+})
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 })
 
 export const metadata: Metadata = {
@@ -27,25 +34,13 @@ export default function RootLayout({
   return (
     <html
       lang="ro"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Providers>
-          <header className="flex items-center justify-between px-6 py-4 border-b">
-            <a href="/" className="text-xl font-bold">
-              eSimplu
-            </a>
-            <div className="flex items-center gap-4">
-              <CountrySelector />
-              <a
-                href="/login"
-                className="text-sm font-medium hover:underline"
-              >
-                Conectare
-              </a>
-            </div>
-          </header>
+          <Header />
           <div className="flex-1">{children}</div>
+          <Footer />
         </Providers>
       </body>
     </html>
