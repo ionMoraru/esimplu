@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useSession } from "next-auth/react"
 import { Menu } from "lucide-react"
-import { CountrySelector } from "@/components/country-selector"
+import { CountrySelector } from "@/components/layout/country-selector"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import {

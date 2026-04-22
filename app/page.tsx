@@ -1,20 +1,10 @@
 import Link from "next/link"
-import { HeroSlider } from "@/components/hero-slider"
+import { HeroSlider } from "@/components/layout/hero-slider"
+import { ArticleCard } from "@/components/shared/cards/article-card"
+import { ProductCard } from "@/components/shared/cards/product-card"
+import { ServiceCategoryButton } from "@/components/shared/navigation/service-category-button"
+import { SectionHeader } from "@/components/shared/navigation/section-header"
 import { mockArticles, mockServiceCategories, mockProducts } from "@/lib/mock-data"
-
-const countryFlag: Record<string, string> = {
-  fr: "🇫🇷",
-  de: "🇩🇪",
-  it: "🇮🇹",
-  uk: "🇬🇧",
-}
-
-const countryName: Record<string, string> = {
-  fr: "Franța",
-  de: "Germania",
-  it: "Italia",
-  uk: "Marea Britanie",
-}
 
 const categoryIcon: Record<string, string> = {
   contabil: "🧾",
@@ -29,22 +19,11 @@ const categoryIcon: Record<string, string> = {
 export default function HomePage() {
   return (
     <main>
-      {/* 1 — Hero */}
       <HeroSection />
-
-      {/* 2 — Cum funcționează */}
       <HowItWorksSection />
-
-      {/* 3 — Articole recente */}
       <ArticlesSection />
-
-      {/* 4 — Categorii servicii */}
       <ServicesSection />
-
-      {/* 5 — Marketplace */}
       <MarketplaceSection />
-
-      {/* 6 — CTA final */}
       <JoinSection />
     </main>
   )
@@ -137,53 +116,14 @@ function ArticlesSection() {
   return (
     <section className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-between mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold">Articole recente</h2>
-          <Link href="/articles" className="text-sm font-medium text-primary hover:underline">
-            Toate articolele →
-          </Link>
-        </div>
-
+        <SectionHeader
+          title="Articole recente"
+          href="/articles"
+          linkLabel="Toate articolele"
+        />
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {articles.map((article) => (
-            <Link
-              key={article.id}
-              href={`/articles/${article.slug}`}
-              className="group rounded-2xl border bg-card overflow-hidden hover:shadow-lg transition-shadow"
-            >
-              {/* Image */}
-              <div className="aspect-video bg-muted overflow-hidden">
-                <img
-                  src={article.coverImage}
-                  alt={article.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-5 flex flex-col gap-3">
-                {/* Country badges */}
-                <div className="flex gap-1 flex-wrap">
-                  {article.countries.slice(0, 2).map((c) => (
-                    <span key={c} className="text-xs bg-muted px-2 py-0.5 rounded-full text-muted-foreground">
-                      {countryFlag[c]} {countryName[c]}
-                    </span>
-                  ))}
-                </div>
-
-                <h3 className="text-base font-semibold leading-snug group-hover:text-primary transition-colors">
-                  {article.title}
-                </h3>
-
-                <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
-                  {article.excerpt}
-                </p>
-
-                <p className="text-xs text-muted-foreground mt-auto">
-                  5 min lectură
-                </p>
-              </div>
-            </Link>
+            <ArticleCard key={article.id} article={article} />
           ))}
         </div>
       </div>
@@ -197,36 +137,28 @@ function ServicesSection() {
   return (
     <section className="py-20 px-6 bg-muted/30">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-between mb-10">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-bold">Găsește un serviciu</h2>
-            <p className="text-muted-foreground mt-1 text-sm">
-              Profesioniști care vorbesc română, în țara ta
-            </p>
-          </div>
-          <Link href="/services" className="text-sm font-medium text-primary hover:underline hidden sm:block">
-            Toate serviciile →
-          </Link>
-        </div>
-
+        <SectionHeader
+          title="Găsește un serviciu"
+          subtitle="Profesioniști care vorbesc română, în țara ta"
+          href="/services"
+          linkLabel="Toate serviciile"
+          hideLinkOnMobile
+        />
         <div className="flex flex-wrap gap-3">
           {mockServiceCategories.map((cat) => (
-            <Link
+            <ServiceCategoryButton
               key={cat.id}
               href={`/services?category=${cat.slug}`}
-              className="flex items-center gap-2 bg-card border rounded-xl px-5 py-3 text-sm font-medium hover:border-primary hover:text-primary transition-colors"
-            >
-              <span>{categoryIcon[cat.slug] ?? "🔹"}</span>
-              {cat.name}
-            </Link>
+              icon={categoryIcon[cat.slug] ?? "🔹"}
+              name={cat.name}
+            />
           ))}
-          <Link
+          <ServiceCategoryButton
             href="/services/new"
-            className="flex items-center gap-2 bg-primary/10 text-primary border border-primary/30 rounded-xl px-5 py-3 text-sm font-medium hover:bg-primary/20 transition-colors"
-          >
-            <span>＋</span>
-            Propune serviciul tău
-          </Link>
+            icon="＋"
+            name="Propune serviciul tău"
+            variant="cta"
+          />
         </div>
       </div>
     </section>
@@ -239,44 +171,16 @@ function MarketplaceSection() {
   return (
     <section className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-2xl sm:text-3xl font-bold">Din Moldova și România, direct la tine</h2>
-          <Link href="/marketplace" className="text-sm font-medium text-primary hover:underline hidden sm:block">
-            Marketplace →
-          </Link>
-        </div>
-        <p className="text-muted-foreground text-sm mb-10">
-          Produse de la producători locali, livrate în Europa
-        </p>
-
+        <SectionHeader
+          title="Din Moldova și România, direct la tine"
+          subtitle="Produse de la producători locali, livrate în Europa"
+          href="/marketplace"
+          linkLabel="Marketplace"
+          hideLinkOnMobile
+        />
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {mockProducts.map((product) => (
-            <div key={product.id} className="rounded-2xl border bg-card overflow-hidden group hover:shadow-lg transition-shadow">
-              {/* Image */}
-              <div className="aspect-square bg-muted overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-5 flex flex-col gap-2">
-                <p className="text-xs text-muted-foreground">{product.sellerName} · Moldova</p>
-                <h3 className="text-base font-semibold leading-snug">{product.name}</h3>
-                <p className="text-sm text-muted-foreground line-clamp-2">{product.description}</p>
-                <div className="flex items-center justify-between mt-3">
-                  <span className="text-lg font-bold text-primary">{product.price} €</span>
-                  <Link
-                    href="/marketplace"
-                    className="text-sm bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
-                  >
-                    Comandă
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>
