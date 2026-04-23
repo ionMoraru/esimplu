@@ -12,8 +12,9 @@ type Product = {
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <div
-      className="rounded-2xl border bg-card overflow-hidden group hover:shadow-lg transition-shadow"
+    <Link
+      href={`/marketplace/${product.id}`}
+      className="group flex flex-col rounded-2xl border bg-card overflow-hidden hover:shadow-lg transition-shadow"
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div className="aspect-square bg-muted overflow-hidden">
@@ -23,27 +24,26 @@ export function ProductCard({ product }: { product: Product }) {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
-      <div className="p-5 flex flex-col gap-2">
+      <div className="p-5 flex flex-col gap-2 flex-1">
         <p className="text-xs text-muted-foreground font-medium">
           {product.sellerName} · Moldova
         </p>
         <h3
-          className="text-base font-semibold leading-snug"
+          className="text-base font-semibold leading-snug group-hover:text-primary transition-colors"
           style={{ fontFamily: "var(--font-playfair), serif" }}
         >
           {product.name}
         </h3>
-        <p className="text-sm text-muted-foreground line-clamp-2">{product.description}</p>
-        <div className="flex items-center justify-between mt-3">
+        <p className="text-sm text-muted-foreground line-clamp-2">
+          {product.description}
+        </p>
+        <div className="flex items-center justify-between mt-auto pt-3">
           <span className="text-lg font-bold text-primary">{product.price} €</span>
-          <Link
-            href="/marketplace"
-            className="text-sm bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
-          >
-            Comandă
-          </Link>
+          <span className="text-sm font-medium text-primary">
+            Vezi detalii →
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
