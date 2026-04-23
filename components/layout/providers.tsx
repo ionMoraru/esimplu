@@ -1,7 +1,7 @@
 "use client"
 
 import { SessionProvider } from "next-auth/react"
-import { CountryModal } from "@/components/country-modal"
+import { CountryModal } from "@/components/layout/country-modal"
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
