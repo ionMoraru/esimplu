@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { ServiceCard } from "@/components/shared/cards/service-card"
 import { FilterPill } from "@/components/shared/navigation/filter-pill"
 import { PageHero } from "@/components/shared/navigation/page-hero"
@@ -73,6 +74,12 @@ export default function ServicesPage() {
               {filtered.length !== 1 ? "ri" : ""} disponibil
               {filtered.length !== 1 ? "e" : ""}
             </p>
+            <Link
+              href="/services/new"
+              className="flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
+            >
+              + Propune un serviciu
+            </Link>
           </div>
 
           {/* Grille */}
