@@ -126,13 +126,13 @@ export const mockArticles = [
 ]
 
 export const mockServiceCategories = [
-  { id: "1", name: "Contabil", slug: "contabil" },
-  { id: "2", name: "Avocat / Jurist", slug: "avocat" },
-  { id: "3", name: "Magazin românesc", slug: "magazin" },
-  { id: "4", name: "Traducător", slug: "traducator" },
-  { id: "5", name: "Livrare", slug: "livrare" },
-  { id: "6", name: "Medic", slug: "medic" },
-  { id: "7", name: "Frizer / Coafor", slug: "frizer" },
+  { id: "1", name: "Contabil", slug: "contabil", icon: "📊" },
+  { id: "2", name: "Avocat / Jurist", slug: "avocat", icon: "⚖️" },
+  { id: "3", name: "Magazin românesc", slug: "magazin", icon: "🛒" },
+  { id: "4", name: "Traducător", slug: "traducator", icon: "🈯" },
+  { id: "5", name: "Livrare", slug: "livrare", icon: "📦" },
+  { id: "6", name: "Medic", slug: "medic", icon: "🩺" },
+  { id: "7", name: "Frizer / Coafor", slug: "frizer", icon: "💇" },
 ]
 
 export const mockServices = [
