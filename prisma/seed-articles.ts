@@ -521,6 +521,591 @@ const articles: Array<{
 </ul>
 <p><strong>Sursă oficială:</strong> <a href="https://www.service-public.fr/particuliers/vosdroits/F1460" target="_blank" rel="noopener">service-public.fr — Échange de permis étranger</a></p>`,
   },
+  // ============== GERMANY (DE) ==============
+  {
+    slug: "krankenversicherung-germania-2026",
+    title: "Krankenversicherung — sistemul de sănătate german explicat",
+    excerpt:
+      "GKV (publică) vs PKV (privată), cum o alegi pe a ta și ce acoperă în 2026.",
+    coverImage:
+      "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["de"],
+    readingTime: 7,
+    content: `<p>În Germania, asigurarea de sănătate este <strong>obligatorie prin lege</strong> pentru orice rezident. Există două sisteme paralele: <strong>GKV</strong> (gesetzliche Krankenversicherung — publică) și <strong>PKV</strong> (private Krankenversicherung — privată). Iată cum să alegi în 2026.</p>
+<h2>GKV — sistemul public</h2>
+<p>Aproximativ <strong>90% din rezidenți</strong> sunt în GKV. Cum funcționează:</p>
+<ul>
+<li><strong>Cotizația</strong>: ~14,6% din salariul brut + suplimentul fiecărei case (~1,7%) — împărțit la jumătate cu angajatorul</li>
+<li><strong>Plafond de cotizație</strong>: 5.512€/lună brut (2026) — peste, cotizația rămâne fixă</li>
+<li><strong>Soțul/soția fără venituri și copiii</strong>: gratuit (Familienversicherung)</li>
+<li><strong>Acoperire</strong>: medic, spital, medicamente, stomatologie de bază, maternitate</li>
+</ul>
+<h3>Cele mai mari case (Krankenkassen)</h3>
+<ul>
+<li><strong>TK</strong> (Techniker Krankenkasse) — populară la diaspora, servicii online bune</li>
+<li><strong>AOK</strong> — prezent în fiecare land, mulți consilieri locali</li>
+<li><strong>Barmer</strong>, <strong>DAK</strong>, <strong>IKK</strong> — alternative</li>
+</ul>
+<h2>PKV — sistemul privat</h2>
+<p>Doar pentru <strong>liber-profesioniști</strong>, <strong>funcționari</strong> și <strong>angajați cu venit brut > 73.800€/an</strong> (2026). Avantaje: timp de așteptare mai scurt, cabinete private, comfort. Dezavantaje: cotizația crește cu vârsta, soțul/copiii nu sunt gratuiți, întoarcerea la GKV e dificilă după 55 de ani.</p>
+<h2>Cum te înscrii</h2>
+<ol>
+<li>Alege o casă (compară pe <strong>check24.de</strong> sau <strong>krankenkassen.de</strong>)</li>
+<li>Completează formularul de adeziune (online sau pe hârtie)</li>
+<li>Trimite: copie pașaport / Aufenthaltstitel, contract de muncă, Anmeldung (înregistrarea la primărie)</li>
+<li>Primești <strong>Versichertennummer</strong> și apoi <strong>elektronische Gesundheitskarte (eGK)</strong> în 2-3 săptămâni</li>
+</ol>
+<h2>Pentru moldoveni — caz special</h2>
+<p>Cu titlu de ședere și contract de muncă: GKV automat. Pentru <strong>Au-Pair, studenți, vizitatori</strong>: există asigurări private specifice (Care Concept, Mawista, Hanse Merkur) — costuri 30-90€/lună.</p>
+<h2>Costuri de care să fii atent</h2>
+<ul>
+<li><strong>Praxisgebühr</strong>: a fost desființată în 2013 — consultațiile sunt gratuite</li>
+<li><strong>Eigenanteil</strong>: contribuții la medicamente (5-10€), spitalizare (10€/zi)</li>
+<li><strong>Stomatologie avansată</strong>: PKV sau Zahnzusatzversicherung (~15€/lună)</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.bundesgesundheitsministerium.de" target="_blank" rel="noopener">bundesgesundheitsministerium.de</a></p>`,
+  },
+  {
+    slug: "anmeldung-versichertenkarte-germania",
+    title: "Anmeldung și Versichertenkarte — primii pași în Germania",
+    excerpt:
+      "Cum te înregistrezi la primărie (Anmeldung), obții Steuer-ID și cardul de sănătate când vii în Germania.",
+    coverImage:
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["de"],
+    readingTime: 5,
+    content: `<p>Când vii în Germania, primul lucru pe care trebuie să-l faci este <strong>Anmeldung</strong> — înregistrarea la primărie. Fără ea, nu poți avea cont bancar, contract de telefon, nici asigurare de sănătate. Iată pașii.</p>
+<h2>Anmeldung — înregistrarea la primărie</h2>
+<p>Trebuie făcută în <strong>maxim 14 zile</strong> de la mutare în noua locuință. Programare online la <strong>Bürgeramt</strong> sau <strong>Einwohnermeldeamt</strong>.</p>
+<h3>Documente necesare</h3>
+<ul>
+<li>Pașaport sau carte de identitate</li>
+<li><strong>Wohnungsgeberbestätigung</strong> — confirmare semnată de proprietar/locator (formular oficial)</li>
+<li>Contract de chirie (opțional, dar recomandat)</li>
+<li>Formular Anmeldung completat</li>
+</ul>
+<p>Procedura durează 15-30 minute. Primești <strong>Anmeldebestätigung</strong> — document esențial.</p>
+<h2>Steuer-ID — codul fiscal</h2>
+<p>După Anmeldung, primești automat prin poștă <strong>Steuer-Identifikationsnummer</strong> (11 cifre) în 2-4 săptămâni. Este cheia pentru:</p>
+<ul>
+<li>Salariu (angajatorul nu te poate plăti fără el)</li>
+<li>Cont bancar</li>
+<li>Asigurare de sănătate</li>
+<li>Declarația de impozite</li>
+</ul>
+<p>Dacă nu primești în 4 săptămâni, sună la <strong>Bundeszentralamt für Steuern</strong> (0228 406 1240).</p>
+<h2>Versichertenkarte (eGK)</h2>
+<p>Este cardul tău de sănătate. Pentru a-l obține:</p>
+<ol>
+<li>Alege o Krankenkasse (TK, AOK, Barmer etc.)</li>
+<li>Trimite formular de adeziune cu: Anmeldebestätigung, contract de muncă, fotografie</li>
+<li>Primești <strong>Versichertennummer</strong> imediat (folosit la medic înainte ca acel card să sosească)</li>
+<li>Cardul fizic ajunge prin poștă în 2-3 săptămâni</li>
+</ol>
+<h2>Capcane frecvente</h2>
+<ul>
+<li><strong>Sublocațiunea</strong>: dacă închiriezi o cameră, proprietarul principal trebuie să semneze Wohnungsgeberbestätigung</li>
+<li><strong>Anmeldung temporară</strong>: pentru locuințe Airbnb / hotel, NU este Anmeldung valabil</li>
+<li><strong>Schimbare de adresă</strong>: trebuie să te re-anunți la primărie în 14 zile (Ummeldung)</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.bzst.de" target="_blank" rel="noopener">Bundeszentralamt für Steuern</a></p>`,
+  },
+  {
+    slug: "kindergeld-elterngeld-germania",
+    title: "Kindergeld și Elterngeld — ajutoare pentru familii în Germania",
+    excerpt:
+      "Cât primești pentru fiecare copil, cum ceri Elterngeld după naștere și alte beneficii pentru părinți.",
+    coverImage:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "finante",
+    countries: ["de"],
+    readingTime: 6,
+    content: `<p>Germania este una dintre cele mai generoase țări europene pentru familii. <strong>Kindergeld</strong>, <strong>Elterngeld</strong>, <strong>Kinderzuschlag</strong> — iată tot ce ai dreptul când ai copii.</p>
+<h2>Kindergeld — alocația lunară</h2>
+<p>Suma fixă lunară, indiferent de venituri:</p>
+<ul>
+<li><strong>250€/lună per copil</strong> (din 2023, valabil în 2026)</li>
+<li>Se plătește până la <strong>18 ani</strong> automat</li>
+<li>Până la <strong>25 ani</strong> dacă copilul studiază, ucenicie sau caută loc de muncă</li>
+</ul>
+<h3>Cine are dreptul?</h3>
+<ul>
+<li>Cetățeni UE (români): da, dacă lucrezi sau locuiești legal în Germania</li>
+<li>Cetățeni non-UE (moldoveni): da, dacă ai Aufenthaltstitel cu drept de muncă</li>
+<li>Copilul nu trebuie să trăiască în Germania (poate fi în România/Moldova) — dar atenție la regulile de prioritate</li>
+</ul>
+<h3>Cum o ceri</h3>
+<ol>
+<li>Formular online pe <strong>familienkasse.de</strong></li>
+<li>Documente: certificat de naștere copil (cu apostilă pentru Moldova), Steuer-ID părinte și copil, Anmeldung</li>
+<li>Răspuns: 4-12 săptămâni</li>
+<li>Plata retroactivă pe <strong>6 luni maxim</strong>, deci nu întârzia!</li>
+</ol>
+<h2>Elterngeld — concediu parental plătit</h2>
+<p>După nașterea unui copil, părintele care stă acasă primește <strong>65-67% din salariul net</strong> dinaintea nașterii.</p>
+<ul>
+<li><strong>Minim</strong>: 300€/lună</li>
+<li><strong>Maxim</strong>: 1.800€/lună</li>
+<li><strong>Durată</strong>: 12 luni (un părinte) sau 14 luni (împărțit între cei 2)</li>
+<li><strong>ElterngeldPlus</strong>: jumătate din sumă pentru durată dublă (24-28 luni)</li>
+</ul>
+<h2>Kinderzuschlag — pentru familii cu venituri mici</h2>
+<p>Până la <strong>292€/lună per copil</strong> în plus față de Kindergeld dacă veniturile tale nu acoperă nevoile familiei. Cerere la Familienkasse împreună cu Kindergeld.</p>
+<h2>Mutterschaftsgeld și Elternzeit</h2>
+<ul>
+<li><strong>Mutterschaftsgeld</strong>: 13€/zi de la GKV + complement de la angajator (100% salariu) — 6 săptămâni înainte și 8 săptămâni după naștere</li>
+<li><strong>Elternzeit</strong>: dreptul la concediu nepltățit până la 3 ani per copil cu garanția păstrării locului de muncă</li>
+</ul>
+<h2>Atenție pentru români/moldoveni</h2>
+<p>Dacă copilul trăiește în România/Moldova, suma Kindergeld poate fi <strong>plafonată</strong> conform regulilor UE de coordonare a securității sociale. Familienkasse compară cu alocațiile din țara de origine. <strong>Declară totul</strong>, sancțiunile pentru fraudă sunt severe.</p>
+<p><strong>Sursă oficială:</strong> <a href="https://www.familienkasse.de" target="_blank" rel="noopener">familienkasse.de</a></p>`,
+  },
+  {
+    slug: "declaratie-impozite-germania",
+    title: "Steuererklärung — declarația de impozite pentru diaspora în Germania",
+    excerpt:
+      "Cine trebuie să declare, cum folosești ELSTER și ce deduceri te pot face să recuperezi sute de euro.",
+    coverImage:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "finante",
+    countries: ["de"],
+    readingTime: 7,
+    content: `<p>Mulți români/moldoveni din Germania nu fac declarația de impozite și pierd <strong>sute sau mii de euro</strong> de rambursare anuală. Iată ghidul complet pentru 2026.</p>
+<h2>Trebuie să declar?</h2>
+<p>Obligatoriu dacă:</p>
+<ul>
+<li>Ai venituri din mai multe surse (lohnsteuerklasse III/V, IV cu Faktor)</li>
+<li>Ai primit <strong>Kurzarbeitergeld, Elterngeld</strong> sau alte ajutoare > 410€</li>
+<li>Ai venituri suplimentare > 410€/an (chirii, freelance)</li>
+<li>Ești liber-profesionist (Freiberufler / Selbstständig)</li>
+</ul>
+<p><strong>Voluntar</strong> dacă ai doar un salariu — dar este aproape întotdeauna avantajos! Rambursarea medie: <strong>1.072€</strong> (statistică oficială Bundesfinanzministerium).</p>
+<h2>Calendar 2026</h2>
+<ul>
+<li><strong>1 ianuarie</strong>: începutul perioadei de declarație pentru 2025</li>
+<li><strong>31 iulie 2026</strong>: termen pentru obligatorii (declarația 2025)</li>
+<li>Cu consultant fiscal (Steuerberater): termen extins până la <strong>28 februarie 2027</strong></li>
+<li><strong>4 ani retroactiv</strong>: poți declara voluntar până la 4 ani în urmă</li>
+</ul>
+<h2>ELSTER — instrumentul oficial gratuit</h2>
+<p><strong>elster.de</strong> este platforma oficială. Înregistrează-te cu Steuer-ID și primești prin poștă codul de activare (~2 săptămâni). Apoi:</p>
+<ol>
+<li>Logare și completarea formularelor (Mantelbogen, Anlage N pentru salariați etc.)</li>
+<li>Atașarea documentelor în PDF</li>
+<li>Trimitere electronică</li>
+<li>Primești <strong>Steuerbescheid</strong> în 4-12 săptămâni</li>
+</ol>
+<h2>Alternativă: aplicații simple</h2>
+<ul>
+<li><strong>Wundertax</strong> (35€) — interface în engleză, ideală pentru începători</li>
+<li><strong>Taxfix</strong> (40€) — întrebări simple, nu necesită cunoștințe fiscale</li>
+<li><strong>Smartsteuer</strong> (35€) — dacă ai situații complexe</li>
+</ul>
+<h2>Ce poți deduce (Werbungskosten)</h2>
+<ul>
+<li><strong>Distanța casă-muncă</strong>: 0,30€/km până la 20 km, 0,38€/km după</li>
+<li><strong>Doppelter Haushalt</strong>: dacă ai a 2-a locuință din motive profesionale (până la 1.000€/lună chirie + transport)</li>
+<li><strong>Cheltuieli profesionale</strong>: laptop, telefon, instrumente, formare</li>
+<li><strong>Sumă forfetară</strong>: 1.230€/an (Werbungskostenpauschale) automat fără justificare</li>
+<li><strong>Chirii și costuri de mutare</strong> din motive profesionale</li>
+<li><strong>Bani trimiși familiei în România/Moldova</strong>: până la 11.604€/an pentru părinți, soți, copii</li>
+</ul>
+<h2>Special pentru diaspora — bani trimiși acasă</h2>
+<p>Dacă trimiți bani regulat părinților sau soțului/soției/copiilor rămași în România/Moldova, poți deduce <strong>până la 11.604€/an</strong> (2026). Documente:</p>
+<ul>
+<li>Certificate de naștere/căsătorie (apostilate, traduse)</li>
+<li>Atestare oficială că persoana are venituri sub un anumit prag</li>
+<li>Probe de transfer (Western Union, MoneyGram, transfer bancar)</li>
+</ul>
+<h2>Conturi bancare în România/Moldova</h2>
+<p>Trebuie declarate în Anlage KAP dacă produc dobânzi/dividende. <strong>Convenția fiscală</strong> Germania-România/Moldova evită dubla impunere.</p>
+<p><strong>Sursă oficială:</strong> <a href="https://www.elster.de" target="_blank" rel="noopener">elster.de</a> · <a href="https://www.bundesfinanzministerium.de" target="_blank" rel="noopener">bundesfinanzministerium.de</a></p>`,
+  },
+  {
+    slug: "recunoastere-diplome-germania",
+    title: "Recunoașterea diplomelor românești și moldovenești în Germania",
+    excerpt:
+      "ZAB, Anabin, profesii reglementate — cum să-ți faci diploma recunoscută în Germania în 2026.",
+    coverImage:
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "drepturi",
+    countries: ["de"],
+    readingTime: 6,
+    content: `<p>Ai diplomă de licență, master sau doctorat din România/Moldova și vrei să lucrezi sau studiezi în Germania? Sistemul german e bine organizat dar pe etape. Iată ghidul.</p>
+<h2>Verifică-ți întâi diploma în Anabin</h2>
+<p><strong>anabin.kmk.org</strong> — baza oficială cu peste 50.000 de diplome străine. Caută universitatea ta. Statutul „H+" înseamnă recunoaștere automată; „H-" sau „H+/-" înseamnă caz cu caz.</p>
+<h2>ZAB — Zentralstelle für ausländisches Bildungswesen</h2>
+<p>Pentru a primi <strong>Zeugnisbewertung</strong> (atestat oficial de comparabilitate):</p>
+<ol>
+<li>Cerere online pe <strong>kmk.org/zab</strong></li>
+<li>Documente: copie diplomă + traducere oficială, foaie matricolă + traducere, copie act identitate</li>
+<li>Plată: <strong>200€</strong></li>
+<li>Procesare: <strong>3 luni</strong> (poate dura mai mult)</li>
+</ol>
+<p>Atestatul ZAB este folosit pentru: angajare, concursuri publice, înscriere doctorat, viza Blue Card.</p>
+<h2>Profesii reglementate — Anerkennung</h2>
+<p>Pentru aceste profesii, e nevoie de <strong>Anerkennung</strong> (recunoaștere completă), nu doar Zeugnisbewertung:</p>
+<ul>
+<li><strong>Medic</strong>: Approbation la Landesärztekammer + Kenntnisprüfung sau ușor pentru UE</li>
+<li><strong>Asistent medical</strong>: Anerkennung la autoritatea sănătății din land + eventual modul de adaptare</li>
+<li><strong>Profesor</strong>: Lehramtsanerkennung — adesea cere refacerea unei părți din studii</li>
+<li><strong>Inginer</strong>: protejat doar titlul „Ingenieur" — dacă vrei să-l porți oficial, cerere la camera inginerilor</li>
+<li><strong>Avocat</strong>: foarte complex, examen german complet</li>
+</ul>
+<h2>Pentru români — UE</h2>
+<p>Diplomele românești sunt <strong>recunoscute automat</strong> în multe cazuri datorită Procesului Bologna. Pentru profesii reglementate, directiva UE 2005/36/CE oferă procedură simplificată.</p>
+<h2>Pentru moldoveni — non-UE</h2>
+<p>Diplomele moldovenești necesită:</p>
+<ul>
+<li><strong>Apostilă</strong> de la Ministerul Justiției din Moldova</li>
+<li><strong>Traducere</strong> de un traducător agreat în Germania (vereidigte Übersetzer — listă pe justiz-dolmetscher.de)</li>
+<li>Procedura ZAB este mai detaliată dar accesibilă</li>
+</ul>
+<h2>Ajutor financiar și consultanță</h2>
+<ul>
+<li><strong>Anerkennungszuschuss</strong>: până la 600€ pentru costurile recunoașterii (la persoane cu venituri mici)</li>
+<li><strong>IQ Netzwerk</strong>: consultanță gratuită în 16 landuri (netzwerk-iq.de)</li>
+<li><strong>BAMF</strong>: cursuri integrare + consultanță profesională</li>
+</ul>
+<h2>În paralel — învață germana</h2>
+<p>Fără <strong>B2 minim</strong> (C1 pentru profesii medicale), recunoașterea va rămâne pe hârtie. Cursuri integrare BAMF: gratuite/reduse pentru cetățenii cu Aufenthaltstitel.</p>
+<p><strong>Sursă oficială:</strong> <a href="https://www.kmk.org/zab" target="_blank" rel="noopener">ZAB</a> · <a href="https://anabin.kmk.org" target="_blank" rel="noopener">Anabin</a></p>`,
+  },
+  {
+    slug: "titlu-sedere-germania",
+    title: "Titlul de ședere în Germania — diferențe pentru români și moldoveni",
+    excerpt:
+      "Românii UE au libertate de mișcare. Moldovenii au nevoie de viză + Aufenthaltstitel. Iată regulile 2026.",
+    coverImage:
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "drepturi",
+    countries: ["de"],
+    readingTime: 7,
+    content: `<p>Statutul tău juridic în Germania depinde de cetățenia ta. <strong>Românii</strong> sunt cetățeni UE — drept de muncă imediat. <strong>Moldovenii</strong> au nevoie de viză + Aufenthaltstitel. Iată ghidul detaliat.</p>
+<h2>Pentru români — UE</h2>
+<p>Ca cetățean român, ai dreptul să locuiești și să muncești în Germania <strong>fără viză sau permis</strong>. Singura obligație:</p>
+<ul>
+<li><strong>Anmeldung</strong> la Bürgeramt în 14 zile de la mutare</li>
+<li>Asigurare de sănătate obligatorie</li>
+<li>După 5 ani: poți cere <strong>Daueraufenthaltsbescheinigung-EU</strong> (rezident permanent UE) — opțional</li>
+</ul>
+<p><strong>Carte de șomaj</strong>: ai dreptul după minim 12 luni de cotizație în Germania (sau cumulat în UE prin formularul U1 din România).</p>
+<h2>Pentru moldoveni — non-UE</h2>
+<p>Ai nevoie de viză înainte de a veni. Tipurile principale:</p>
+<h3>Viza de muncă</h3>
+<ul>
+<li><strong>Fachkräfte (lucrători calificați)</strong>: cu diplomă recunoscută + contract de muncă</li>
+<li><strong>EU Blue Card</strong>: salariu brut ≥ 48.300€/an (2026) sau 43.760€ pentru profesii deficitare (IT, medici, ingineri)</li>
+<li><strong>Chancenkarte</strong> (din 2024): viză de un an pentru a căuta loc de muncă, pe sistem de puncte</li>
+<li><strong>Au-Pair</strong>: 18-26 ani, 1 an maxim</li>
+</ul>
+<h3>Viza de studiu</h3>
+<ul>
+<li>Înscriere la o universitate germană</li>
+<li>Probă de finanțare: cont blocat <strong>11.904€</strong> (2026, ~992€/lună × 12 luni)</li>
+<li>Asigurare de sănătate</li>
+<li>Permite muncă 140 zile/an (sau 240 jumătăți de zi)</li>
+</ul>
+<h3>Viza de reunificare familială</h3>
+<ul>
+<li>Soț/soție de cetățean german sau cu titlu de ședere</li>
+<li>Necesită nivel A1 germană înainte de a veni</li>
+<li>Convertibil în Niederlassungserlaubnis după 3 ani</li>
+</ul>
+<h2>Aufenthaltstitel după sosire</h2>
+<p>Programare la <strong>Ausländerbehörde</strong> (autoritatea pentru străini) în primele 90 de zile:</p>
+<ol>
+<li>Anmeldung deja făcut</li>
+<li>Documente: viza, contract muncă/înscriere universitate, probă financiară, asigurare</li>
+<li>Plata taxei: 100€ (eliberare), 80-100€ (reînnoire)</li>
+<li>Primești <strong>elektronischer Aufenthaltstitel (eAT)</strong> — card cu cip</li>
+</ol>
+<h2>Niederlassungserlaubnis — rezident permanent</h2>
+<p>După <strong>5 ani</strong> de Aufenthaltstitel (3 ani cu Blue Card + B1 germană):</p>
+<ul>
+<li>Resurse stabile + asigurare</li>
+<li>Cunoștințe germană B1</li>
+<li>Cunoștințe sistem juridic și social (Einbürgerungstest)</li>
+<li>Locuință adecvată</li>
+<li>Cazier judiciar curat</li>
+</ul>
+<h2>Cetățenie germană — 2024 reformă majoră</h2>
+<p>Din iunie 2024, Germania permite <strong>dublă cetățenie</strong>! Condiții (2026):</p>
+<ul>
+<li><strong>5 ani</strong> de ședere legală (3 ani pentru integrare excepțională: B1 → C1, voluntariat)</li>
+<li>B1 germană obligatoriu (C1 pentru excepție)</li>
+<li>Test de cetățenie</li>
+<li>Resurse fără ajutoare sociale</li>
+<li>Recunoașterea valorilor democratice</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.bamf.de" target="_blank" rel="noopener">bamf.de</a> · <a href="https://www.make-it-in-germany.com" target="_blank" rel="noopener">make-it-in-germany.com</a></p>`,
+  },
+  {
+    slug: "inscriere-kita-scoala-germania",
+    title: "Înscrierea copilului la Kita sau școală în Germania",
+    excerpt:
+      "Sistem școlar german, cum obții un loc de Kita, Grundschule și pașii pentru părinții români/moldoveni.",
+    coverImage:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["de"],
+    readingTime: 6,
+    content: `<p>În Germania, școala este <strong>obligatorie de la 6 ani</strong>. Înainte, există grădinițe (Kindergarten) și creșe (Krippe), grupate sub denumirea <strong>Kita</strong>. Iată cum să înscrii copilul.</p>
+<h2>Sistem școlar pe scurt</h2>
+<ul>
+<li><strong>Krippe</strong> (creșă): 0-3 ani — opțional</li>
+<li><strong>Kindergarten</strong>: 3-6 ani — opțional dar puternic recomandat (gratuit în multe landuri)</li>
+<li><strong>Grundschule</strong>: 6-10 ani (4 ani) — obligatorie</li>
+<li>După Grundschule, sistem împărțit în 3 (în funcție de land):
+  <ul>
+    <li><strong>Hauptschule</strong>: pregătire profesională</li>
+    <li><strong>Realschule</strong>: gradul mediu</li>
+    <li><strong>Gymnasium</strong>: pentru universitate (Abitur la 18 ani)</li>
+  </ul>
+</li>
+<li><strong>Gesamtschule</strong>: combină cele 3, alegere mai târzie</li>
+</ul>
+<h2>Kita — locuri foarte căutate</h2>
+<p>Cererea depășește oferta în orașele mari (Berlin, München, Hamburg). Începe căutarea <strong>din timpul sarcinii</strong>!</p>
+<h3>Cum funcționează Kita-Gutschein (în multe landuri)</h3>
+<ol>
+<li>Cere <strong>Kita-Gutschein</strong> (cupon) la primăria orașului — definește orele garantate (5h/zi, 7h, 9h)</li>
+<li>Cu cuponul, cauți tu Kita disponibilă (lista pe site-ul orașului)</li>
+<li>Înscriere directă la Kita aleasă</li>
+<li><strong>Costuri</strong>: gratuite (Berlin, Hamburg, RLP) sau 50-300€/lună în alte landuri</li>
+</ol>
+<h3>Tipuri de Kita</h3>
+<ul>
+<li><strong>Public</strong>: gestionate de oraș, gratis sau ieftin</li>
+<li><strong>Confesional</strong> (catolic, protestant): de obicei gratuite în Berlin, ușor mai scumpe în alte landuri</li>
+<li><strong>Privat</strong> (Bilingual, Montessori): 300-1500€/lună</li>
+<li><strong>Tagesmutter</strong> (dădacă agreată acasă): 500-900€/lună (parte rambursată de oraș)</li>
+</ul>
+<h2>Înscrierea la școală</h2>
+<p>Copilul trebuie să fi împlinit <strong>6 ani până la 30 iunie</strong> al anului școlar (Stichtag). Procedura:</p>
+<ol>
+<li>Primești scrisoare de la Schulamt cu școala alocată (după sectorizare)</li>
+<li>Mergi cu copilul la <strong>Schuleingangsuntersuchung</strong> (vizită medicală obligatorie) la Gesundheitsamt</li>
+<li>Înscriere la școală cu: certificat de naștere (tradus), Anmeldung, fișa medicală, copie pașaport</li>
+<li>Cumpărături: cartă școlară, Schultüte (cornet de cadouri tradiție germană pentru prima zi)</li>
+</ol>
+<h2>Sosire la jumătatea anului</h2>
+<p>Dacă vii cu copilul în timpul anului școlar, contactează <strong>Schulamt</strong> al orașului. Copilul este alocat la cea mai apropiată școală cu locuri.</p>
+<h3>Vorbereitungsklasse / Willkommensklasse</h3>
+<p>Pentru copiii care nu vorbesc germana: clase speciale 6-12 luni pentru a învăța limba înainte de integrare în clasă regulată.</p>
+<h2>Costuri ascunse</h2>
+<ul>
+<li><strong>Mensa</strong> (cantină): 50-90€/lună</li>
+<li><strong>Materiale școlare</strong>: 100-200€/an (cărți cumpărate sau împrumutate)</li>
+<li><strong>Excursii și clase verzi</strong>: 100-500€/an</li>
+<li><strong>Bildungspaket</strong>: ajutoare pentru familii cu venituri mici (cumpărături școlare, pranz, excursii)</li>
+</ul>
+<h2>Ce să faci dacă școala te respinge</h2>
+<p>Toți copiii au drept la școală. Dacă ești refuzat, contactează <strong>Schulamt</strong> sau asociațiile pentru drepturile imigranților (de exemplu Caritas, Diakonie).</p>
+<p><strong>Sursă oficială:</strong> <a href="https://www.kmk.org" target="_blank" rel="noopener">Kultusministerkonferenz</a></p>`,
+  },
+  {
+    slug: "inchiriere-locuinta-germania-schufa",
+    title: "Cum să închiriezi un apartament în Germania (SCHUFA, Mietvertrag)",
+    excerpt:
+      "Dosarul perfect, ce este SCHUFA și cum eviți capcanele pieței imobiliare germane.",
+    coverImage:
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["de"],
+    readingTime: 7,
+    content: `<p>Piața locativă germană este foarte competitivă, mai ales în orașele mari. Proprietarii primesc 50-200 cereri pentru un apartament. Iată cum să le câștigi.</p>
+<h2>Dosarul perfect — Mietermappe</h2>
+<p>Trebuie să-l ai gata înainte de a începe căutarea. Conține:</p>
+<ul>
+<li><strong>Selbstauskunft</strong>: formular cu datele tale (descărcabil online sau cere la proprietar)</li>
+<li><strong>SCHUFA-BonitätsAuskunft</strong>: certificat de fiabilitate financiară (~30€)</li>
+<li>Copie pașaport / Aufenthaltstitel</li>
+<li><strong>3 ultime fluturași de salariu</strong> (Lohnabrechnung)</li>
+<li>Contract de muncă</li>
+<li><strong>Mietschuldenfreiheitsbescheinigung</strong>: atestare de la proprietarul precedent că nu datorezi chirie</li>
+<li>Anmeldebestätigung (sau intenție de Anmeldung)</li>
+</ul>
+<h2>Ce este SCHUFA?</h2>
+<p><strong>SCHUFA</strong> este biroul de credit german. Cuantifică fiabilitatea ta de a plăti. Scor de 100% = excelent, peste 90% = bun. Cum o obții:</p>
+<ol>
+<li>Mergi pe <strong>meineschufa.de</strong> sau pe <strong>immobilienscout24.de</strong> (parteneriat)</li>
+<li>Plătește 30€</li>
+<li>Primești prin email/poștă în 24-48h</li>
+<li>O dată/an, poți cere SCHUFA <strong>gratuită</strong> (Datenkopie nach §15 DSGVO) — dar are nevoie de 2-4 săptămâni</li>
+</ol>
+<h3>Nu ai SCHUFA? (proaspăt sosit)</h3>
+<ul>
+<li>Cere o atestare „Kein Eintrag" (fără inscripție negativă)</li>
+<li>Oferă <strong>3 luni de chirie depozit</strong> (Kaution maximă legală)</li>
+<li>Garant (Bürge) cu venituri stabile</li>
+<li>Câteva luni de chirie plătite în avans</li>
+</ul>
+<h2>Mietvertrag — contractul</h2>
+<p>Atenție la aceste clauze:</p>
+<ul>
+<li><strong>Kaltmiete</strong> vs <strong>Warmmiete</strong>: Kaltmiete = chirie netă, Warmmiete = + Nebenkosten (apă, încălzire, etc.). Întrebă întotdeauna ce este inclus!</li>
+<li><strong>Kaution</strong>: maxim 3 luni de chirie netă, plătite într-un cont blocat (poți cere proba)</li>
+<li><strong>Indextmiete</strong>: chiria crește automat cu inflația — verifică</li>
+<li><strong>Staffelmiete</strong>: chiria crește la date predefinite</li>
+<li><strong>Kündigungsfrist</strong>: termen de preaviz, în general 3 luni</li>
+</ul>
+<h2>Capcane frecvente</h2>
+<ul>
+<li><strong>Schwarzwohnen</strong>: nu locui fără Anmeldung — se declanșează amendă de până la 1.000€</li>
+<li><strong>Ablöse</strong>: proprietarul anterior îți cere bani pentru bucătărie/mobilier — verifică starea reală</li>
+<li><strong>Maklerprovision</strong>: din 2015, plătește cel care îl angajează (de obicei proprietarul). Dacă o cere de la tine ilegal, refuză</li>
+<li><strong>Trick-uri Airbnb / fictive</strong>: niciodată plată în avans fără să fi văzut apartamentul</li>
+</ul>
+<h2>Site-uri utile</h2>
+<ul>
+<li><strong>ImmobilienScout24, Immowelt, Immonet</strong>: cele mai mari portaluri</li>
+<li><strong>WG-Gesucht</strong>: pentru camere în colocație</li>
+<li><strong>eBay Kleinanzeigen</strong>: anunțuri direct de la proprietari, dar atenție la escrocherii</li>
+<li>Grupuri Facebook diaspora: rapide pentru WG-uri</li>
+</ul>
+<h2>Locuri sociale (Sozialwohnung)</h2>
+<p>Cu venituri mici, poți obține <strong>Wohnberechtigungsschein (WBS)</strong> de la oraș, care îți deschide accesul la apartamente cu chirie redusă. Lista de așteptare însă: 1-3 ani.</p>
+<p><strong>Sursă oficială:</strong> <a href="https://www.mieterbund.de" target="_blank" rel="noopener">Deutscher Mieterbund</a></p>`,
+  },
+  {
+    slug: "deschidere-cont-bancar-germania",
+    title: "Deschiderea unui cont bancar în Germania (Girokonto)",
+    excerpt:
+      "Bănci tradiționale vs N26/Revolut, ce documente sunt cerute și cum eviți comisioanele inutile.",
+    coverImage:
+      "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "finante",
+    countries: ["de"],
+    readingTime: 5,
+    content: `<p>În Germania, fără <strong>Girokonto</strong> (cont curent) nu ai salariu, chirie, SCHUFA, nimic. Iată cum să-l deschizi rapid și fără bătaie de cap.</p>
+<h2>Documente cerute</h2>
+<ul>
+<li>Pașaport sau carte de identitate valabile</li>
+<li><strong>Anmeldebestätigung</strong> (înregistrare la primărie) — esențial pentru bănci tradiționale</li>
+<li>Steuer-ID (poate fi cerut după)</li>
+<li>Justificatif de venituri (contract de muncă, fluturaș) — pentru anumite bănci</li>
+<li>Aufenthaltstitel (pentru moldoveni)</li>
+</ul>
+<h2>Bănci tradiționale</h2>
+<ul>
+<li><strong>Sparkasse</strong>: prezentă peste tot, agenții locale, taxă lunară 5-10€</li>
+<li><strong>Volksbank / Raiffeisenbank</strong>: rețea cooperatistă similară</li>
+<li><strong>Deutsche Bank, Commerzbank</strong>: clasici, gratuite cu condiții (salariu lunar minim)</li>
+<li><strong>Postbank</strong>: filială Deutsche Bank, agenții în oficiile poștale</li>
+</ul>
+<h2>Bănci online (Direktbanken)</h2>
+<p>Mai ieftine, deschidere rapidă (24-48h prin video-identificare):</p>
+<ul>
+<li><strong>DKB</strong> — Girokonto gratuit, retrageri gratuite în EUR în lume</li>
+<li><strong>ING Deutschland</strong> — gratuit cu intrări regulate</li>
+<li><strong>comdirect</strong> — bună pentru investiții</li>
+<li><strong>Consorsbank</strong> — alternativă</li>
+</ul>
+<h2>Neobănci (cu IBAN german)</h2>
+<ul>
+<li><strong>N26</strong> — fondată în Berlin, IBAN german (DE), aplicație excelentă, gratuită cu limite</li>
+<li><strong>Vivid Money</strong> — IBAN german, oferte cashback</li>
+<li><strong>bunq</strong> — IBAN olandez (NL) — atenție: <strong>nu este acceptat</strong> de unele administrații</li>
+<li><strong>Revolut, Wise</strong> — IBAN lituanian/belgian — utile pentru transfer dar NU recomandat ca cont principal</li>
+</ul>
+<h2>De ce contează IBAN-ul german (DE)?</h2>
+<p>Multe administrații, asigurări, proprietari refuză IBAN-uri non-DE pentru:</p>
+<ul>
+<li>Plata chiriei (cu Lastschrift / debit direct)</li>
+<li>Salariu (unele angajatori bavarezi/sași)</li>
+<li>Asigurări de sănătate (deși SEPA o cere prin lege, multe Krankenkassen refuză în practică)</li>
+</ul>
+<h2>Basiskonto — drept la cont</h2>
+<p>Din 2016, fiecare bancă în Germania <strong>trebuie</strong> să-ți deschidă un cont de bază (Basiskonto). Refuzul este ilegal cu excepții foarte limitate. Costuri legale: maxim 7-10€/lună. Util pentru:</p>
+<ul>
+<li>Cei fără SCHUFA</li>
+<li>Solicitanți de azil</li>
+<li>Persoane fără adresă fixă</li>
+</ul>
+<p>Dacă ești refuzat, sesizează <strong>BaFin</strong> (autoritatea bancară federală).</p>
+<h2>Sfaturi practice</h2>
+<ul>
+<li>Pregătește toate documentele <strong>înainte</strong> de a merge la bancă</li>
+<li>Verifică taxele lunare ascunse — multe bănci anunță „gratuit" cu condiții</li>
+<li>Pentru transferuri către România/Moldova, folosește <strong>Wise</strong> sau <strong>Revolut</strong> (taxe mult mai mici decât băncile tradiționale)</li>
+<li>Activează <strong>Online-Banking</strong> imediat — esențial pentru SEPA-Lastschrift</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.bafin.de" target="_blank" rel="noopener">BaFin — Basiskonto</a></p>`,
+  },
+  {
+    slug: "permis-conducere-germania",
+    title: "Permisul de conducere în Germania — schimb sau echivalare",
+    excerpt:
+      "Ce să faci cu permisul tău românesc / moldovenesc în Germania și cum îl convertești dacă e necesar.",
+    coverImage:
+      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "drepturi",
+    countries: ["de"],
+    readingTime: 5,
+    content: `<p>Vii în Germania cu permis românesc sau moldovenesc? Regulile diferă mult între cele două. Iată ghidul complet 2026.</p>
+<h2>Pentru români — UE</h2>
+<p>Permisul românesc este <strong>direct valabil în Germania pe toată durata sa</strong> (fără limită de timp, fără schimb obligatoriu). Singura excepție:</p>
+<ul>
+<li>Dacă a fost <strong>emis înainte de 19 ianuarie 2013</strong> și expiră, trebuie să-l înlocuiești cu permis german (sau român format nou)</li>
+<li>Dacă comiti o infracțiune rutieră în Germania, autoritățile pot cere conversia</li>
+</ul>
+<h3>Conversie voluntară</h3>
+<p>Mulți români aleg să-l convertească la permis german pentru:</p>
+<ul>
+<li>Sistemul de puncte se aplică pe permis german</li>
+<li>Pierdere/furt: mai ușor de duplicat în Germania</li>
+<li>După reînnoiere, cardul e german</li>
+</ul>
+<p>Procedură la <strong>Führerscheinstelle</strong> al orașului tău: copie permis, fotografie, certificat ochi (Sehtest), 35-40€. Nu necesită examen!</p>
+<h2>Pentru moldoveni — non-UE</h2>
+<p>Permisul moldovenesc este valabil <strong>doar 6 luni</strong> de la data Anmeldung-ului. Apoi:</p>
+<ul>
+<li>SAU îl convertești cu probă (Umschreibung)</li>
+<li>SAU dai permisul german de la zero</li>
+</ul>
+<h3>Acordul de echivalare Moldova-Germania</h3>
+<p>Există <strong>echivalare parțială</strong>. În funcție de categoria și data emiterii:</p>
+<ul>
+<li><strong>Categoria B</strong> (autoturism): de obicei conversie cu <strong>examen practic + teoretic</strong></li>
+<li>Pentru permise emise după 2009 cu format european: condiții mai favorabile (depinde de Bundesland)</li>
+<li>În unele landuri (Bavaria, Saxa): doar examen practic</li>
+</ul>
+<h3>Documente pentru conversie</h3>
+<ul>
+<li>Permisul moldovenesc original + traducere oficială (de un vereidigte Übersetzer)</li>
+<li>Apostilă (Ministerul Justiției Moldova)</li>
+<li>Atestare de la autoritatea moldoveană că permisul e valabil</li>
+<li>Certificat ochi (Sehtest, ~7€ la optician)</li>
+<li>Curs de prim ajutor (Erste-Hilfe-Kurs, ~30€, 9 ore)</li>
+<li>2 fotografii biometrice</li>
+<li>Anmeldung + Aufenthaltstitel</li>
+<li>Plata taxelor: 35-150€ în funcție de procedură</li>
+</ul>
+<h3>Examenul (dacă e cerut)</h3>
+<ul>
+<li><strong>Teoretic</strong>: 30 întrebări, max 10 puncte minus (în germană sau câteva limbi străine — uneori și română)</li>
+<li><strong>Practic</strong>: 45 minute cu examinator TÜV/DEKRA</li>
+<li>Costuri totale (curs + examen): <strong>500-1500€</strong></li>
+</ul>
+<h2>Permis de la zero — mai scump dar fiabil</h2>
+<p>Dacă conversia e dificilă sau refuzată:</p>
+<ul>
+<li><strong>Fahrschule</strong> (școală de șoferi): 14 lecții teorie + 12 lecții circulație (minim) — <strong>2.500-3.500€</strong></li>
+<li>Examen teoretic la TÜV/DEKRA</li>
+<li>Examen practic</li>
+<li>Permis valabil pe toată viața</li>
+</ul>
+<h2>Atenție</h2>
+<ul>
+<li>După cele 6 luni autorizate, dacă conduci cu permis moldovenesc neschimbat, ești <strong>fără permis</strong> și riști amendă mare + închiriere imposibilă a mașinii</li>
+<li>Internațional Driving Permit (IDP) NU prelungește valabilitatea — e doar traducere oficială</li>
+<li>Pentru profesii (camionagiu, taximetrist, șofer autocar): cerințe suplimentare (Modul 95, Personenbeförderungsschein)</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.bmvi.de" target="_blank" rel="noopener">Bundesministerium für Verkehr</a></p>`,
+  },
 ]
 
 async function main() {
