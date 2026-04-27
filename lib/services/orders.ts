@@ -32,8 +32,21 @@ function computeTotals(productsCents: number, commissionPct: number) {
   return { commissionCents, payoutCents }
 }
 
+// H4 fix: whitelist pays autorisés au niveau de la création de commande aussi.
+const ALLOWED_DELIVERY_COUNTRIES = ["fr", "de", "it", "uk"] as const
+
 export async function createOrder(input: CreateOrderInput): Promise<Order> {
   if (input.items.length === 0) throw new Error("Order must have at least one item")
+
+  // H4 fix
+  if (!ALLOWED_DELIVERY_COUNTRIES.includes(input.deliveryCountry as (typeof ALLOWED_DELIVERY_COUNTRIES)[number])) {
+    throw new Error(`Pays de livraison non supporté : ${input.deliveryCountry}`)
+  }
+
+  // M4 fix: limite la taille des notes (DB TEXT illimité sinon).
+  if (input.notes && input.notes.length > 1000) {
+    throw new Error("Les notes ne peuvent pas dépasser 1000 caractères")
+  }
 
   // MVP: 1 order = 1 seller. Validate that all items come from the same seller.
   const products = await prisma.product.findMany({
@@ -47,6 +60,12 @@ export async function createOrder(input: CreateOrderInput): Promise<Order> {
   }
   const seller = products[0].seller
   if (!seller.approved) throw new Error("Seller is not approved")
+
+  // H3 fix: un seller ne peut pas commander chez son propre profil. Bloque
+  // l'auto-commerce / abus du réseau courier.
+  if (seller.userId === input.customerId) {
+    throw new Error("Vous ne pouvez pas commander chez votre propre compte vendeur")
+  }
 
   // Compute pricing
   let productsCents = 0
@@ -141,10 +160,12 @@ export async function markPaid(orderId: string, paymentRef: string, providerName
 }
 
 export async function assignCourier(orderId: string, courierId: string, admin: User): Promise<Order> {
-  const courier = await prisma.courierProfile.findUnique({ where: { id: courierId } })
-  if (!courier) throw new Error("Courier not found")
-  if (!courier.approved) throw new ForbiddenError("Courier is not approved")
+  // H1 fix: re-vérifier l'approbation du courier DANS la transaction pour
+  // éviter une race condition (admin retire l'approval entre lecture et update).
   return prisma.$transaction(async (tx) => {
+    const courier = await tx.courierProfile.findUnique({ where: { id: courierId } })
+    if (!courier) throw new Error("Courier not found")
+    if (!courier.approved) throw new ForbiddenError("Courier is not approved")
     const order = await tx.order.findUnique({ where: { id: orderId } })
     if (!order) throw new OrderStateError("Order not found")
     if (order.status !== "PAID" && order.status !== "HANDED_OVER") {

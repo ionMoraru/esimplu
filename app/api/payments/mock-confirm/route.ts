@@ -7,6 +7,10 @@ import { handleApiError, jsonError, readJson } from "@/lib/api/respond"
 
 export async function POST(request: Request) {
   try {
+    // C1 fix: en prod, refuser sauf si PAYMENT_PROVIDER=mock explicite.
+    if (process.env.NODE_ENV === "production" && process.env.PAYMENT_PROVIDER !== "mock") {
+      return jsonError("Mock confirmation is disabled in production", 404)
+    }
     if (process.env.PAYMENT_PROVIDER && process.env.PAYMENT_PROVIDER !== "mock") {
       return jsonError("Mock confirmation is only available in mock mode", 400)
     }

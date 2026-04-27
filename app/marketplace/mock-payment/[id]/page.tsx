@@ -8,6 +8,10 @@ export default async function MockPaymentPage({
 }: {
   params: Promise<{ id: string }>
 }) {
+  // C1 fix: pas de page de paiement mock en prod sauf mode mock explicite.
+  if (process.env.NODE_ENV === "production" && process.env.PAYMENT_PROVIDER !== "mock") {
+    notFound()
+  }
   if (process.env.PAYMENT_PROVIDER && process.env.PAYMENT_PROVIDER !== "mock") {
     notFound()
   }

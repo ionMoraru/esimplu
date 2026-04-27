@@ -29,12 +29,16 @@ export async function requireUser(): Promise<User> {
   return user
 }
 
-export async function requireRole(role: UserRole): Promise<User> {
+export async function requireRole(
+  role: UserRole,
+  opts: { allowAdmin?: boolean } = {},
+): Promise<User> {
   const user = await requireUser()
-  if (user.role !== role && user.role !== "ADMIN") {
-    throw new ForbiddenError(`Role ${role} required`)
-  }
-  return user
+  if (user.role === role) return user
+  // C2 fix: l'ADMIN n'est plus un substitut universel. Si un appelant veut le
+  // tolérer, il le déclare explicitement via { allowAdmin: true }.
+  if (opts.allowAdmin && user.role === "ADMIN") return user
+  throw new ForbiddenError(`Role ${role} required`)
 }
 
 export async function requireAdmin(): Promise<User> {

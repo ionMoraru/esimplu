@@ -22,9 +22,23 @@ export interface ListProductsFilters {
   publishedOnly?: boolean
 }
 
+// H4 fix: whitelist explicite des pays supportés (Phase 1.5).
+const ALLOWED_COUNTRIES = ["fr", "de", "it", "uk"] as const
+
+// C4 fix: prix mini de 1€ pour éviter "produit gratuit" qui abuserait du
+// réseau courier sans aucune contrepartie. Cap haut pour bloquer une virgule
+// perdue (ex. saisie "10000" au lieu de "100,00").
+const MIN_PRICE_CENTS = 100
+const MAX_PRICE_CENTS = 10_000_00 // 10 000 €
+
 function validateInput(input: CreateProductInput | UpdateProductInput) {
-  if ("priceCents" in input && input.priceCents !== undefined && input.priceCents < 0) {
-    throw new Error("priceCents must be >= 0")
+  if ("priceCents" in input && input.priceCents !== undefined) {
+    if (input.priceCents < MIN_PRICE_CENTS) {
+      throw new Error(`Le prix doit être supérieur ou égal à ${MIN_PRICE_CENTS / 100} €`)
+    }
+    if (input.priceCents > MAX_PRICE_CENTS) {
+      throw new Error(`Le prix doit être inférieur à ${MAX_PRICE_CENTS / 100} €`)
+    }
   }
   if ("stock" in input && input.stock !== undefined && input.stock < 0) {
     throw new Error("stock must be >= 0")
@@ -32,6 +46,12 @@ function validateInput(input: CreateProductInput | UpdateProductInput) {
   if ("countriesAvailable" in input && input.countriesAvailable !== undefined) {
     if (input.countriesAvailable.length === 0) {
       throw new Error("countriesAvailable must contain at least one country")
+    }
+    const invalid = input.countriesAvailable.filter(
+      (c) => !ALLOWED_COUNTRIES.includes(c as (typeof ALLOWED_COUNTRIES)[number]),
+    )
+    if (invalid.length > 0) {
+      throw new Error(`Pays non supporté(s) : ${invalid.join(", ")}`)
     }
   }
 }

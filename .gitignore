@@ -8,6 +8,17 @@ out/
 # TypeScript incremental build cache
 tsconfig.tsbuildinfo
 
+# iCloud Drive duplicate copies
+* 2.ts
+* 2.tsx
+* 2.js
+* 2.jsx
+* 2.mjs
+* 2.sql
+
+# Playwright MCP traces (local debug)
+.playwright-mcp/
+
 # Env
 .env
 .env.local

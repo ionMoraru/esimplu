@@ -6,8 +6,7 @@ import { getEmailService, tplCustomerOrderConfirmation } from "@/lib/services/em
 import { handleApiError, readJson } from "@/lib/api/respond"
 
 interface CreateOrderBody {
-  customerName: string
-  customerEmail: string
+  customerName?: string
   customerPhone: string
   deliveryAddress: string
   deliveryCity: string
@@ -19,12 +18,19 @@ interface CreateOrderBody {
 export async function POST(request: Request) {
   try {
     const user = await requireUser()
+    if (!user.email) {
+      return handleApiError(new Error("Compte sans email valide"))
+    }
     const body = await readJson<CreateOrderBody>(request)
+
+    // H5 fix: customerEmail vient TOUJOURS de la session, jamais du body, pour
+    // éviter qu'un user authentifié déclenche des emails au nom d'un tiers.
+    const customerName = (body.customerName ?? "").trim() || user.name || user.email
 
     const order = await createOrder({
       customerId: user.id,
-      customerName: body.customerName,
-      customerEmail: body.customerEmail,
+      customerName,
+      customerEmail: user.email,
       customerPhone: body.customerPhone,
       deliveryAddress: body.deliveryAddress,
       deliveryCity: body.deliveryCity,
@@ -36,16 +42,15 @@ export async function POST(request: Request) {
     const provider = getPaymentProvider()
     const checkout = await provider.createCheckout(order)
 
-    // Customer confirmation email — note: order is still PENDING_PAYMENT.
     const email = getEmailService()
     const totalEur = (order.productsCents / 100).toFixed(2).replace(".", ",")
     const tpl = tplCustomerOrderConfirmation({
       orderId: order.id,
       productsLine: `${body.items.length} produit(s)`,
       totalEur,
-      customerName: body.customerName,
+      customerName,
     })
-    await email.send({ ...tpl, to: body.customerEmail })
+    await email.send({ ...tpl, to: user.email })
 
     return NextResponse.json({ order, checkout })
   } catch (err) {
