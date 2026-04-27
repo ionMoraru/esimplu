@@ -7,6 +7,9 @@ import bcryptjs from "bcryptjs"
 import { prisma } from "@/lib/prisma"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  // H7 fix: en prod, l'app est derrière Caddy reverse proxy. Sans trustHost,
+  // Auth.js v5 rejette les requêtes avec "UntrustedHost".
+  trustHost: true,
   adapter: PrismaAdapter(prisma),
   providers: [
     Google,

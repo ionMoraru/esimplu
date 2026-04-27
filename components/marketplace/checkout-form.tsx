@@ -24,7 +24,7 @@ export function CheckoutForm({
   countriesAvailable,
 }: Props) {
   const [name, setName] = useState(defaultName)
-  const [email, setEmail] = useState(defaultEmail)
+  const email = defaultEmail
   const [phone, setPhone] = useState("")
   const [address, setAddress] = useState("")
   const [city, setCity] = useState("")
@@ -48,7 +48,6 @@ export function CheckoutForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           customerName: name,
-          customerEmail: email,
           customerPhone: phone,
           deliveryAddress: address,
           deliveryCity: city,
@@ -82,8 +81,8 @@ export function CheckoutForm({
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-sm mb-1">Email *</label>
-            <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <label className="block text-sm mb-1">Email (compte connecté)</label>
+            <Input type="email" value={email} disabled readOnly />
           </div>
           <div>
             <label className="block text-sm mb-1">Téléphone *</label>

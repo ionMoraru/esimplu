@@ -2,9 +2,9 @@ import Link from "next/link"
 import { requireAdminSession } from "@/lib/auth/server-guards"
 import { prisma } from "@/lib/prisma"
 import { AdminOrderActions } from "@/components/dashboard/admin-order-actions"
-import type { Prisma } from "@/lib/generated/prisma/client"
+import type { OrderStatus, Prisma } from "@/lib/generated/prisma/client"
 
-const STATUS_LABELS: Record<string, string> = {
+const STATUS_LABELS: Record<OrderStatus, string> = {
   PENDING_PAYMENT: "En attente de paiement",
   PAID: "Payée",
   HANDED_OVER: "Remise au livreur",
@@ -15,6 +15,12 @@ const STATUS_LABELS: Record<string, string> = {
   DISPUTED: "Litige",
 }
 
+const VALID_STATUSES = Object.keys(STATUS_LABELS) as OrderStatus[]
+
+function isValidStatus(value: string | undefined): value is OrderStatus {
+  return value !== undefined && (VALID_STATUSES as string[]).includes(value)
+}
+
 export default async function AdminOrdersPage({
   searchParams,
 }: {
@@ -22,7 +28,9 @@ export default async function AdminOrdersPage({
 }) {
   await requireAdminSession()
   const sp = await searchParams
-  const filter: Prisma.OrderWhereInput = sp.status ? { status: sp.status as Prisma.OrderWhereInput["status"] } : {}
+  // H6 fix: on valide la query string contre l'enum, sinon Prisma jette un 500
+  // brut (DOS ciblé). Une valeur invalide → ignorée, on retourne tout.
+  const filter: Prisma.OrderWhereInput = isValidStatus(sp.status) ? { status: sp.status } : {}
 
   const orders = await prisma.order.findMany({
     where: filter,
@@ -41,7 +49,7 @@ export default async function AdminOrdersPage({
       <header className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">
           Commandes
-          {sp.status && <span className="text-sm font-normal ml-2">— filtre : {STATUS_LABELS[sp.status] ?? sp.status}</span>}
+          {sp.status && <span className="text-sm font-normal ml-2">— filtre : {(isValidStatus(sp.status) ? STATUS_LABELS[sp.status] : undefined) ?? sp.status}</span>}
         </h1>
         <Link href="/dashboard/admin" className="text-sm text-emerald-700 underline">
           ← Espace admin
