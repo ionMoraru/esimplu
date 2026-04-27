@@ -1798,6 +1798,889 @@ const articles: Array<{
 <p>Pentru categorii AM (mopede, 14+ ani) și A (motociclete), procedurile sunt similare. Verifică cu autoscuola pentru combinații.</p>
 <p><strong>Sursă oficială:</strong> <a href="https://www.mit.gov.it" target="_blank" rel="noopener">Ministero delle Infrastrutture e dei Trasporti</a></p>`,
   },
+  // ============== UNITED KINGDOM (UK) ==============
+  {
+    slug: "nhs-inregistrare-uk",
+    title: "NHS — cum te înregistrezi la sistemul de sănătate britanic",
+    excerpt:
+      "Cum te înscrii la un GP, obții NHS number și ce e gratuit / plătit în Marea Britanie.",
+    coverImage:
+      "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["uk"],
+    readingTime: 6,
+    content: `<p><strong>NHS</strong> (National Health Service) este sistemul public britanic de sănătate — gratuit la punctul de utilizare pentru rezidenți. Iată cum te înscrii și ce trebuie să știi.</p>
+<h2>Cine are dreptul la NHS?</h2>
+<ul>
+<li><strong>Cetățeni UE (români)</strong> cu <strong>Pre-Settled / Settled Status</strong> sau viză valabilă</li>
+<li><strong>Cetățeni non-UE (moldoveni)</strong> cu viză valabilă (Skilled Worker, Student, Family etc.)</li>
+<li>Pentru noi sosiți: ai plătit <strong>Immigration Health Surcharge (IHS)</strong> la viză — 1.035£/an, 776£/an pentru studenți și sub 18 ani</li>
+</ul>
+<p><strong>Atenție</strong>: pentru românii sosiți după 1 ianuarie 2021 fără Pre-Settled Status, accesul la NHS depinde de tipul vizei.</p>
+<h2>Pașii pentru înscriere</h2>
+<h3>1. Înscrie-te la un GP (medic de familie)</h3>
+<p>GP (General Practitioner) este punctul de intrare în NHS. Fără înscriere la un GP, accesul la specialiști, analize și rețete e foarte limitat.</p>
+<ol>
+<li>Caută GP-uri în zona ta pe <strong>nhs.uk/find-a-gp</strong></li>
+<li>Mergi la cabinet sau aplică online (mulți acceptă online)</li>
+<li>Completează <strong>GMS1</strong> (formular de înregistrare)</li>
+<li>Documente: pașaport, dovadă de adresă (factură, contract chirie, scrisoare bancă)</li>
+<li>Acceptarea: imediată (legal nu poți fi refuzat dacă locuiești în zonă)</li>
+</ol>
+<h3>2. NHS number</h3>
+<p>După înscrierea la GP, primești în 2-4 săptămâni un <strong>NHS number</strong> (10 cifre). Este al tău pe viață.</p>
+<p>Dacă ai locuit deja în UK, ai un NHS number și nu îl știi: cere-l la GP-ul tău sau pe nhs.uk.</p>
+<h3>3. Aplicația NHS</h3>
+<p>Descarcă <strong>NHS App</strong> (Android/iOS) — accesibilă cu NHS number și data nașterii. Permite:</p>
+<ul>
+<li>Programări la GP</li>
+<li>Solicitare rețete repetate</li>
+<li>Vezi istoricul medical</li>
+<li>Acces la rezultate analize</li>
+</ul>
+<h2>Ce e gratuit pe NHS</h2>
+<ul>
+<li>Consultații GP și asistente</li>
+<li>Spitalizare, urgențe (A&E)</li>
+<li>Operații, tratamente</li>
+<li>Maternitate (sarcină, naștere, postnatal)</li>
+<li>Vaccinuri obligatorii (copii)</li>
+<li>Specialiști prin trimitere de la GP</li>
+</ul>
+<h2>Ce trebuie plătit</h2>
+<ul>
+<li><strong>Rețete</strong> (Anglia): <strong>9,90£/articol</strong> (gratuit în Scoția, Țara Galilor, Irlanda de Nord)</li>
+<li><strong>Stomatologie NHS</strong>: 3 niveluri — 27,40£ (Banda 1), 75,30£ (Banda 2), 326,70£ (Banda 3)</li>
+<li><strong>Optică NHS</strong>: doar pentru anumite categorii (sub 16 ani, peste 60, venituri mici)</li>
+<li><strong>Tratamente non-NHS</strong>: privat — variabil</li>
+</ul>
+<h2>Excepții la rețete (gratis)</h2>
+<ul>
+<li>Sub 16 ani sau peste 60 ani</li>
+<li>Sarcină + 12 luni postpartum</li>
+<li>Anumite condiții (diabet, epilepsie etc.)</li>
+<li>Cu Universal Credit / venituri mici (cu certificat HC2)</li>
+<li><strong>PPC</strong> (Prepayment Certificate): 32,05£/3 luni sau 114,50£/an pentru rețete nelimitate</li>
+</ul>
+<h2>NHS 111 și 999</h2>
+<ul>
+<li><strong>111</strong>: număr non-urgent, sfat medical 24/7 — gratuit</li>
+<li><strong>999</strong>: urgențe vitale (infarct, accident grav)</li>
+<li><strong>A&E</strong>: serviciul de urgență al spitalului — pentru urgențe care nu pot aștepta</li>
+</ul>
+<h2>Capcane pentru noi sosiți</h2>
+<ul>
+<li>Nu ești înscris la GP → trebuie să aștepți că primește, urgențele rămân accesibile</li>
+<li>Ai schimbat adresa → trebuie să te re-înscrii la un GP din noua zonă</li>
+<li>Pentru moldoveni cu viza expirată: NHS poate deveni plătibil cu 150% prețurile NHS</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.nhs.uk" target="_blank" rel="noopener">nhs.uk</a></p>`,
+  },
+  {
+    slug: "national-insurance-number-uk",
+    title: "National Insurance Number (NINo) — cum îl obții în UK",
+    excerpt:
+      "Codul tău fiscal britanic, cum aplici online sau prin telefon și ce nu poți face fără el.",
+    coverImage:
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["uk"],
+    readingTime: 5,
+    content: `<p><strong>National Insurance Number (NINo)</strong> este codul tău fiscal britanic, format AB123456C. Fără el nu poți primi salariu corect, ajutoare sau pensie. Iată cum îl obții.</p>
+<h2>Pentru ce e folosit?</h2>
+<ul>
+<li><strong>Locul de muncă</strong>: angajatorul îl cere obligatoriu pentru a calcula impozite și NIC</li>
+<li><strong>Universal Credit</strong> și alte ajutoare</li>
+<li><strong>State Pension</strong> (pensie de stat) — anii de cotizație sunt urmăriți cu NINo</li>
+<li><strong>Self-Assessment</strong> (declarația de impozite)</li>
+<li><strong>HMRC, DWP</strong> — toate administrațiile fiscale și sociale</li>
+</ul>
+<h2>Cine trebuie să aibă NINo?</h2>
+<ul>
+<li>Toți rezidenții UK care lucrează</li>
+<li>Britannici primesc NINo automat la 16 ani</li>
+<li>Imigranți (români, moldoveni): trebuie să aplice ei</li>
+</ul>
+<h2>Cum aplici</h2>
+<h3>1. Online (cea mai rapidă metodă)</h3>
+<ol>
+<li>Mergi pe <strong>gov.uk/apply-national-insurance-number</strong></li>
+<li>Completează formular cu: nume, data nașterii, naționalitate, statut imigrare</li>
+<li>Documente: pașaport / BRP / Settled Status share code</li>
+<li>Vei fi convocat la un <strong>biometric appointment</strong> (la centru Sopra Steria) pentru fotografie + amprente</li>
+<li>După verificare, primești NINo prin poștă în <strong>4-8 săptămâni</strong></li>
+</ol>
+<h3>2. Prin telefon (pentru cazuri speciale)</h3>
+<p>Dacă ai dificultăți cu aplicația online: <strong>0800 141 2075</strong> (Luni-Vineri, 8:00-18:00).</p>
+<h2>Documente necesare</h2>
+<ul>
+<li>Pașaport sau document de identitate UE (pentru români)</li>
+<li><strong>BRP</strong> (Biometric Residence Permit) pentru moldoveni</li>
+<li><strong>Share code</strong> de la <strong>view-and-prove</strong> dacă ai Settled / Pre-Settled Status</li>
+<li>Adresa actuală în UK</li>
+<li>Atestare angajator (dacă deja lucrezi)</li>
+</ul>
+<h2>Pot să încep să muncesc fără NINo?</h2>
+<p><strong>Da</strong>, atât timp cât ai dreptul de a munci legal în UK (Right to Work). Angajatorul:</p>
+<ul>
+<li>Te poate angaja înainte de a primi NINo</li>
+<li>Te impozitează provizoriu pe <strong>cod de urgență (BR sau 0T)</strong> — ratele mari!</li>
+<li>Când primești NINo, dă-l angajatorului — vei primi rambursarea automată în următorul fluturaș</li>
+</ul>
+<h2>Right to Work check</h2>
+<p>Angajatorul trebuie să verifice că ai dreptul să muncești:</p>
+<ul>
+<li><strong>Români cu Settled / Pre-Settled Status</strong>: <strong>share code</strong> de la <strong>gov.uk/view-prove-immigration-status</strong></li>
+<li><strong>Moldoveni</strong>: BRP (verificat fizic) sau <strong>eVisa</strong> (online cu share code)</li>
+</ul>
+<h2>Cum aflu NINo dacă l-am pierdut?</h2>
+<p>Dacă l-ai avut și nu îl mai știi:</p>
+<ul>
+<li>Caută în P60, P45, salariu</li>
+<li>Logare pe <strong>gov.uk/personal-tax-account</strong></li>
+<li>Cere prin formular <strong>CA5403</strong> dacă cele de mai sus nu funcționează (5-10 zile prin poștă)</li>
+</ul>
+<h2>Capcane</h2>
+<ul>
+<li><strong>NU plăti pentru aplicare</strong>: e gratuit pe gov.uk. Site-urile care cer 30-50£ sunt escrocherii</li>
+<li>Cardul fizic NINo a fost desființat în 2014 — primești <strong>scrisoare</strong> sau confirmare în Personal Tax Account</li>
+<li>Cu Pre-Settled Status care expiră, asigură-te de tranziția la Settled Status</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.gov.uk/apply-national-insurance-number" target="_blank" rel="noopener">gov.uk — Apply NINo</a></p>`,
+  },
+  {
+    slug: "universal-credit-child-benefit-uk",
+    title: "Universal Credit și Child Benefit — ajutoare pentru familii în UK",
+    excerpt:
+      "Ce ajutoare poți primi de la DWP, cum aplici și cât poți primi în 2026.",
+    coverImage:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "finante",
+    countries: ["uk"],
+    readingTime: 7,
+    content: `<p>UK are mai multe sisteme de ajutoare sociale, gestionate de <strong>DWP</strong> (Department for Work and Pensions) și <strong>HMRC</strong>. Iată cele esențiale pentru diaspora.</p>
+<h2>Universal Credit (UC)</h2>
+<p><strong>Universal Credit</strong> a înlocuit 6 ajutoare vechi. Plata lunară pentru cei cu venituri mici sau șomaj.</p>
+<h3>Cine are dreptul?</h3>
+<ul>
+<li>18+ ani (uneori 16+)</li>
+<li>Venituri mici sau fără</li>
+<li>Trebuie să ai <strong>Settled Status</strong> sau <strong>Pre-Settled Status + locuit/lucrat în UK suficient</strong> (Habitual Residence Test)</li>
+<li>Pentru moldoveni: cu <strong>Indefinite Leave to Remain</strong> sau viză cu acces la fonduri publice (No Recourse to Public Funds — NRPF — refuză UC!)</li>
+</ul>
+<h3>Cât primești (2026)?</h3>
+<p>Standard Allowance lunar:</p>
+<ul>
+<li>Single, sub 25 ani: <strong>316,98£</strong></li>
+<li>Single, 25+: <strong>400,14£</strong></li>
+<li>Cuplu, ambii sub 25: <strong>497,55£</strong></li>
+<li>Cuplu, 25+: <strong>628,10£</strong></li>
+</ul>
+<p>Plus suplimente:</p>
+<ul>
+<li>Per copil (1-2): <strong>+339€/lună</strong></li>
+<li>Limita 2 copii (cu excepții pentru gemeni / probleme medicale)</li>
+<li>Pentru chirie (Housing Element): variabil în funcție de zona</li>
+<li>Pentru handicap, îngrijire</li>
+</ul>
+<h3>Cum aplici</h3>
+<ol>
+<li>Online pe <strong>gov.uk/apply-universal-credit</strong></li>
+<li>Creezi cont online</li>
+<li>Documente: NINo, dovadă identitate, dovezi venituri/cheltuieli, contract chirie</li>
+<li>Primești apel pentru <strong>interview</strong> la JobCentre</li>
+<li>Prima plată în <strong>5 săptămâni</strong> (poți cere advance payment dacă ești în dificultate)</li>
+</ol>
+<h2>Child Benefit</h2>
+<p>Plata pentru <strong>fiecare copil</strong> indiferent de venituri (până la un anumit prag).</p>
+<ul>
+<li><strong>Primul copil</strong>: 26,05£/săptămână (~113£/lună)</li>
+<li><strong>Fiecare copil suplimentar</strong>: 17,25£/săptămână (~75£/lună)</li>
+<li>Până la 16 ani (sau 20 dacă studiază full-time)</li>
+</ul>
+<h3>High Income Child Benefit Charge</h3>
+<p>Dacă tu sau partenerul câștigi peste <strong>60.000£/an</strong>, plata este redusă progresiv. Peste 80.000£: trebuie restituită integral (prin Self-Assessment).</p>
+<h3>Cum aplici</h3>
+<ol>
+<li>Imediat după nașterea copilului (sau la sosire în UK cu copil)</li>
+<li>Online pe <strong>gov.uk/child-benefit</strong> sau formular CH2</li>
+<li>Documente: certificat de naștere copil, NINo părinți</li>
+<li>Plata în 6-12 săptămâni, retroactiv 3 luni maxim</li>
+</ol>
+<h2>Tax-Free Childcare</h2>
+<p>Pentru fiecare copil sub 12 ani:</p>
+<ul>
+<li>Pentru fiecare 8£ pe care le pui într-un cont special, statul adaugă <strong>2£</strong></li>
+<li>Maxim 2.000£/an per copil (sau 4.000£ pentru copiii cu handicap)</li>
+<li>Pentru creșă, after-school clubs, vacanțe</li>
+<li>Cont online pe <strong>gov.uk/get-tax-free-childcare</strong></li>
+</ul>
+<h2>30 hours free childcare</h2>
+<p>Pentru părinți care lucrează cu copii 9 luni - 4 ani:</p>
+<ul>
+<li><strong>30 ore/săptămână gratis</strong> de creșă/grădiniță (durante anul școlar — 38 săptămâni)</li>
+<li>Ambii părinți trebuie să câștige între 9.518£ - 100.000£/an fiecare</li>
+<li>Cerere pe <strong>gov.uk/30-hours-free-childcare</strong> — primești cod de înmatriculare pentru creșă</li>
+</ul>
+<h2>Council Tax Reduction</h2>
+<p>Reducere a Council Tax (taxa locală pe locuință) pentru venituri mici. Cerere la Council-ul local.</p>
+<h2>Pension Credit (pentru pensionari)</h2>
+<p>Suplement la State Pension pentru pensionari cu venituri mici. Cerere pe gov.uk.</p>
+<h2>Atenție pentru moldoveni</h2>
+<p>Visa „No Recourse to Public Funds" (NRPF) — clauză comună pe vizele de muncă, studiu, familie — <strong>te exclude de la majoritatea ajutoarelor</strong> (UC, Child Benefit etc.). Excepții pot fi acordate în caz de urgență (destitution).</p>
+<p><strong>Sursă oficială:</strong> <a href="https://www.gov.uk/universal-credit" target="_blank" rel="noopener">gov.uk — Universal Credit</a> · <a href="https://www.gov.uk/child-benefit" target="_blank" rel="noopener">gov.uk — Child Benefit</a></p>`,
+  },
+  {
+    slug: "self-assessment-hmrc-uk",
+    title: "Self-Assessment HMRC — declarația de impozite în UK",
+    excerpt:
+      "Cine trebuie să declare la HMRC, cum o faci online și ce poți deduce ca diaspora.",
+    coverImage:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "finante",
+    countries: ["uk"],
+    readingTime: 6,
+    content: `<p>În UK, mulți salariați nu fac declarație de impozite — impozitul e reținut automat prin <strong>PAYE</strong> (Pay As You Earn). Dar uneori trebuie sau e avantajos să faci <strong>Self-Assessment</strong>. Iată când și cum.</p>
+<h2>Cine TREBUIE să declare?</h2>
+<p>HMRC îți va trimite o scrisoare dacă trebuie. Cazuri principale:</p>
+<ul>
+<li>Self-employed cu venituri > 1.000£/an</li>
+<li>Partener în business</li>
+<li>Venituri din chirii > 1.000£/an</li>
+<li>Venituri din străinătate (chirii din România/Moldova, dividende)</li>
+<li>High Income Child Benefit Charge (vezi articol Child Benefit)</li>
+<li>Capital Gains > £3.000 (2026)</li>
+<li>Venituri totale > 150.000£/an</li>
+<li>Director de companie</li>
+</ul>
+<h2>Calendar 2026 (pentru anul fiscal 2024-2025)</h2>
+<p>Anul fiscal UK: <strong>6 aprilie - 5 aprilie</strong>.</p>
+<ul>
+<li><strong>5 octombrie 2025</strong>: Înregistrarea pentru Self-Assessment (dacă e prima dată)</li>
+<li><strong>31 octombrie 2025</strong>: Termen pentru declarație pe hârtie</li>
+<li><strong>31 ianuarie 2026</strong>: Termen pentru declarație online + plata impozitelor</li>
+<li><strong>31 iulie 2026</strong>: Plata 2-a (advance payment) dacă aplicabil</li>
+</ul>
+<h2>Cum faci Self-Assessment</h2>
+<h3>1. Înregistrare</h3>
+<ol>
+<li>Mergi pe <strong>gov.uk/register-for-self-assessment</strong></li>
+<li>Primești <strong>UTR</strong> (Unique Taxpayer Reference) — 10 cifre — prin poștă (10 zile)</li>
+<li>Activezi cont <strong>Government Gateway</strong></li>
+<li>Activezi serviciul Self-Assessment cu codul de activare primit prin poștă (10 zile)</li>
+</ol>
+<h3>2. Completarea declarației</h3>
+<p>Pe <strong>gov.uk</strong>:</p>
+<ul>
+<li>SA100 (formular principal)</li>
+<li>Suplimente în funcție de venituri: SA102 (salariați), SA103 (self-employed), SA105 (chirii UK), SA106 (venituri externe)</li>
+</ul>
+<p>Sau folosește software acreditat: <strong>FreeAgent, GoSimpleTax, Xero</strong>.</p>
+<h3>3. Plata</h3>
+<ul>
+<li>Direct prin Government Gateway (card debit/credit, transfer)</li>
+<li>Direct Debit</li>
+<li>Cec prin poștă (până la 31 ianuarie)</li>
+</ul>
+<h2>Rate de impozit (2025-2026 — Anglia/Țara Galilor)</h2>
+<ul>
+<li><strong>Personal Allowance</strong>: 12.570£ (gratis)</li>
+<li><strong>Basic rate (20%)</strong>: 12.571 - 50.270£</li>
+<li><strong>Higher rate (40%)</strong>: 50.271 - 125.140£</li>
+<li><strong>Additional rate (45%)</strong>: peste 125.140£</li>
+</ul>
+<p>Scoția are rate proprii (5 categorii).</p>
+<h2>Deduceri și expenses (pentru self-employed)</h2>
+<ul>
+<li>Cheltuieli de birou (rent, utilities — proporționale)</li>
+<li>Echipamente (laptop, telefon, instrumente)</li>
+<li>Călătorii pentru muncă (auto: 0,45£/milă pentru primele 10.000 mile)</li>
+<li>Subscripții profesionale</li>
+<li>Marketing și publicitate</li>
+<li>Cursuri și formare</li>
+</ul>
+<h2>Special pentru diaspora</h2>
+<h3>Venituri din România/Moldova</h3>
+<p>Trebuie declarate în <strong>SA106</strong> dacă ești <strong>UK tax resident</strong> (peste 183 zile/an + alte criterii).</p>
+<ul>
+<li>Convenție UK-România/Moldova evită dubla impunere</li>
+<li>Credit fiscal pentru impozitul plătit acolo</li>
+<li>Trebuie convertit în GBP la rata zilei</li>
+</ul>
+<h3>Remittance basis (pentru non-domiciled)</h3>
+<p>Reformat masiv în 2025: din aprilie 2025, sistemul „non-dom" tradițional e desființat. Se înlocuiește cu o regulă bazată pe rezidența UK (FIG: Foreign Income & Gains): scutire 4 ani pentru noi sosiți. Consultă un fiscalist!</p>
+<h2>Marriage Allowance</h2>
+<p>Dacă ești cuplu căsătorit/civil partnership și unul câștigă < Personal Allowance, poate transfera <strong>1.260£</strong> la celălalt — economie până la 252£/an.</p>
+<h2>Sancțiuni pentru întârziere</h2>
+<ul>
+<li>Întârziere depunere: 100£ amendă fixă</li>
+<li>Peste 3 luni: 10£/zi suplimentar</li>
+<li>Peste 6 luni: 5% din impozit (minim 300£)</li>
+<li>Peste 12 luni: încă 5%</li>
+<li>Întârziere plată: 5% după 30 zile, +5% după 6 luni etc.</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.gov.uk/self-assessment-tax-returns" target="_blank" rel="noopener">gov.uk — Self Assessment</a></p>`,
+  },
+  {
+    slug: "recunoastere-diplome-uk",
+    title: "Recunoașterea diplomelor românești și moldovenești în UK",
+    excerpt:
+      "ENIC UK (fost UK NARIC), profesii reglementate și opțiuni pentru noi sosiți.",
+    coverImage:
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "drepturi",
+    countries: ["uk"],
+    readingTime: 6,
+    content: `<p>UK are un sistem deschis de recunoaștere a diplomelor — atât pentru a lucra cât și pentru a continua studiile. Iată cum procedezi.</p>
+<h2>UK ENIC — fost UK NARIC</h2>
+<p><strong>UK ENIC</strong> (Enic.org.uk) este punctul oficial de informare pentru diplomele străine. Eliberează:</p>
+<ul>
+<li><strong>Statement of Comparability</strong>: comparație cu sistemul britanic — ~55£</li>
+<li><strong>Visa and Nationality Statement</strong>: pentru aplicații de viză — ~64£</li>
+<li><strong>Statement with English Language</strong>: pentru a dovedi nivelul de engleză</li>
+</ul>
+<p>Procesare: <strong>10 zile</strong> standard, <strong>2 zile</strong> rapid (~150£).</p>
+<h2>Pentru continuarea studiilor</h2>
+<p>Universitățile britanice fac propria evaluare a diplomei tale, chiar dacă ai Statement de la ENIC. Procedura:</p>
+<ol>
+<li>Contactează biroul de admitere al universității</li>
+<li>Depune diploma + foaie matricolă (cu traduceri oficiale)</li>
+<li>Universitatea decide acceptarea</li>
+<li>Fiecare universitate are <strong>international page</strong> cu echivalențele specifice pe țară</li>
+</ol>
+<p>Pentru <strong>master / PhD</strong>: licența ta românească/moldoveneană e de obicei recunoscută cu nota minimum 7.5/10 (echivalent UK 2:1).</p>
+<h2>Profesii reglementate — proceduri specifice</h2>
+<ul>
+<li><strong>Medic</strong>: înscriere la <strong>GMC</strong> (General Medical Council). Pentru români/moldoveni: PLAB test (1+2) sau Royal College qualification</li>
+<li><strong>Asistent medical</strong>: <strong>NMC</strong> (Nursing & Midwifery Council). Pentru români: aplicare directă cu UK ENIC. Pentru moldoveni: + OSCE test</li>
+<li><strong>Avocat</strong>: <strong>SRA</strong> (Solicitors Regulation Authority) — Solicitors Qualifying Examination (SQE)</li>
+<li><strong>Profesor</strong>: <strong>QTS</strong> (Qualified Teacher Status) — proceduri în funcție de nivel</li>
+<li><strong>Inginer profesionist</strong>: organisme specifice (IET, IMechE, ICE) — chartered status după experiență</li>
+<li><strong>Arhitect</strong>: <strong>ARB</strong> (Architects Registration Board)</li>
+<li><strong>Stomatolog</strong>: <strong>GDC</strong> (General Dental Council) + ORE test</li>
+</ul>
+<h2>Pentru români — UE</h2>
+<p>După Brexit, recunoașterea automată UE nu mai este garantată. Cu toate acestea:</p>
+<ul>
+<li>Multe organisme profesionale păstrează acordurile cu UE</li>
+<li>Verifică pe site-ul fiecărei autorități (GMC, NMC etc.) condițiile actuale pentru români</li>
+</ul>
+<h2>Pentru moldoveni — non-UE</h2>
+<p>Documentele necesare:</p>
+<ul>
+<li><strong>Apostilă</strong> de la Ministerul Justiției din Moldova</li>
+<li><strong>Traducere oficială</strong> făcută de un translator agreat (cu certificare)</li>
+<li>Foaie matricolă completă</li>
+<li>Pentru profesii medicale: certificat de la Ministerul Sănătății că ai dreptul la practică în Moldova</li>
+</ul>
+<h2>Engleza — esențial</h2>
+<p>Pentru orice procedură de recunoaștere profesională:</p>
+<ul>
+<li><strong>IELTS</strong> Academic (cel mai cerut): 6.5-7.5 minim</li>
+<li><strong>OET</strong> (Occupational English Test) — preferat pentru profesii medicale: B (350+)</li>
+<li><strong>TOEFL iBT</strong>: 100+</li>
+<li><strong>Cambridge Advanced (CAE) / Proficiency (CPE)</strong>: 185+</li>
+</ul>
+<h2>Costuri totale estimate</h2>
+<ul>
+<li>UK ENIC Statement: 55-150£</li>
+<li>Apostilă + traducere: 100-300£</li>
+<li>Examen profesional (PLAB, SQE, etc.): 200-2000£</li>
+<li>Curs de adaptare (dacă necesar): 500-5000£</li>
+<li>IELTS / OET: 200-300£</li>
+</ul>
+<h2>Consiliere gratuită</h2>
+<ul>
+<li><strong>UK Council for International Student Affairs (UKCISA)</strong>: pentru studenți</li>
+<li><strong>Skills for Care</strong>: pentru profesii sociale</li>
+<li>Grupuri Facebook diaspora: experiențe practice de la cei care au trecut prin proces</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.enic.org.uk" target="_blank" rel="noopener">UK ENIC</a></p>`,
+  },
+  {
+    slug: "visa-settled-status-uk",
+    title: "Viza și Settled Status — diferențe pentru români și moldoveni în UK",
+    excerpt:
+      "Românii post-Brexit, Pre-Settled / Settled Status, viza Skilled Worker pentru moldoveni.",
+    coverImage:
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "drepturi",
+    countries: ["uk"],
+    readingTime: 7,
+    content: `<p>După Brexit (1 ianuarie 2021), regulile UK s-au schimbat radical. Românii nu mai au libertate de mișcare. Iată ce trebuie să știe fiecare în 2026.</p>
+<h2>Pentru români — post-Brexit</h2>
+<h3>Dacă ai locuit în UK înainte de 31 decembrie 2020</h3>
+<p>Aveai dreptul la <strong>EU Settlement Scheme</strong>. Dacă l-ai aplicat:</p>
+<ul>
+<li><strong>Settled Status</strong> (5+ ani locuiți în UK): rezidență permanentă</li>
+<li><strong>Pre-Settled Status</strong> (sub 5 ani): valabil 5 ani, automat extins, convertibil în Settled după 5 ani</li>
+</ul>
+<p>Termen de aplicare: <strong>30 iunie 2021</strong> (cu excepții pentru cazuri tardive cu motivație serioasă).</p>
+<h3>Dacă ai sosit după 1 ianuarie 2021</h3>
+<p>Trebuie viză ca orice non-UE:</p>
+<ul>
+<li><strong>Skilled Worker Visa</strong>: cu sponsor (angajator) și salariu minim 38.700£/an (sau 30.960£ pentru profesii deficitare în 2026)</li>
+<li><strong>Health and Care Worker Visa</strong>: pentru asistenți medicali, doctori, îngrijitori — IHS scutit</li>
+<li><strong>Student Visa</strong>: cu CAS (Confirmation of Acceptance for Studies) de la o universitate</li>
+<li><strong>Family Visa</strong>: soț/soție de cetățean UK sau rezident</li>
+<li><strong>Innovator Founder Visa</strong>: pentru afaceri inovatoare</li>
+<li><strong>High Potential Individual Visa</strong>: pentru absolvenți ai universităților de top mondial</li>
+</ul>
+<h2>Pentru moldoveni — non-UE</h2>
+<p>Aceleași tipuri de viză ca pentru români post-Brexit. Cele mai comune:</p>
+<h3>Skilled Worker Visa (cea mai accesibilă)</h3>
+<ul>
+<li>Job offer de la un sponsor licențiat (lista pe gov.uk)</li>
+<li>Salariu minim: 38.700£/an în general, mai jos pentru anumite profesii</li>
+<li>Engleză B1 (CEFR) sau echivalent (IELTS 4.0)</li>
+<li>Cost: 769-1.751£ + IHS 1.035£/an</li>
+<li>Validitate: până la 5 ani, reînnoibilă, deschide cale către Indefinite Leave to Remain</li>
+</ul>
+<h3>Indefinite Leave to Remain (ILR)</h3>
+<p>După <strong>5 ani</strong> de viză legală în UK:</p>
+<ul>
+<li>Continuitate (max 180 zile/an în afara UK)</li>
+<li>Test <strong>Life in the UK</strong> (24 întrebări, 18 corecte minim)</li>
+<li>Engleză B1 (sau diplomă universitară britanică)</li>
+<li>Cost: 3.029£</li>
+</ul>
+<h2>British Citizenship</h2>
+<p>După <strong>1 an</strong> de ILR (sau 3 ani dacă căsătorit cu cetățean britanic):</p>
+<ul>
+<li>Test Life in the UK</li>
+<li>Engleză B1</li>
+<li>Cazier curat</li>
+<li>Cost: 1.500£ + Citizenship Ceremony 80£</li>
+<li>Procedură: 6-12 luni</li>
+<li><strong>Permite cetățenia dublă</strong> (atât România cât și Moldova permit)</li>
+</ul>
+<h2>BRP și eVisa</h2>
+<p>Cardul fizic <strong>BRP</strong> (Biometric Residence Permit) este în tranziție către <strong>eVisa</strong> (digitală):</p>
+<ul>
+<li>Toate BRP-urile expiră la 31 decembrie 2024 — chiar dacă viza e mai lungă</li>
+<li>Cere obligatoriu cont online <strong>UKVI Account</strong> pe gov.uk</li>
+<li>Generezi <strong>share code</strong> pentru a-l da angajatorilor, proprietarilor</li>
+</ul>
+<h2>Capcane post-Brexit</h2>
+<ul>
+<li><strong>Românii fără Settled Status</strong>: chiar dacă ai locuit în UK înainte de 2021, fără cererea făcută la timp ai pierdut drepturile. Caz tardiv posibil cu „reasonable grounds"</li>
+<li><strong>Pre-Settled Status care expiră</strong>: trebuie să ceri Settled după 5 ani — automat în multe cazuri din 2024</li>
+<li><strong>NRPF</strong> (No Recourse to Public Funds): clauză comună la viza Skilled Worker — fără UC, Child Benefit etc.</li>
+<li><strong>Părinți pe Family Visa</strong>: pot fi greu de obținut (limite financiare ridicate, condiții stricte)</li>
+</ul>
+<h2>Resurse</h2>
+<ul>
+<li><strong>UK Visas and Immigration (UKVI)</strong>: portalul oficial</li>
+<li><strong>Migrant Help</strong>: linie telefonică de consiliere gratuită</li>
+<li>Asociații diasporei: experiențe practice</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.gov.uk/browse/visas-immigration" target="_blank" rel="noopener">gov.uk — Visas and immigration</a></p>`,
+  },
+  {
+    slug: "inscriere-scoala-uk",
+    title: "Înscrierea copilului la nursery sau school în UK",
+    excerpt:
+      "Sistemul școlar britanic explicat, cum aplici online la primary school și ce e gratuit.",
+    coverImage:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["uk"],
+    readingTime: 6,
+    content: `<p>Educația în UK este obligatorie de la <strong>5 ani până la 18 ani</strong>. Iată cum să înscrii copilul, de la nursery la school.</p>
+<h2>Sistemul școlar britanic</h2>
+<ul>
+<li><strong>Nursery</strong>: 0-4 ani — opțional</li>
+<li><strong>Reception</strong>: anul ce începe la 4-5 ani — opțional dar 95% îl fac</li>
+<li><strong>Primary School</strong>: 5-11 ani (Year 1 - Year 6)</li>
+<li><strong>Secondary School</strong>: 11-16 ani (Year 7 - Year 11)</li>
+<li><strong>GCSE</strong> la 16 ani (echivalent BAC parțial)</li>
+<li><strong>Sixth Form / College</strong>: 16-18 ani (A-levels, T-levels, BTEC)</li>
+<li><strong>University</strong>: 18+ ani</li>
+</ul>
+<h2>Nursery (creșă) și 30 hours free</h2>
+<p>Există mai multe opțiuni:</p>
+<ul>
+<li><strong>Day Nursery</strong> (privat): 800-1500£/lună full-time</li>
+<li><strong>Childminder</strong> (dădacă agreată): 4-7£/oră</li>
+<li><strong>Pre-school / Nursery Class</strong> (asociată cu primary): mai ieftină dar limitată</li>
+<li><strong>Maintained Nursery School</strong>: gestionată de Council, gratis sau ieftină</li>
+</ul>
+<h3>Subvenții guvernamentale</h3>
+<ul>
+<li><strong>15 hours free</strong> pentru toți copiii 3-4 ani</li>
+<li><strong>30 hours free</strong> pentru copii 9 luni - 4 ani dacă ambii părinți lucrează (vezi articol Universal Credit)</li>
+<li><strong>Tax-Free Childcare</strong>: 20% din costuri suplimentare (până la 2.000£/copil/an)</li>
+</ul>
+<h2>Înscrierea la Primary School (Reception)</h2>
+<p>Anul școlar UK începe în <strong>septembrie</strong>. Aplicarea pentru Reception se face cu <strong>1 an înainte</strong>!</p>
+<h3>Calendar 2026 (pentru intrare septembrie 2027)</h3>
+<ul>
+<li><strong>Septembrie 2026</strong>: deschiderea aplicațiilor</li>
+<li><strong>15 ianuarie 2027</strong>: termen aplicare (foarte strict!)</li>
+<li><strong>Aprilie 2027</strong>: rezultate (Offer Day)</li>
+<li><strong>Mai 2027</strong>: confirmare loc</li>
+<li><strong>Septembrie 2027</strong>: copilul începe</li>
+</ul>
+<h3>Cum aplici</h3>
+<ol>
+<li>Mergi pe site-ul <strong>Council-ului local</strong> (de exemplu Hackney, Camden, Manchester)</li>
+<li>Creezi cont și completezi formularul</li>
+<li>Indici <strong>3-6 școli preferate în ordine</strong></li>
+<li>Atașezi: certificat de naștere copil, dovadă adresă (Council Tax, contract chirie)</li>
+<li>Trimite înainte de 15 ianuarie</li>
+</ol>
+<h3>Criterii de admitere</h3>
+<p>Fiecare școală are propriile criterii (admissions policy). Cele mai comune:</p>
+<ul>
+<li>Children in care (LAC) — prioritate maximă</li>
+<li>Frați deja la școală</li>
+<li>Distanță de domiciliu</li>
+<li>Faith schools: religie (catolic, islamic etc.)</li>
+<li>Catchment area: zona oficială a școlii</li>
+</ul>
+<h2>Sosire la jumătatea anului — In-Year Admission</h2>
+<p>Dacă vii cu copilul în mijlocul anului, faci <strong>In-Year Application</strong> direct la Council:</p>
+<ul>
+<li>Copilul este alocat la cea mai apropiată școală cu locuri</li>
+<li>Dacă școala dorită e plină, copilul intră pe <strong>waiting list</strong></li>
+<li>Pentru copii care nu vorbesc engleza: <strong>EAL support</strong> (English as Additional Language) — fonduri suplimentare pentru școală</li>
+</ul>
+<h2>Costuri în primary / secondary public</h2>
+<ul>
+<li>Educația: <strong>gratis</strong></li>
+<li><strong>Uniformă</strong>: 60-300£/an (multe Council oferă subvenții)</li>
+<li><strong>School lunch</strong>: 2,50-3,50£/zi (gratuit pentru toți copiii Reception/Year 1/Year 2 — Universal Infant Free School Meals)</li>
+<li><strong>School trips</strong>: 5-300£/an</li>
+<li><strong>School fund</strong>: contribuții voluntare 10-50£/termen</li>
+</ul>
+<h3>Free School Meals</h3>
+<p>Pentru familii cu venituri mici (cu UC, Income Support etc.) — pranz gratis pentru toate vârstele.</p>
+<h2>Pupil Premium</h2>
+<p>Fonduri suplimentare pe care școala le primește pentru fiecare elev:</p>
+<ul>
+<li>Cu Free School Meals</li>
+<li>Looked After Children</li>
+<li>Forces children</li>
+</ul>
+<p>Banii sunt folosiți pentru: tutoring 1-la-1, materiale, cluburi după școală — întreabă școala dacă copilul se califică.</p>
+<h2>Private (independent) schools</h2>
+<p>Alternativă plătibilă: 6.000-45.000£/an. Bursari posibile (Bursaries / Scholarships) pentru copii cu venituri mici sau talente speciale.</p>
+<h2>Ofsted ratings</h2>
+<p>Înainte de a alege școala, verifică pe <strong>ofsted.gov.uk</strong>:</p>
+<ul>
+<li>Outstanding (excelent)</li>
+<li>Good</li>
+<li>Requires Improvement</li>
+<li>Inadequate</li>
+</ul>
+<p>Verifică și <strong>school performance tables</strong> pe gov.uk.</p>
+<p><strong>Sursă oficială:</strong> <a href="https://www.gov.uk/schools-admissions" target="_blank" rel="noopener">gov.uk — School admissions</a></p>`,
+  },
+  {
+    slug: "inchiriere-locuinta-uk-right-to-rent",
+    title: "Cum să închiriezi în UK — Right to Rent, deposit și sfaturi",
+    excerpt:
+      "Right to Rent check, depozite în Tenancy Deposit Scheme, capcane și site-uri pentru chirii.",
+    coverImage:
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["uk"],
+    readingTime: 7,
+    content: `<p>Piața locativă britanică e competitivă, mai ales la Londra. Iată cum să găsești și să-ți securizezi un apartament fără probleme.</p>
+<h2>Right to Rent — verificarea obligatorie</h2>
+<p>Toți proprietarii sunt obligați (din 2016) să verifice că ai <strong>dreptul de a închiria</strong> în UK. Atenție: e diferit de Right to Work.</p>
+<h3>Documente acceptate</h3>
+<ul>
+<li>Pașaport britanic sau UE (cu Settled / Pre-Settled Status)</li>
+<li><strong>Share code</strong> generat pe <strong>view-and-prove</strong> (gov.uk)</li>
+<li>BRP card (pentru moldoveni cu viză)</li>
+<li>eVisa (în tranziție din 2024)</li>
+<li>Pentru românii sosiți după Brexit fără SS: viza valabilă</li>
+</ul>
+<p>Fără Right to Rent dovedit, proprietarul te refuză <strong>obligatoriu</strong> (riscă amendă 10.000£).</p>
+<h2>Tipuri de tenancy</h2>
+<ul>
+<li><strong>Assured Shorthold Tenancy (AST)</strong>: cel mai comun, 6-12 luni inițial, apoi periodic</li>
+<li><strong>Periodic tenancy</strong>: rolovare lună de lună după AST</li>
+<li><strong>Lodger</strong>: dacă închiriezi cameră într-o casă cu proprietarul</li>
+<li><strong>Houses in Multiple Occupation (HMO)</strong>: case împărțite cu mai multe persoane fără legătură</li>
+</ul>
+<h2>Costuri în avans</h2>
+<ul>
+<li><strong>Deposit (depozit)</strong>: maxim <strong>5 săptămâni</strong> de chirie (sau 6 dacă chirie > 50.000£/an)</li>
+<li><strong>Holding deposit</strong>: maxim <strong>1 săptămână</strong> de chirie pentru rezervare</li>
+<li><strong>First month rent</strong>: în avans</li>
+<li><strong>Tenant Fees Act 2019</strong>: <strong>fees ilegale</strong> ca admin fees, referencing fees, contract drafting fees</li>
+</ul>
+<h2>Tenancy Deposit Scheme — esențial</h2>
+<p>Depozitul tău trebuie să fie protejat într-unul din cele 3 scheme guvernamentale (în 30 zile de la primire):</p>
+<ul>
+<li><strong>Deposit Protection Service (DPS)</strong></li>
+<li><strong>MyDeposits</strong></li>
+<li><strong>Tenancy Deposit Scheme (TDS)</strong></li>
+</ul>
+<p>Proprietarul îți dă <strong>certificat și prescribed information</strong> în 30 zile. Fără acestea, poate fi obligat să plătească până la <strong>3x depozitul tău</strong> drept compensație!</p>
+<h3>La sfârșitul contractului</h3>
+<ul>
+<li>Pentru a-ți recupera depozitul, apartamentul trebuie să fie în starea inițială (cu „fair wear and tear" acceptat)</li>
+<li>Dacă proprietarul reține parte, dispute poate fi înaintat la scheme — gratuit</li>
+</ul>
+<h2>Documente cerute pentru aplicație</h2>
+<ul>
+<li>Pașaport / Share code Right to Rent</li>
+<li><strong>Reference checks</strong>:
+  <ul>
+    <li>Reference de la angajator</li>
+    <li>Reference de la fostul proprietar</li>
+    <li>Credit check</li>
+  </ul>
+</li>
+<li>Bank statements (3-6 luni)</li>
+<li>Proof of income: 3 fluturași</li>
+<li>Pentru moldoveni: BRP / viza</li>
+</ul>
+<h2>Capcane și sfaturi</h2>
+<ul>
+<li><strong>Niciodată plată cash fără chitanță</strong></li>
+<li><strong>Nu transfera bani fără să fi văzut apartamentul</strong> — escrocherii frecvente pe Gumtree/Facebook</li>
+<li>Cere <strong>EPC</strong> (Energy Performance Certificate) — locuințe sub clasă E nu pot fi închiriate (cu excepții)</li>
+<li>Cere <strong>Gas Safety Certificate</strong> (anual) și <strong>EICR</strong> (Electrical Installation Condition Report, valabil 5 ani)</li>
+<li>Cere <strong>Smoke alarm și Carbon Monoxide alarm</strong> instalate</li>
+<li>Fă <strong>inventory + check-in</strong> la intrare cu fotografii — esențial pentru a-ți recupera depozitul</li>
+</ul>
+<h2>Locuințe sociale</h2>
+<p>Council houses și housing associations — dar listele de așteptare sunt foarte lungi (5-15 ani la Londra).</p>
+<ul>
+<li>Aplicare la Council-ul tău (Housing Register)</li>
+<li>Sistem de prioritate (familie cu copii, fără adăpost, handicap)</li>
+<li>Trebuie de obicei să ai Settled Status / ILR</li>
+</ul>
+<h2>Drepturi ale chiriașului</h2>
+<ul>
+<li>Proprietarul nu poate intra fără preaviz scris (24h)</li>
+<li>Reparațiile structurale, instalație, încălzire — obligația proprietarului</li>
+<li><strong>Section 21</strong>: proprietarul poate cere evicție fără motiv (cu 2 luni preaviz, doar după contractul fix). În proces de reformă (Renters Reform Bill 2024+)</li>
+<li><strong>Section 8</strong>: evicție pentru motiv (neplată chirie, comportament antisocial)</li>
+</ul>
+<h2>Site-uri utile</h2>
+<ul>
+<li><strong>Rightmove, Zoopla, OnTheMarket</strong>: cele mai mari portaluri</li>
+<li><strong>SpareRoom</strong>: pentru camere/HMO</li>
+<li><strong>OpenRent</strong>: direct cu proprietarii (fără agent)</li>
+<li><strong>Foxtons, Foxtons, Hamptons</strong>: agenți imobiliari (Londra)</li>
+<li>Grupuri Facebook diaspora: rapide, dar atenție la escrocherii</li>
+</ul>
+<h2>Resurse de ajutor gratuit</h2>
+<ul>
+<li><strong>Shelter</strong>: ONG cu consiliere gratuită pe drepturi locative — shelter.org.uk</li>
+<li><strong>Citizens Advice</strong>: pentru întrebări legale</li>
+<li><strong>Council's Housing department</strong>: pentru locuințe sociale</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.gov.uk/private-renting" target="_blank" rel="noopener">gov.uk — Renting</a> · <a href="https://england.shelter.org.uk" target="_blank" rel="noopener">Shelter</a></p>`,
+  },
+  {
+    slug: "deschidere-cont-bancar-uk",
+    title: "Cum deschizi cont bancar în UK (chiar și ca nou sosit)",
+    excerpt:
+      "Bănci tradiționale vs Monzo/Starling, ce documente sunt cerute și soluții dacă ești refuzat.",
+    coverImage:
+      "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "finante",
+    countries: ["uk"],
+    readingTime: 5,
+    content: `<p>Fără cont bancar britanic în UK e foarte greu — angajatorii cer salariu pe cont UK, mulți proprietari cer Direct Debit. Iată cum îl obții rapid.</p>
+<h2>Documente clasice cerute</h2>
+<ul>
+<li><strong>Pașaport sau ID UE</strong> (pentru români — cu Settled Status sau viză)</li>
+<li><strong>BRP / eVisa share code</strong> (pentru moldoveni)</li>
+<li><strong>Proof of address</strong>: scrisoare bancară, factură, Council Tax bill, contract chirie (în UK, în ultimele 3 luni)</li>
+<li><strong>NINo</strong> (deși nu e obligatoriu peste tot)</li>
+</ul>
+<h2>Bănci tradiționale (high street banks)</h2>
+<ul>
+<li><strong>Lloyds, NatWest, Barclays, HSBC, Santander</strong> — clasici, agenții peste tot</li>
+<li><strong>HSBC Premier</strong>: cont „Expat" disponibil dacă ai HSBC în alt țară (poți deschide din afara UK)</li>
+<li><strong>Halifax, TSB, Nationwide</strong> — alternative</li>
+</ul>
+<p>Costuri: <strong>gratuite</strong> de bază, fees pentru overdraft sau servicii speciale.</p>
+<h2>Bănci digitale (cele mai bune pentru noi sosiți!)</h2>
+<ul>
+<li><strong>Monzo</strong>: deschidere în 5 minute prin aplicație, cu pașaport + selfie video. Un favorit al diasporei. Cont gratuit, premium 5£/lună</li>
+<li><strong>Starling Bank</strong>: similar Monzo, foarte recomandat. Premiul „best UK bank" mai mulți ani</li>
+<li><strong>Revolut UK</strong>: cu IBAN GB. Plan gratuit cu limite, premium pentru funcții avansate</li>
+<li><strong>Wise</strong>: cont multivalută, ideal pentru transferuri — IBAN GB sau internațional</li>
+<li><strong>Chase UK</strong>: filială JPMorgan, 1% cashback, cont gratuit</li>
+</ul>
+<h3>De ce aceste bănci sunt ideale pentru noi sosiți</h3>
+<ul>
+<li>Verificare 100% online (fără agenție)</li>
+<li>Adresă acceptată: proof of address mai flexibil</li>
+<li>Cont activ în 24-48h</li>
+<li>Card debit gratuit</li>
+<li>Transferuri SEPA cu fees mici</li>
+</ul>
+<h2>Atenție</h2>
+<p>Anumite servicii (mortgage, employer payroll, anumite Council Tax department) preferă încă <strong>banca tradițională</strong>. Strategie ideală:</p>
+<ol>
+<li>Deschide Monzo/Starling în prima zi pentru salariu și plăți zilnice</li>
+<li>Adaugă o bancă tradițională (Lloyds, HSBC) după ce ai 3 luni de payslips în UK</li>
+</ol>
+<h2>Probleme frecvente pentru noi sosiți</h2>
+<h3>Nu ai Proof of Address</h3>
+<p>Soluții:</p>
+<ul>
+<li>Cere <strong>scrisoare HMRC</strong> cu adresa ta (e acceptată ca proof)</li>
+<li>Scrisoare de la angajator confirmând adresa</li>
+<li>Contract de muncă cu adresa</li>
+<li>Înregistrare GP și scrisoare</li>
+<li>Council Tax bill (e mai dificil dacă ești tenant)</li>
+<li>Monzo / Starling acceptă uneori adrese „nontraditional"</li>
+</ul>
+<h3>Bănci tradiționale te refuză</h3>
+<ul>
+<li>Încearcă mai multe sucursale ale aceleiași bănci</li>
+<li>Mergi la <strong>HSBC</strong> (deschis pentru expati)</li>
+<li>Mergi la <strong>Barclays</strong> cu apel telefonic în prealabil</li>
+<li>În ultimă instanță: <strong>Basic Bank Account</strong> — drept legal pentru toți</li>
+</ul>
+<h2>Basic Bank Account — drept legal</h2>
+<p>Toate marile bănci sunt obligate să ofere <strong>cont de bază</strong> pentru cei refuzați la conturi standard:</p>
+<ul>
+<li>Fără overdraft</li>
+<li>Card debit (nu credit)</li>
+<li>Direct Debit, Standing Orders</li>
+<li>Gratis</li>
+</ul>
+<p>Bănci care le oferă: Barclays Basic Account, HSBC Basic Bank Account, Lloyds Basic Account, NatWest Foundation Account.</p>
+<h2>Sfaturi importante</h2>
+<ul>
+<li>Cere <strong>statement of account</strong> în primele luni — folositor ca proof of address pentru alte aplicații</li>
+<li>Activează <strong>Online Banking și aplicația</strong> pentru a evita fees telefonice</li>
+<li>Pentru transferuri către România/Moldova: <strong>Wise</strong> sau <strong>Revolut</strong> (taxe mult mai mici decât băncile tradiționale)</li>
+<li>Atenție la <strong>overdraft fees</strong> — chiar și 1£ în roșu poate genera 30£ amendă la unele bănci tradiționale</li>
+<li>Activează <strong>Direct Debits</strong> pentru chirie, Council Tax, utilități — evită întârzieri</li>
+</ul>
+<h2>Atenție la fraude</h2>
+<ul>
+<li>Bancă nu te va contacta niciodată să te ceară parolă/PIN</li>
+<li>SMS sau email cu link suspect: nu da clic, raportează la 7726 (sub forma SPAM SMS)</li>
+<li>Transfer „push payment" e dificil de recuperat — verifică bine destinatarul</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.fca.org.uk" target="_blank" rel="noopener">Financial Conduct Authority (FCA)</a></p>`,
+  },
+  {
+    slug: "permis-conducere-uk",
+    title: "Permisul de conducere — schimb sau echivalare în UK",
+    excerpt:
+      "Permis românesc / moldovenesc valabil în UK? Cum îl convertești la unul britanic.",
+    coverImage:
+      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "drepturi",
+    countries: ["uk"],
+    readingTime: 6,
+    content: `<p>Vii în UK cu permis românesc sau moldovenesc? Iată regulile actualizate post-Brexit.</p>
+<h2>Pentru români — situație post-Brexit</h2>
+<p>UK a renegociat acordurile cu UE după Brexit. Permisul românesc rămâne <strong>valabil în UK</strong>:</p>
+<ul>
+<li>Pentru <strong>vizitatori</strong>: permis românesc valabil pentru toată durata șederii (max 12 luni)</li>
+<li>Pentru <strong>rezidenți UK</strong>: poți conduce cu permis românesc pe <strong>3 ani</strong> de la data residenței UK</li>
+<li>După 3 ani: trebuie să-l <strong>schimbi cu permis britanic</strong></li>
+</ul>
+<h3>Categorii afectate</h3>
+<p>Schimbul gratuit (fără examen) este disponibil pentru:</p>
+<ul>
+<li><strong>Categoria B</strong> (auto): da</li>
+<li><strong>Motociclete (A)</strong>: da, în general</li>
+<li><strong>Camioane / autocare (C, D)</strong>: <strong>NU</strong> — trebuie examen britanic</li>
+</ul>
+<h3>Procedură</h3>
+<ol>
+<li>Cere formular <strong>D1</strong> de la <strong>Post Office</strong> sau online (gov.uk)</li>
+<li>Completează formularul</li>
+<li>Documente: permisul român original, BRP / Settled Status share code, fotografie, adresa UK</li>
+<li>Plată: <strong>43£</strong></li>
+<li>Trimite prin poștă la DVLA (Swansea)</li>
+<li>Permisul britanic în 3-6 săptămâni</li>
+</ol>
+<h2>Pentru moldoveni — non-UE</h2>
+<p>Moldova face parte din lista țărilor cu <strong>acord de schimb cu UK</strong>. Regulile:</p>
+<ul>
+<li>Permisul moldovenesc valabil <strong>12 luni</strong> de la data sosirii ca rezident</li>
+<li>Schimb posibil <strong>fără examen</strong> pentru categoria B (auto) — dacă cererea e făcută în primele 5 ani</li>
+<li>După 12 luni fără schimb: <strong>nu mai poți conduce</strong> — trebuie permis britanic complet</li>
+</ul>
+<h3>Documente</h3>
+<ul>
+<li>Formular <strong>D1</strong></li>
+<li>Permisul moldovenesc original</li>
+<li>Traducere oficială (de translator agreat) — DVLA o cere în engleză</li>
+<li>BRP sau eVisa share code</li>
+<li>Pașaport</li>
+<li>Fotografie biometrică</li>
+<li>Plată: <strong>43£</strong></li>
+</ul>
+<h3>Procedură</h3>
+<ol>
+<li>Trimite dosarul prin poștă la DVLA</li>
+<li>Așteaptă confirmarea (10-15 zile lucrătoare)</li>
+<li>Primești permisul britanic în 3-6 săptămâni</li>
+</ol>
+<p><strong>Pentru categorii C, D (camion, autocar)</strong>: trebuie examen britanic complet (teorie + practică + medical).</p>
+<h2>Permis britanic de la zero</h2>
+<p>Dacă schimbul e refuzat sau categoria nu e eligibilă:</p>
+<h3>1. Provisional driving licence</h3>
+<ul>
+<li>17+ ani (16+ pentru moped)</li>
+<li>Cerere online: 34£</li>
+<li>Permite să te antrenezi cu instructor sau cu o persoană 21+ care are permis B de minimum 3 ani</li>
+</ul>
+<h3>2. Theory test</h3>
+<ul>
+<li>50 întrebări (43 corecte minim)</li>
+<li>Hazard perception test (44/75 minim)</li>
+<li>Cost: <strong>23£</strong></li>
+<li>Disponibil în engleză, și uneori în alte limbi</li>
+<li>Pregătire: aplicații Driving Test Success, Theory Test Pro</li>
+</ul>
+<h3>3. Practical test</h3>
+<ul>
+<li>40 minute cu examinator DVSA</li>
+<li>Manevre, condus general, „independent driving"</li>
+<li>Cost: <strong>62£</strong> (zile de săptămână) sau <strong>75£</strong> (weekend/seri)</li>
+<li>Pass rate: ~50% — adesea trebuie 2-3 încercări</li>
+</ul>
+<h3>4. Costuri totale (de la zero)</h3>
+<ul>
+<li>Provisional licence: 34£</li>
+<li>Lecții (35-45 ore recomandate × 35£/oră): 1.200-1.600£</li>
+<li>Theory test: 23£</li>
+<li>Practical test: 62-75£</li>
+<li><strong>Total: 1.300-1.700£</strong></li>
+</ul>
+<h2>International Driving Permit (IDP)</h2>
+<p>NU este același cu permisul britanic. IDP-ul tău român/moldovenesc este doar <strong>traducere oficială</strong>. Ajunge pentru:</p>
+<ul>
+<li>Vizitatori temporari în UK</li>
+<li>Închiriere mașină (uneori cerut)</li>
+</ul>
+<p>Nu prelungește valabilitatea permisului tău național.</p>
+<h2>Penalty points și permis</h2>
+<p>UK folosește un sistem de <strong>puncte de penalizare</strong>:</p>
+<ul>
+<li>3-11 puncte per infracțiune</li>
+<li>12 puncte în 3 ani: pierzi permisul (6 luni minim)</li>
+<li>Pentru noi conducători (sub 2 ani după permis): 6 puncte = pierdere</li>
+</ul>
+<p>Punctele se aplică pe permisul britanic (după schimb). Pe permis străin, autoritățile cer schimbul forțat după anumite infracțiuni.</p>
+<h2>Asigurare auto</h2>
+<ul>
+<li>Obligatorie prin lege (Third Party minim)</li>
+<li>Pentru noi conducători cu permis străin: <strong>foarte scumpă</strong> (1.500-3.000£/an pentru tineri)</li>
+<li>Cu permis britanic și fără claims: scade dramatic (200-500£/an după 3 ani)</li>
+<li>Soluții: Black Box / Telematics insurance, named drivers, comparison sites (Compare The Market, GoCompare)</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.gov.uk/driving-licence" target="_blank" rel="noopener">gov.uk — Driving licences</a> · <a href="https://www.gov.uk/exchange-foreign-driving-licence" target="_blank" rel="noopener">gov.uk — Exchange foreign driving licence</a></p>`,
+  },
 ]
 
 async function main() {
