@@ -1106,6 +1106,698 @@ const articles: Array<{
 </ul>
 <p><strong>Sursă oficială:</strong> <a href="https://www.bmvi.de" target="_blank" rel="noopener">Bundesministerium für Verkehr</a></p>`,
   },
+  // ============== ITALY (IT) ==============
+  {
+    slug: "tessera-sanitaria-ssn-italia",
+    title: "Tessera Sanitaria și SSN — sistemul de sănătate italian",
+    excerpt:
+      "Cum te înscrii la SSN, alegi medicul de familie și obții Tessera Sanitaria în Italia.",
+    coverImage:
+      "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["it"],
+    readingTime: 6,
+    content: `<p><strong>SSN</strong> (Servizio Sanitario Nazionale) este sistemul public de sănătate italian — universal și aproape gratuit pentru rezidenți. <strong>Tessera Sanitaria</strong> e cardul tău magnetic care permite accesul la servicii. Iată cum o obții.</p>
+<h2>Cine are dreptul la SSN?</h2>
+<ul>
+<li><strong>Cetățeni UE (români)</strong>: cu <strong>residenza</strong> înregistrată, dreptul e automat și gratuit</li>
+<li><strong>Cetățeni non-UE (moldoveni)</strong>: cu Permesso di Soggiorno + contract de muncă sau studii — înscriere obligatorie</li>
+<li><strong>Fără residenza dar cu CF (Codice Fiscale)</strong>: poți cumpăra <strong>iscrizione volontaria</strong> (~150-388€/an în funcție de venituri)</li>
+</ul>
+<h2>Pașii pentru înscriere</h2>
+<ol>
+<li>Obține <strong>Codice Fiscale</strong> la Agenzia delle Entrate</li>
+<li>Înregistrează-te la <strong>residenza</strong> la primărie (Comune) — dossier cu contract chirie + Permesso (pentru moldoveni)</li>
+<li>Mergi la <strong>ASL</strong> (Azienda Sanitaria Locale) cu: CF, Permesso/CI UE, contract de chirie, Anagrafica completată</li>
+<li>Alege <strong>medicul de familie</strong> (Medico di Medicina Generale) din lista pusă la dispoziție</li>
+<li>Primești <strong>Tessera Sanitaria</strong> prin poștă în 2-4 săptămâni</li>
+</ol>
+<h2>Tessera Sanitaria — ce conține?</h2>
+<ul>
+<li>Codice Fiscale (16 caractere, vizibil pe verso)</li>
+<li>Cipul TS-CNS (Carta Nazionale dei Servizi) — pentru autentificarea online la servicii publice</li>
+<li>Numărul de asigurare europeană (TEAM) pe verso — folosibil în UE</li>
+</ul>
+<h2>Ce e gratuit, ce nu</h2>
+<p>SSN acoperă majoritatea serviciilor:</p>
+<ul>
+<li>Consultații medic de familie: <strong>gratuite</strong></li>
+<li>Consultații specialiști cu rețetă: <strong>gratuite</strong> sau cu <strong>ticket</strong> (~25-50€)</li>
+<li>Spitalizare: <strong>gratuită</strong></li>
+<li>Medicamente: există categorii A (gratuite), C (plătite integral), H (în spital)</li>
+<li>Stomatologie: doar urgențele și copiii sub 14 ani — restul privat</li>
+<li>Optică: doar copiii și anumite categorii sociale</li>
+</ul>
+<h2>Excepții și ajutoare</h2>
+<ul>
+<li><strong>Esenzione per reddito</strong>: gratuit pentru venituri sub anumite praguri (cod E01-E04)</li>
+<li><strong>Esenzione per patologia</strong>: pentru boli cronice (cod 0xx)</li>
+<li><strong>Esenzione per età</strong>: copii sub 6 ani și persoane peste 65 cu venituri reduse</li>
+</ul>
+<h2>Schimbarea medicului de familie</h2>
+<p>Poți schimba medicul oricând la ASL — gratuit și imediat. Util când te muți sau ești nemulțumit.</p>
+<h2>Pentru cei fără residenza — STP / ENI</h2>
+<ul>
+<li><strong>STP</strong> (Straniero Temporaneamente Presente): cod pentru moldoveni fără permis dar care au nevoie de îngrijire urgentă</li>
+<li><strong>ENI</strong> (Europeo Non Iscritto): cod pentru români fără residenza încă</li>
+<li>Ambele acoperă urgențele și serviciile esențiale, gratuit</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.salute.gov.it" target="_blank" rel="noopener">Ministero della Salute</a></p>`,
+  },
+  {
+    slug: "codice-fiscale-residenza-italia",
+    title: "Codice Fiscale și Residenza — primii pași în Italia",
+    excerpt:
+      "Cum obții Codice Fiscale, te înregistrezi la primărie (Anagrafe) și de ce sunt esențiale.",
+    coverImage:
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["it"],
+    readingTime: 5,
+    content: `<p>În Italia, fără <strong>Codice Fiscale</strong> și <strong>residenza</strong> nu poți face nimic: nici contract de muncă, nici de chirie, nici cont bancar. Iată ordinea pașilor.</p>
+<h2>Codice Fiscale — primul pas</h2>
+<p>Este codul tău fiscal de 16 caractere, calculat din nume + prenume + data nașterii + locul. <strong>Gratuit</strong>.</p>
+<h3>Cum îl obții</h3>
+<ol>
+<li>Mergi la <strong>Agenzia delle Entrate</strong> (programare online sau direct)</li>
+<li>Completează formular <strong>AA4/8</strong></li>
+<li>Documente: pașaport sau CI UE valabil</li>
+<li>Pentru moldoveni: + viza de intrare în spațiul Schengen sau Permesso</li>
+<li>Primești <strong>imediat</strong> codul pe foaie A4 (cardul fizic e Tessera Sanitaria — vine după)</li>
+</ol>
+<p><strong>Pentru cei din afara Italiei</strong>: poți cere CF la consulatul italian din România/Moldova înainte de a veni.</p>
+<h2>Residenza — cel mai important pas</h2>
+<p>Este înregistrarea oficială la <strong>Anagrafe</strong> (registrul populației) al primăriei (Comune) tale. Fără ea:</p>
+<ul>
+<li>Nu poți avea Tessera Sanitaria</li>
+<li>Nu poți primi multe ajutoare sociale</li>
+<li>Nu poți obține Permesso permanent (pentru moldoveni)</li>
+<li>Pierzi multe drepturi UE (pentru români)</li>
+</ul>
+<h3>Documente necesare</h3>
+<ul>
+<li><strong>Carta d'identità</strong> sau pașaport</li>
+<li>Pentru moldoveni: <strong>Permesso di Soggiorno</strong> valabil</li>
+<li><strong>Contract de chirie</strong> înregistrat la Agenzia delle Entrate (sau act de proprietate, sau atestare de găzduire ospitalitate)</li>
+<li>Codice Fiscale</li>
+<li>Pentru români: dovadă de muncă, studii, pensie sau resurse > 5.954€/an + asigurare de sănătate</li>
+</ul>
+<h3>Procedură</h3>
+<ol>
+<li>Programare la <strong>Anagrafe</strong> al Comune tău (online sau telefon)</li>
+<li>Depune dosarul</li>
+<li><strong>Vigilul Urban</strong> (poliția locală) trece la adresa ta în 30-45 zile pentru verificare</li>
+<li>După verificare, primești <strong>Certificato di Residenza</strong></li>
+</ol>
+<h2>Atenție cu „residenza fittizia"</h2>
+<p>NU folosi adrese false. Vigilul verifică prin vizite la fața locului. Riscul: anularea residenței + amendă + posibile probleme cu Permesso.</p>
+<h2>Pentru români — clarificare</h2>
+<p>Cetățenii UE pot sta <strong>3 luni fără residenza</strong>. După, dacă rămân, trebuie obligatoriu să ceară residenza. Nu există „cetățean UE care locuiește mereu fără residenza" în mod legal.</p>
+<h2>Schimbarea adresei</h2>
+<p>Trebuie să ceri <strong>cambio di residenza</strong> în 30 zile de la mutare. Procedură identică, doar că la noul Comune.</p>
+<h2>Sezione consolare la consulatul italian</h2>
+<p>Pentru moldoveni / români deja în Italia, atestările (acte naștere, căsătorie etc.) cer <strong>apostilă</strong> și traducere oficială de la consulat.</p>
+<p><strong>Sursă oficială:</strong> <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener">Agenzia delle Entrate</a></p>`,
+  },
+  {
+    slug: "assegno-unico-italia",
+    title: "Assegno Unico — alocații familiale în Italia",
+    excerpt:
+      "Cât primești pentru fiecare copil, cum se calculează ISEE și cum ceri online prin INPS.",
+    coverImage:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "finante",
+    countries: ["it"],
+    readingTime: 6,
+    content: `<p>Din 2022, Italia a unificat alocațiile pentru copii într-un singur ajutor: <strong>Assegno Unico Universale</strong>. Iată cum funcționează în 2026.</p>
+<h2>Cine are dreptul?</h2>
+<ul>
+<li>Cetățeni UE (români): cu residenza în Italia</li>
+<li>Cetățeni non-UE (moldoveni): cu Permesso de cel puțin 1 an</li>
+<li>Pentru fiecare copil: <strong>până la 18 ani</strong> (cu eligibilitate parțială până la 21 ani dacă studiază sau caută loc de muncă)</li>
+<li>Copii cu handicap: <strong>fără limită de vârstă</strong></li>
+</ul>
+<h2>Cât primești?</h2>
+<p>Suma depinde de <strong>ISEE</strong> (indicator de venit + patrimoniu al familiei) și de numărul de copii.</p>
+<table>
+<tr><th>ISEE</th><th>Per copil/lună</th></tr>
+<tr><td>până la 17.227€</td><td>maxim ~199€</td></tr>
+<tr><td>17.227 - 45.000€</td><td>diminuat progresiv</td></tr>
+<tr><td>peste 45.574€ sau fără ISEE</td><td>minim 57€/lună</td></tr>
+</table>
+<h3>Bonusuri suplimentare</h3>
+<ul>
+<li>Mama tânără (< 21 ani): +20€/lună</li>
+<li>Familie cu 3+ copii: +85-100€/copil</li>
+<li>Copil cu handicap: +85-110€/lună</li>
+<li>Ambii părinți lucrează: +30€/copil/lună</li>
+</ul>
+<h2>ISEE — esențial</h2>
+<p>Pentru a primi suma maximă, trebuie să ai un ISEE valabil. Cum o obții:</p>
+<ol>
+<li>Adună documente: declarații venituri (CU, 730), conturi bancare la 31/12, proprietăți, acțiuni</li>
+<li>Mergi la <strong>CAF</strong> (Centro di Assistenza Fiscale) — gratuit, sau patronat sindical</li>
+<li>Completați împreună <strong>DSU</strong> (Dichiarazione Sostitutiva Unica)</li>
+<li>Primești ISEE-ul în 10-15 zile</li>
+<li>ISEE valabil <strong>1 an calendaristic</strong> — actualizează la fiecare ianuarie</li>
+</ol>
+<h2>Cum ceri Assegno Unico?</h2>
+<ol>
+<li>Loghează-te pe <strong>inps.it</strong> cu SPID, CIE sau CNS</li>
+<li>Caută „Assegno Unico Universale"</li>
+<li>Completează formular cu datele copiilor + IBAN</li>
+<li>Atașează ISEE (se preia automat din baza INPS de obicei)</li>
+<li>Trimite cerere</li>
+</ol>
+<p><strong>Plata începe</strong>: din luna următoare cererii. Cererile depuse în primele 6 luni ale anului dau drept retroactiv la 1 martie. Cele depuse după <strong>nu sunt retroactive</strong>.</p>
+<h2>Pentru moldoveni</h2>
+<p>Necesită Permesso de cel puțin 1 an. Cu <strong>Permesso UE per soggiornanti di lungo periodo</strong> (după 5 ani), drepturile sunt similare cu cetățenii italieni.</p>
+<h2>Bonus Asilo Nido</h2>
+<p>Pe lângă Assegno Unico, există <strong>Bonus Asilo Nido</strong>: până la <strong>3.000€/an</strong> pentru creșă (publică sau privată). Cerere separată pe inps.it.</p>
+<h2>Bonus Bebè / Premio alla Nascita</h2>
+<p><strong>800€</strong> la nașterea sau adopția unui copil — cerere în primele 7 luni de viață.</p>
+<h2>Atenție</h2>
+<ul>
+<li>Trebuie să declari toate veniturile, inclusiv din România/Moldova (chirii, conturi)</li>
+<li>Dacă copilul trăiește în România/Moldova, suma poate fi plafonată conform regulilor UE</li>
+<li>Sancțiunile pentru fraudă: rambursare totală + amendă + posibile probleme cu Permesso</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.inps.it" target="_blank" rel="noopener">INPS — Assegno Unico</a></p>`,
+  },
+  {
+    slug: "dichiarazione-redditi-italia",
+    title: "Dichiarazione dei redditi — declarația de impozite în Italia",
+    excerpt:
+      "730 vs Modello Redditi, cum o faci online sau prin CAF, ce poți deduce pentru a recupera bani.",
+    coverImage:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "finante",
+    countries: ["it"],
+    readingTime: 7,
+    content: `<p>În Italia, declarația de impozite se face anual. <strong>Modelul 730</strong> pentru salariați/pensionari și <strong>Modello Redditi</strong> pentru toți ceilalți. Iată cum procedezi în 2026.</p>
+<h2>Cine trebuie să declare?</h2>
+<ul>
+<li>Toți rezidenții fiscali (peste 183 zile/an în Italia)</li>
+<li>Cu venituri care depășesc <strong>8.000€/an</strong> (salariați) sau <strong>4.800€</strong> (alte tipuri)</li>
+<li>Având chirii, locații imobiliare, autoîntreprinzători (Partita IVA)</li>
+</ul>
+<p>Chiar dacă ai un singur loc de muncă cu impozit reținut la sursă, e adesea avantajos să declari pentru a deduce cheltuielile (rambursare medie: 700-1500€).</p>
+<h2>Calendar 2026</h2>
+<ul>
+<li><strong>Aprilie</strong>: Modello 730 precompilat e disponibil pe site-ul Agenzia Entrate</li>
+<li><strong>30 septembrie 2026</strong>: termen pentru 730</li>
+<li><strong>30 noiembrie 2026</strong>: termen pentru Modello Redditi</li>
+<li>Eventuale plăți: în iulie (acont) și noiembrie (saldo)</li>
+</ul>
+<h2>Modello 730 — pentru salariați</h2>
+<p>Avantajul: rambursarea vine direct prin <strong>flutuștul de salariu</strong> (în iulie/august), nu trebuie să aștepți cec sau virament.</p>
+<h3>Cum o faci</h3>
+<ol>
+<li><strong>Direct online</strong>: pe <strong>agenziaentrate.gov.it</strong> cu SPID/CIE/CNS — formularul e precompletat cu date din CU, dobânzi bancare, etc.</li>
+<li><strong>Prin CAF</strong>: gratuit pentru ISEE mic, plătit (~50-150€) pentru restul. Cel mai sigur dacă ai cazul complicat.</li>
+<li><strong>Comercialist privat (commercialista)</strong>: 100-300€, util pentru cazuri complexe</li>
+<li><strong>Prin angajator</strong>: dacă oferă serviciul</li>
+</ol>
+<h2>Deduceri (Detrazioni) și cheltuieli (Oneri Detraibili)</h2>
+<p>Cele mai utile pentru diaspora:</p>
+<ul>
+<li><strong>Cheltuieli medicale</strong>: 19% din suma peste 129,11€/an (medicamente, consultații, analize)</li>
+<li><strong>Chirie</strong>: până la 991,60€/an (locuință principală tinerilor sub 31 ani: 991,60€ + diminuare progresivă)</li>
+<li><strong>Pensione integrative</strong>: până la 5.164,57€/an deductibili integral</li>
+<li><strong>Asigurare de viață</strong>: 19% până la 530€/an</li>
+<li><strong>Asilo Nido</strong>: 19% până la 632€/copil/an</li>
+<li><strong>Sport copii (5-18 ani)</strong>: 19% până la 210€/copil</li>
+<li><strong>Donații</strong>: 30% pentru ONG, 26% pentru partide politice etc.</li>
+<li><strong>Bonus Edilizi</strong>: până la 36-50% din cheltuielile de renovare locuință</li>
+</ul>
+<h2>Special pentru diaspora</h2>
+<h3>Familie acasă (în România/Moldova)</h3>
+<p>Dacă trimiți bani pentru întreținerea soțului/soției, copiilor sau părinților rămași în România/Moldova, poți deduce <strong>până la 1.812€/an</strong> per persoană dependentă în carică.</p>
+<h3>Conturi bancare străine — RW</h3>
+<p>Trebuie declarate în <strong>quadrul RW</strong> dacă suma cumulată > 5.000€ în orice moment al anului (sau valoare medie > 15.000€). <strong>IVAFE</strong>: impozit de 0,2% pe valoarea anuală a conturilor străine. Sancțiuni grele pentru nedeclarare.</p>
+<h3>Convenții împotriva dublei impuneri</h3>
+<p>Italia are acorduri cu România și Moldova. Veniturile impozitate în România/Moldova nu sunt impozitate din nou în Italia, dar trebuie declarate (cu credit fiscal).</p>
+<h2>Modello Redditi — pentru independenți</h2>
+<p>Dacă ai <strong>Partita IVA</strong>, chirii, capital, sau alte venituri non-salariale: trebuie Modello Redditi. Mai complex — recomandat <strong>commercialista</strong>.</p>
+<h2>Sancțiuni</h2>
+<ul>
+<li>Întârziere până la 90 zile: 25€ + 0,1% lunar</li>
+<li>Omisiune declarație: 120-240% din impozitul datorat</li>
+<li>Nedeclararea conturilor străine (RW): 3-15% din valoare</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener">Agenzia delle Entrate</a></p>`,
+  },
+  {
+    slug: "recunoastere-diplome-italia",
+    title: "Recunoașterea diplomelor românești și moldovenești în Italia",
+    excerpt:
+      "CIMEA, Equipollenza, profesii reglementate — cum să-ți faci diploma valabilă în Italia.",
+    coverImage:
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "drepturi",
+    countries: ["it"],
+    readingTime: 6,
+    content: `<p>Sistemul italian distinge mai multe tipuri de recunoaștere a diplomelor străine. Iată ce e potrivit pentru tine în 2026.</p>
+<h2>3 tipuri de recunoaștere</h2>
+<ul>
+<li><strong>Equipollenza</strong>: recunoaștere academică completă (continuare studii la universitate italiană)</li>
+<li><strong>Equivalenza</strong>: recunoaștere profesională (acces la concursuri publice și anumite locuri de muncă)</li>
+<li><strong>Dichiarazione di valore</strong>: atestare de la consulat — valoare informativă, nu legală</li>
+</ul>
+<h2>CIMEA — primul pas</h2>
+<p><strong>CIMEA</strong> (Centro Informazioni sulla Mobilità e le Equivalenze Accademiche) este punctul de contact ENIC-NARIC pentru Italia. Eliberează:</p>
+<ul>
+<li><strong>Statement of Comparability</strong>: comparație cu sistem italian (~100€, 30-60 zile)</li>
+<li><strong>Statement of Verification</strong>: verifică autenticitatea diplomei (~100€)</li>
+<li><strong>Attestato di comparabilità</strong>: pentru profesii reglementate</li>
+</ul>
+<p>Cerere online pe <strong>cimea.it</strong>.</p>
+<h2>Pentru continuarea studiilor (Equipollenza)</h2>
+<p>Procedura se face direct la universitatea italiană unde vrei să te înscrii:</p>
+<ol>
+<li>Contactează biroul „Studenți internaționali"</li>
+<li>Documente: diplomă + foaie matricolă + traduceri oficiale + Dichiarazione di valore (sau Statement CIMEA)</li>
+<li>Universitatea decide: equipollenza completă, parțială (cu materii de recuperat) sau refuz</li>
+</ol>
+<h2>Profesii reglementate — proceduri specifice</h2>
+<ul>
+<li><strong>Medic</strong>: Ministero della Salute + eventual examen + stagiu</li>
+<li><strong>Asistent medical</strong>: Regione + IPASVI + uneori curs de adaptare</li>
+<li><strong>Avocat</strong>: examen de stat + Albo Avvocati</li>
+<li><strong>Inginer, arhitect</strong>: Ordini Professionali</li>
+<li><strong>Profesor</strong>: MIUR (acum Ministero dell'Istruzione e del Merito)</li>
+<li><strong>Psiholog</strong>: Ordine degli Psicologi + uneori examen + tirocinio</li>
+</ul>
+<h2>Pentru români — UE</h2>
+<p>Diplomele românești beneficiază de <strong>directiva UE 2005/36/CE</strong> pentru profesii reglementate — procedură simplificată cu termen de 4 luni.</p>
+<h2>Pentru moldoveni — non-UE</h2>
+<p>Documente necesare:</p>
+<ul>
+<li><strong>Apostilă</strong> de la Ministerul Justiției din Moldova</li>
+<li><strong>Traducere oficială</strong> de un traducător jurat în Italia (lista la Tribunal)</li>
+<li><strong>Dichiarazione di valore</strong> de la consulatul italian în Moldova (sau, alternativ, Statement of Comparability CIMEA — preferat din 2018)</li>
+<li>Foaie matricolă cu toate notele</li>
+</ul>
+<h2>Concursuri publice (Equivalenza)</h2>
+<p>Pentru a participa la concursurile publice italiene cu o diplomă străină, trebuie <strong>Equivalenza</strong>:</p>
+<ol>
+<li>Cerere la <strong>Dipartimento Funzione Pubblica</strong></li>
+<li>Documente: diplomă + Dichiarazione di valore + traduceri</li>
+<li>Procedură: 6-12 luni</li>
+<li>Validitate: doar pentru concursul respectiv (uneori extensibilă)</li>
+</ol>
+<h2>Limba italiană — esențial</h2>
+<p>Pentru orice procedură de recunoaștere, e cerut <strong>nivel B2 minim</strong> (C1 pentru profesii medicale). Certificate acceptate: CILS, CELI, PLIDA.</p>
+<h2>Costuri totale estimate</h2>
+<ul>
+<li>Apostilă, traduceri, Dichiarazione di valore: 200-500€</li>
+<li>CIMEA (dacă e cerut): 100€</li>
+<li>Cursuri de adaptare (pentru profesii reglementate): 500-3000€</li>
+<li>Examene (avocat, medic): 100-500€</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.cimea.it" target="_blank" rel="noopener">CIMEA</a> · <a href="https://www.miur.gov.it" target="_blank" rel="noopener">Ministero dell'Istruzione</a></p>`,
+  },
+  {
+    slug: "permesso-soggiorno-italia",
+    title: "Permesso di Soggiorno — diferențe pentru români și moldoveni",
+    excerpt:
+      "Românii UE au libertate de circulație. Moldovenii au nevoie de viză + Permesso. Iată regulile complete.",
+    coverImage:
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "drepturi",
+    countries: ["it"],
+    readingTime: 7,
+    content: `<p>Statutul tău juridic în Italia depinde de cetățenia ta. <strong>Românii</strong> sunt cetățeni UE — drept de mișcare. <strong>Moldovenii</strong> au nevoie de viză + Permesso. Iată cum se face fiecare procedură.</p>
+<h2>Pentru români — UE</h2>
+<p>Cetățenii români au <strong>drept la liberă circulație</strong> și pot locui și munci în Italia <strong>fără viză sau Permesso</strong>. Singura obligație:</p>
+<ul>
+<li><strong>Iscrizione anagrafica</strong> (residenza) la Comune după 3 luni de ședere</li>
+<li>Asigurare de sănătate (SSN automat dacă lucrezi)</li>
+<li>După 5 ani: drept de <strong>residenza permanente</strong> care se obține automat (poți cere atestare la Comune)</li>
+</ul>
+<h3>Carta d'identità italiană?</h3>
+<p>Cetățenii UE pot cere <strong>Carta d'identità italiana</strong> dacă au residenza italiană — utilă pentru circulația în UE și autentificare. Cerere la Comune cu pașaport/CI românească.</p>
+<h2>Pentru moldoveni — non-UE</h2>
+<p>Trebuie viză înainte de a veni. Cele mai comune:</p>
+<h3>Viza de muncă (Visto per lavoro subordinato)</h3>
+<ul>
+<li>Cu <strong>Decreto Flussi</strong> (cota anuală de muncitori străini stabilită de guvern)</li>
+<li>Angajatorul italian face cererea în prealabil</li>
+<li>Sectoare: agricultură, turism, lucrări casnice, transport</li>
+</ul>
+<h3>Viza de muncă autonomă (Visto per lavoro autonomo)</h3>
+<ul>
+<li>Pentru a începe activitate independentă în Italia</li>
+<li>Probă financiară: capital + plan de afaceri</li>
+<li>Cuoda anuală foarte limitată</li>
+</ul>
+<h3>Viza de studiu (Visto per studio)</h3>
+<ul>
+<li>Înscriere la o universitate italiană</li>
+<li>Probă financiară: ~6.000€/an</li>
+<li>Permite muncă <strong>20h/săptămână</strong></li>
+</ul>
+<h3>Viza de reunificare familială (Ricongiungimento Familiare)</h3>
+<ul>
+<li>Soț/soție de rezident italian sau cu Permesso de minimum 1 an</li>
+<li>Dovedi: locuință adecvată + venituri minime + asigurare</li>
+</ul>
+<h2>După sosire — Permesso di Soggiorno</h2>
+<p>În <strong>8 zile lucrătoare</strong> de la intrare în Italia, depune cererea de Permesso:</p>
+<ol>
+<li>Mergi la <strong>Sportello Amico</strong> al unui oficiu poștal (Poste Italiane)</li>
+<li>Cere <strong>kit-ul Permesso di Soggiorno</strong> (gratuit)</li>
+<li>Completează formularele</li>
+<li>Documente: viza, pașaport, contract de muncă/studii, contract de chirie, fotografii biometrice</li>
+<li>Plată: <strong>30,46€</strong> (formular) + <strong>16€</strong> (timbru fiscal) + <strong>30,46€</strong> (taxa Permesso) + <strong>40-100€</strong> (taxa de procesare în funcție de durată)</li>
+<li>Trimite plicul, primește chitanța — atenție, <strong>păstrează-o</strong>! E permitul tău temporar până la cardul fizic</li>
+<li>După 30-60 zile, vei fi convocat la <strong>Questura</strong> pentru amprentare</li>
+<li>Cardul fizic ajunge în 2-6 luni</li>
+</ol>
+<h2>Permesso UE per soggiornanti di lungo periodo (după 5 ani)</h2>
+<p>După 5 ani de Permesso continuu, poți cere acest Permesso permanent. Cerințe:</p>
+<ul>
+<li>Resurse stabile</li>
+<li>Asigurare de sănătate</li>
+<li>Locuință adecvată (parametri MIT)</li>
+<li>Test de italiană <strong>A2</strong> (online sau la CTP)</li>
+<li>Cazier judiciar curat</li>
+</ul>
+<h2>Cetățenia italiană</h2>
+<ul>
+<li><strong>Pentru români UE</strong>: după 4 ani de residenza continuă</li>
+<li><strong>Pentru moldoveni non-UE</strong>: după 10 ani de residenza continuă cu Permesso</li>
+<li>Test de italiană <strong>B1</strong></li>
+<li>Venituri minime în ultimii 3 ani</li>
+<li>Cazier judiciar curat</li>
+<li>Cerere online pe <strong>portaleservizi.dlci.interno.it</strong></li>
+<li>Procedură: 24-48 luni</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.poliziadistato.it" target="_blank" rel="noopener">Polizia di Stato — Permesso</a></p>`,
+  },
+  {
+    slug: "inscriere-asilo-scuola-italia",
+    title: "Înscrierea copilului la Asilo sau Scuola în Italia",
+    excerpt:
+      "Sistem școlar italian, cum cauți loc la creșă (Asilo Nido) și înscrierea la școală.",
+    coverImage:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["it"],
+    readingTime: 6,
+    content: `<p>În Italia, școala e <strong>obligatorie de la 6 ani până la 16 ani</strong>. Înainte, există creșă (Asilo Nido) și grădiniță (Scuola dell'Infanzia). Iată cum să înscrii copilul.</p>
+<h2>Sistem școlar italian</h2>
+<ul>
+<li><strong>Asilo Nido</strong>: 3 luni - 3 ani — opțional</li>
+<li><strong>Scuola dell'Infanzia</strong>: 3 - 6 ani — opțional dar recomandat</li>
+<li><strong>Scuola Primaria</strong>: 6 - 11 ani (5 ani) — obligatorie</li>
+<li><strong>Scuola Secondaria di I grado</strong>: 11 - 14 ani (3 ani) — obligatorie</li>
+<li><strong>Scuola Secondaria di II grado</strong>: 14 - 19 ani (Liceo, Istituto Tecnico, Istituto Professionale) — obligatorie până la 16 ani</li>
+</ul>
+<h2>Asilo Nido — locuri foarte căutate</h2>
+<p>Mai ales în orașele mari (Milano, Roma, Bologna), cererea depășește oferta. <strong>Începe să cauți cu 6 luni înainte!</strong></p>
+<h3>Tipuri</h3>
+<ul>
+<li><strong>Comunale (publică)</strong>: gestionate de Comune, costă <strong>200-700€/lună</strong> în funcție de ISEE</li>
+<li><strong>Convenzionato</strong>: privată cu acord cu Comune, tarif similar</li>
+<li><strong>Privată</strong>: 500-1500€/lună</li>
+<li><strong>Tagesmutter / Nido Famiglia</strong>: dădacă acasă (autorizată), 8-12€/oră</li>
+</ul>
+<h3>Cum aplici</h3>
+<ol>
+<li>Mergi pe site-ul Comune (Milano, Roma etc. au portale dedicate)</li>
+<li>Completează cererea online cu ISEE</li>
+<li>Sistem de puncte (criterii: ambii părinți lucrează, frați deja înscriși, situație familială)</li>
+<li>Lista oficială publicată în mai/iunie pentru septembrie</li>
+</ol>
+<h3>Bonus Asilo Nido</h3>
+<p>Cum am explicat în articolul Assegno Unico: <strong>până la 3.000€/an</strong> de la INPS pentru orice creșă (publică sau privată). Cerere separată.</p>
+<h2>Înscrierea la școală</h2>
+<p>Înscrierile se fac <strong>online pe iscrizioni.istruzione.it</strong> în <strong>ianuarie</strong> pentru anul școlar care începe în septembrie.</p>
+<h3>Documente necesare</h3>
+<ul>
+<li>Codice Fiscale al copilului și al părinților</li>
+<li><strong>SPID/CIE</strong> al unui părinte pentru autentificare</li>
+<li>Carnet de vaccinări (vaccinurile obligatorii: 10 vaccinuri pentru copii sub 16 ani)</li>
+<li>Pentru moldoveni: Permesso copil sau menționarea în Permesso al părintelui</li>
+</ul>
+<h3>Sectorizare</h3>
+<p>Scuola Primaria și Scuola Secondaria sunt în general alocate prin <strong>sectorizare</strong> (zona de domiciliu). Poți cere o altă școală dar acceptarea depinde de locuri disponibile.</p>
+<h2>Sosire la jumătatea anului</h2>
+<p>Posibilă oricând. Mergi direct la școala dorită cu documentele copilului. Pentru cei care nu vorbesc italiana, există <strong>laboratori L2</strong> (italiană ca a 2-a limbă) de 2-6 ore/săptămână, gratuite.</p>
+<h2>Costuri în școala publică</h2>
+<ul>
+<li><strong>Mensa</strong> (cantină): 3-5€/masă, în funcție de ISEE</li>
+<li><strong>Manuali scolastici</strong>: gratuiți la Primaria, plătiți la Secondaria (300-500€/an)</li>
+<li><strong>Materiale</strong>: 100-300€/an</li>
+<li><strong>Gite</strong> (excursii): 50-300€/an</li>
+<li><strong>Tassa scolastica</strong>: 21€/an doar la Liceu</li>
+</ul>
+<h3>Bonus Studenti</h3>
+<p>Comune și Regiune oferă bonusuri pentru cărți (<strong>Buono Libri</strong>), abonament transport, mensa pentru familii cu ISEE redus.</p>
+<h2>Liceu sau Istituto?</h2>
+<p>La 14 ani, copilul alege:</p>
+<ul>
+<li><strong>Liceo</strong> (Classico, Scientifico, Linguistico etc.): pregătire pentru universitate</li>
+<li><strong>Istituto Tecnico</strong>: pregătire tehnică (informatica, comerț) — și universitate</li>
+<li><strong>Istituto Professionale</strong>: meserie + posibilitate universitate</li>
+<li><strong>Apprendistato</strong>: ucenicie + școală pentru cei care vor să muncească rapid</li>
+</ul>
+<p>Toate lasă deschisă posibilitatea universității cu <strong>Esame di Stato</strong> (echivalent Bacalaureat).</p>
+<p><strong>Sursă oficială:</strong> <a href="https://www.istruzione.it" target="_blank" rel="noopener">Ministero dell'Istruzione</a></p>`,
+  },
+  {
+    slug: "inchiriere-locuinta-italia",
+    title: "Cum să închiriezi un apartament în Italia",
+    excerpt:
+      "Tipuri de contracte (4+4, 3+2), garanții, sfaturi și capcane pentru chirii în Italia.",
+    coverImage:
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "viata-practica",
+    countries: ["it"],
+    readingTime: 6,
+    content: `<p>Piața italiană are particularitățile ei — contracte standardizate prin lege, taxe și înregistrare obligatorie. Iată cum să eviți problemele.</p>
+<h2>Tipuri de contracte de chirie</h2>
+<ul>
+<li><strong>4+4</strong> (libero): durata 4 ani, reînnoire automată 4 ani. Chirie liberă (pe care proprietarul o poate negocia)</li>
+<li><strong>3+2</strong> (concordato): durata 3 ani + 2 reînnoire automată. Chirie reglementată de acord local — adesea mai mică, cu beneficii fiscale pentru proprietar</li>
+<li><strong>Tranzitoriu</strong>: 1-18 luni, doar cu motiv valabil (lucru temporar etc.)</li>
+<li><strong>Studenți</strong>: 6 luni - 3 ani, doar cu adeverință de la universitate</li>
+</ul>
+<h2>Dosarul de închiriere</h2>
+<p>Documente cerute:</p>
+<ul>
+<li>Carta d'identità sau pașaport</li>
+<li>Codice Fiscale</li>
+<li>Pentru moldoveni: Permesso di Soggiorno valabil</li>
+<li>3 ultime fluturași de salariu (busta paga) sau contract</li>
+<li>Modello CU (declarație venituri anul precedent)</li>
+<li>Justificatif de domiciliu actual</li>
+<li>Garant (uneori cerut): cu venituri stabile + CU</li>
+</ul>
+<h2>Cauzione (depozit)</h2>
+<ul>
+<li>Maxim legal: <strong>3 luni</strong> de chirie</li>
+<li>De obicei: <strong>2 luni</strong></li>
+<li>Returnată la sfârșitul contractului dacă apartamentul e în stare bună</li>
+<li>Proprietarul îți datorează <strong>dobândă legală</strong> pe suma cauzionei</li>
+</ul>
+<h2>Înregistrarea contractului</h2>
+<p>Contractul TREBUIE să fie înregistrat la <strong>Agenzia delle Entrate</strong> în 30 zile.</p>
+<ul>
+<li>Costuri: <strong>2% din chiria anuală</strong> (împărțit 50/50 cu proprietarul, de obicei) + 16€/100 pagini timbru fiscal</li>
+<li><strong>Cedolare secca</strong>: opțiune fiscală pentru proprietar (10-21%) — adesea exclude și taxele tale</li>
+<li>Fără înregistrare: contractul e <strong>nul</strong>! Poți cere registrarea retroactivă tu însuți</li>
+</ul>
+<h2>Spese (costuri suplimentare)</h2>
+<ul>
+<li><strong>Spese condominiali</strong>: lift, scări comune, încălzire centralizată — 50-300€/lună</li>
+<li><strong>Tari</strong> (taxa pe gunoi): 100-300€/an</li>
+<li><strong>Apă, electricitate, gaze</strong>: variabile, 100-300€/lună în total</li>
+<li><strong>Imposta di Bollo</strong>: 32€/an pentru contractul tău</li>
+</ul>
+<h2>Capcane frecvente</h2>
+<ul>
+<li><strong>Affitto in nero</strong> (chirie fără contract sau parțial declarată): ilegal! Riști să pierzi tot, inclusiv depozitul. Refuză chiar dacă proprietarul oferă reducere</li>
+<li><strong>Cauțion fără chitanță</strong>: nu plăti niciodată cash fără chitanță scrisă</li>
+<li><strong>Stato dell'immobile</strong>: fă fotografii la intrare cu proprietarul, scrieți împreună un proces-verbal</li>
+<li><strong>Mediatore</strong> (agent imobiliar): plătit de obicei <strong>1 lună de chirie + IVA</strong> de fiecare parte. Verifică să fie agent autorizat (înscris la Camera di Commercio)</li>
+<li><strong>Pulizie</strong>: ești obligat să predai apartamentul curat — proprietarul poate reține din cauțion costul curățeniei profesionale</li>
+</ul>
+<h2>Drepturi ale chiriașului</h2>
+<ul>
+<li>Proprietarul nu poate intra în apartament fără permisiunea ta (cu excepție urgențe)</li>
+<li>Reparațiile mari (acoperiș, instalație electrică majoră) sunt în sarcina proprietarului</li>
+<li>Reparațiile mici (becuri, robinete, etc.) sunt ale tale</li>
+<li>Poți rezilia oricând cu <strong>6 luni preaviz</strong> (sau mai puțin pentru motive grave: muncă, sănătate)</li>
+</ul>
+<h2>Site-uri utile</h2>
+<ul>
+<li><strong>Idealista, Immobiliare.it, Casa.it</strong>: cele mai mari portaluri</li>
+<li><strong>Subito.it</strong>: anunțuri direct de la proprietari</li>
+<li><strong>Spotahome, HousingAnywhere</strong>: pentru contracte de scurtă durată</li>
+<li>Grupuri Facebook diaspora: rapide, dar atenție la escrocherii</li>
+</ul>
+<h2>Subvenții pentru chirie</h2>
+<ul>
+<li><strong>Bonus Affitto</strong>: pentru tinerii sub 31 ani cu venituri mici (ISEE < 15.493€)</li>
+<li><strong>Contributi affitto regionali</strong>: variabile pe regiune, cerere la Comune</li>
+<li><strong>Detrazione fiscală</strong>: 19% până la 991,60€/an pentru locuință principală</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener">Agenzia delle Entrate — Locazioni</a></p>`,
+  },
+  {
+    slug: "deschidere-cont-bancar-italia",
+    title: "Deschiderea unui cont bancar în Italia",
+    excerpt:
+      "Bănci tradiționale vs online (BancoPosta, N26, Revolut), documente cerute și sfaturi pentru diaspora.",
+    coverImage:
+      "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "finante",
+    countries: ["it"],
+    readingTime: 5,
+    content: `<p>Pentru a primi salariu, plăti chirie sau a face plăți online, ai nevoie de cont bancar italian (<strong>conto corrente</strong>). Iată cum.</p>
+<h2>Documente cerute</h2>
+<ul>
+<li>Pașaport sau Carta d'identità</li>
+<li><strong>Codice Fiscale</strong> (esențial)</li>
+<li>Pentru moldoveni: Permesso di Soggiorno valabil</li>
+<li>Justificatif de venit (uneori cerut, mai des pentru limite mari)</li>
+<li>Justificatif de domiciliu (Certificato di Residenza, factură)</li>
+</ul>
+<h2>Bănci tradiționale</h2>
+<ul>
+<li><strong>Intesa Sanpaolo</strong> — cea mai mare bancă italiană, agenții peste tot</li>
+<li><strong>UniCredit</strong> — internaționale, bună pentru transferuri externe</li>
+<li><strong>BPER</strong>, <strong>Banco BPM</strong>, <strong>Monte dei Paschi</strong> — alternative regionale</li>
+<li><strong>Credit Agricole Italia</strong> — filială franceză, prezentă în Veneto, Emilia</li>
+</ul>
+<p>Costuri: <strong>5-10€/lună</strong> de obicei. Conturi gratuite pentru tineri sub 30 ani sau cu salariu domiciliat.</p>
+<h2>BancoPosta — opțiune simplă</h2>
+<p><strong>Poste Italiane</strong> oferă cont curent (<strong>Conto BancoPosta</strong>) accesibil:</p>
+<ul>
+<li>Cere doar Codice Fiscale, document de identitate, residenza</li>
+<li>Costuri: 6,90€/lună (sau gratuit cu salariu)</li>
+<li>Acceptat peste tot pentru salariu, chirie, etc.</li>
+<li>Avantaj: 12.000+ oficii poștale</li>
+</ul>
+<h2>Bănci online (cu IBAN italian IT)</h2>
+<ul>
+<li><strong>ING Italia</strong> — Conto Arancio, gratuit, IBAN IT</li>
+<li><strong>Fineco Bank</strong> — conturi de investiție, gratuit cu condiții</li>
+<li><strong>Webank</strong>, <strong>CheBanca!</strong>, <strong>Hello Bank!</strong> — alternative</li>
+</ul>
+<h2>Neobănci (cu IBAN străin)</h2>
+<ul>
+<li><strong>Revolut</strong>: IBAN lituanian (LT) — acceptat de majoritatea, dar nu de toți</li>
+<li><strong>N26</strong>: IBAN german (DE) — uneori refuzat de angajatori italieni</li>
+<li><strong>Wise</strong>: IBAN belgian sau italian — verifică</li>
+<li><strong>Hype</strong>: italiană (BNL Group), IBAN IT, gratuit cu limite mici</li>
+</ul>
+<h3>De ce IBAN-ul italian (IT) contează</h3>
+<p>Mulți angajatori, proprietari și administrații publice <strong>cer IBAN IT</strong> pentru:</p>
+<ul>
+<li>Plata salariului (uneori, deși SEPA o cere)</li>
+<li>Domicilierea facturilor cu RID</li>
+<li>Rambursări fiscale</li>
+<li>Plata Assegno Unico de la INPS</li>
+</ul>
+<h2>Carta Conto — alternativă fără cont</h2>
+<p>Dacă nu poți deschide cont (cazuri rare), <strong>cardul prepaid</strong> Postepay sau Hype este o alternativă:</p>
+<ul>
+<li><strong>Postepay Evolution</strong>: are IBAN IT, accepta salariu și domicilieri — 12€/an</li>
+<li>Pentru cei fără residenza încă: ideală</li>
+</ul>
+<h2>Sfaturi pentru diaspora</h2>
+<ul>
+<li>Începe cu BancoPosta sau Hype — cei mai accesibili pentru noi sosiți</li>
+<li>Mai târziu, schimbă către o bancă tradițională pentru avantaje (împrumut, ipotecă)</li>
+<li>Pentru transferuri către România/Moldova: <strong>Wise</strong> (cele mai mici taxe), Revolut sau MoneyGram</li>
+<li>Activează <strong>Online Banking</strong> imediat — esențial pentru SEPA și plăți online</li>
+<li>Pentru ISEE și INPS, pregătește IBAN-ul tău încă din primele luni</li>
+</ul>
+<h2>Atenție</h2>
+<ul>
+<li>Conturi bancare în România/Moldova: declară-le în <strong>quadro RW</strong> al declarației de impozite (vezi articol Dichiarazione)</li>
+<li>Transferuri > 5.000€ pot trigger control fiscal — pregătește documentația</li>
+</ul>
+<p><strong>Sursă oficială:</strong> <a href="https://www.bancaditalia.it" target="_blank" rel="noopener">Banca d'Italia</a></p>`,
+  },
+  {
+    slug: "permis-conducere-italia",
+    title: "Permisul de conducere — schimb sau echivalare în Italia",
+    excerpt:
+      "Permisul tău românesc / moldovenesc valabil în Italia? Cum îl convertești la unul italian.",
+    coverImage:
+      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
+    categorySlug: "drepturi",
+    countries: ["it"],
+    readingTime: 5,
+    content: `<p>Vii în Italia cu permis românesc sau moldovenesc? Iată regulile actualizate 2026.</p>
+<h2>Pentru români — UE</h2>
+<p>Permisul românesc este <strong>direct valabil în Italia</strong> pe toată durata sa. <strong>Nu este obligatorie conversia</strong>.</p>
+<h3>Excepții</h3>
+<ul>
+<li>Dacă te înregistrezi cu <strong>residenza</strong> în Italia și permisul tău expiră, trebuie să-l reînnoiești în Italia (nu mai poți merge în România)</li>
+<li>Dacă pierzi puncte sau comiti infracțiuni, autoritățile italiene pot cere conversia</li>
+</ul>
+<h3>Conversie voluntară</h3>
+<p>Mulți români aleg să-l convertească pentru simplitatea ulterioară:</p>
+<ol>
+<li>Mergi la <strong>Motorizzazione Civile</strong> al provinciei tale</li>
+<li>Documente: permis original + copie, residenza, Codice Fiscale, fotografie biometrică, certificat medical (pentru vârste >50 ani)</li>
+<li>Plăți: ~30€ + duplicat ~16€</li>
+<li>Permisul italian sosește în 1-2 luni</li>
+</ol>
+<p><strong>Nu necesită examen!</strong></p>
+<h2>Pentru moldoveni — non-UE</h2>
+<p>Permisul moldovenesc este valabil <strong>doar 1 an</strong> de la data residenței italiene. După, trebuie:</p>
+<ul>
+<li>SAU schimb (Conversione)</li>
+<li>SAU permis italian de la zero</li>
+</ul>
+<h3>Există acord Moldova-Italia?</h3>
+<p>Italia are acorduri bilaterale doar cu anumite țări. <strong>Moldova NU este pe lista oficială</strong> de echivalare directă. Asta înseamnă:</p>
+<ul>
+<li>Conversie cu <strong>examen italian (teoretic + practic) este obligatorie</strong></li>
+<li>Trebuie să te înscrii la o <strong>autoscuola</strong> (școală de șoferi) italiană</li>
+</ul>
+<h3>Procedură</h3>
+<ol>
+<li>Înscrie-te la o autoscuola</li>
+<li>Documente: pașaport, Permesso, residenza, Codice Fiscale, certificat medical, 2 fotografii</li>
+<li>Studii teoretice: ~30 lecții, examen cu 30 întrebări (max 3 greșeli)</li>
+<li>Lecții de circulație: minim 6 ore obligatorii</li>
+<li>Examen practic la Motorizzazione</li>
+<li>Costuri totale: <strong>1.000-2.000€</strong></li>
+</ol>
+<h2>Cazuri speciale</h2>
+<h3>Permis moldovenesc cu rezidență anterioară în UE</h3>
+<p>Dacă ai locuit în alt stat UE (de exemplu Spania) cu permis convertit acolo, poți cere conversia simplificată în Italia.</p>
+<h3>Profesioniști (CQC)</h3>
+<p>Pentru a fi camionagiu, taximetrist sau șofer profesionist:</p>
+<ul>
+<li>Permis B sau C/D + <strong>CQC</strong> (Carta di Qualificazione del Conducente)</li>
+<li>Curs obligatoriu 130-280 ore + examen</li>
+<li>Reciclare la fiecare 5 ani</li>
+</ul>
+<h2>Reînnoire</h2>
+<ul>
+<li>Permis italian categoria B: valabil 10 ani (până la 50 ani), apoi 5 ani (50-70), 3 ani (70+)</li>
+<li>Reînnoire la <strong>medic agreat</strong> + <strong>Motorizzazione</strong> sau <strong>autoscuola</strong></li>
+<li>Costuri: ~30€ + medic ~70€</li>
+</ul>
+<h2>Atenție</h2>
+<ul>
+<li>După 1 an cu permis moldovenesc neschimbat: <strong>fără permis</strong> — riști amendă 5.000€ + sechestru auto</li>
+<li>IDP (Permis Internațional) NU prelungește valabilitatea — e doar traducere</li>
+<li>Asigurarea poate refuza reclamație dacă permisul nu mai e valabil</li>
+<li>Contraventii pot afecta cetățenia ulterioară</li>
+</ul>
+<h2>Patente Speciali</h2>
+<p>Pentru categorii AM (mopede, 14+ ani) și A (motociclete), procedurile sunt similare. Verifică cu autoscuola pentru combinații.</p>
+<p><strong>Sursă oficială:</strong> <a href="https://www.mit.gov.it" target="_blank" rel="noopener">Ministero delle Infrastrutture e dei Trasporti</a></p>`,
+  },
 ]
 
 async function main() {
