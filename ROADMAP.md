@@ -1,7 +1,7 @@
 # Roadmap eSimplu
 
 > Source de vérité pour le suivi du projet. Mise à jour à chaque merge dans `main`.
-> Dernière mise à jour : 2026-04-20
+> Dernière mise à jour : 2026-04-27
 
 ## Légende
 
@@ -17,30 +17,41 @@
 - [x] Nettoyer pages et layout (placeholders articles, services, marketplace, delivery)
 - [x] Installer Prisma + PostgreSQL (schema auth + articles + services)
 - [x] Installer et configurer Auth.js (Google + Facebook providers)
-- [x] Installer shadcn/ui (button, dialog, select)
+- [x] Installer shadcn/ui (button, dialog, select, avatar, badge, separator, sheet, skeleton)
 - [x] Country selector + modale première visite
 - [x] Mettre à jour GitHub Actions deploy
 - [x] Docs onboarding + mock data pour dev junior
 
 ## Phase 1.5 — Auth & contenu
 
-- [ ] **Auth email/password + page inscription** — branche `feat/login` (en cours)
+- [x] Auth email/password + page inscription
+- [x] Landing page (hero slider, sections grid, design tokens)
+- [x] Header + Footer (composants layout)
+- [x] Design system — composants partagés (`components/shared/{cards,forms,navigation}`)
+- [x] Page articles (liste + détail dynamique avec mock data)
+- [x] Page services (répertoire avec filtres catégorie/pays)
+- [x] Formulaire soumission service (`/services/new` avec validation)
+- [x] Page `/design` — showcase du design system
 - [ ] Auth Facebook — en attente vérification identité Meta (bloqué)
 - [ ] Route RGPD `/api/auth/facebook/delete` — à faire quand Facebook OK
-- [ ] Landing page (design + contenu)
-- [ ] Page articles (liste + détail avec mock data)
-- [ ] Page services (répertoire + formulaire soumission avec mock data)
 
 ## Phase 2 — Marketplace
 
+UI partiellement implémentée en mock data ; backend (modèles, API, persistance) reste à faire.
+
+- [x] UI listing marketplace + recherche
+- [x] UI détail produit
+- [x] UI page producteur (story + grille produits)
 - [ ] Design spec marketplace (tables Seller, Product, Order)
-- [ ] Interface vendeur
-- [ ] Interface acheteur
-- [ ] Filtrage par pays de livraison
+- [ ] Modèles Prisma + migrations (Seller, Product, Order)
+- [ ] Interface vendeur (création produits, gestion commandes)
+- [ ] Interface acheteur (panier, checkout)
+- [ ] Filtrage par pays de livraison (`deliveriesTo[]`)
 
 ## Phase 3 — Delivery
 
 - [ ] Design spec delivery (tables Carrier, Trip, Booking)
+- [ ] Modèles Prisma + migrations
 - [ ] Publication de trajets
 - [ ] Réservation
 - [ ] Filtres par ville départ/arrivée
@@ -54,7 +65,8 @@
 - [x] HTTPS automatique via Caddy
 - [x] Auth Google OAuth configuré et fonctionnel
 - [x] Corriger `deploy.yml` — chemins et nom PM2
-- [ ] Configurer les GitHub Secrets (VPS_HOST, VPS_USER, VPS_SSH_KEY) pour CI/CD auto
+- [x] GitHub Secrets configurés (`VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`) — CI/CD auto actif
+- [x] Postinstall hook : `prisma generate` automatique au `npm install`
 - [ ] Redirection `esimplu.fr` → `esimplu.com`
 
 ---
@@ -64,4 +76,3 @@
 | Branche | Description | Statut |
 |---|---|---|
 | `main` | Production | Stable |
-| `feat/login` | Auth email/password + inscription | En cours |
