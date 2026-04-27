@@ -4,7 +4,10 @@ import { ArticleCard } from "@/components/shared/cards/article-card"
 import { ProductCard } from "@/components/shared/cards/product-card"
 import { ServiceCategoryButton } from "@/components/shared/navigation/service-category-button"
 import { SectionHeader } from "@/components/shared/navigation/section-header"
-import { mockArticles, mockServiceCategories, mockProducts } from "@/lib/mock-data"
+import { mockServiceCategories, mockProducts } from "@/lib/mock-data"
+import { prisma } from "@/lib/prisma"
+
+export const dynamic = "force-dynamic"
 
 const categoryIcon: Record<string, string> = {
   contabil: "🧾",
@@ -16,12 +19,19 @@ const categoryIcon: Record<string, string> = {
   frizer: "✂️",
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const recentArticles = await prisma.article.findMany({
+    where: { published: true },
+    orderBy: { createdAt: "desc" },
+    take: 3,
+    include: { category: true },
+  })
+
   return (
     <main>
       <HeroSection />
       <HowItWorksSection />
-      <ArticlesSection />
+      <ArticlesSection articles={recentArticles} />
       <ServicesSection />
       <MarketplaceSection />
       <JoinSection />
@@ -110,9 +120,19 @@ function HowItWorksSection() {
 
 /* ─── Section 3 : Articole recente ─────────────────────────────── */
 
-function ArticlesSection() {
-  const articles = mockArticles.slice(0, 3)
+type RecentArticle = {
+  id: string
+  title: string
+  slug: string
+  excerpt: string | null
+  coverImage: string | null
+  countries: string[]
+  readingTime: number | null
+  createdAt: Date
+  category: { slug: string; name: string } | null
+}
 
+function ArticlesSection({ articles }: { articles: RecentArticle[] }) {
   return (
     <section className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
@@ -122,8 +142,22 @@ function ArticlesSection() {
           linkLabel="Toate articolele"
         />
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {articles.map((article) => (
-            <ArticleCard key={article.id} article={article} />
+          {articles.map((a) => (
+            <ArticleCard
+              key={a.id}
+              article={{
+                id: a.id,
+                title: a.title,
+                slug: a.slug,
+                excerpt: a.excerpt ?? undefined,
+                coverImage: a.coverImage ?? undefined,
+                countries: a.countries,
+                createdAt: a.createdAt,
+                readingTime: a.readingTime ?? undefined,
+                category: a.category?.slug,
+                categoryName: a.category?.name,
+              }}
+            />
           ))}
         </div>
       </div>

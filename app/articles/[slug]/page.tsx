@@ -1,8 +1,10 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArticleCard } from "@/components/shared/cards/article-card"
-import { mockArticles, mockArticleCategories } from "@/lib/mock-data"
 import { COUNTRIES } from "@/lib/countries"
+import { prisma } from "@/lib/prisma"
+
+export const dynamic = "force-dynamic"
 
 function formatDate(date: Date | string): string {
   const d = typeof date === "string" ? new Date(date) : date
@@ -20,16 +22,26 @@ export default async function ArticleDetailPage({
 }) {
   const { slug } = await params
 
-  const article = mockArticles.find((a) => a.slug === slug)
-  if (!article) notFound()
+  const article = await prisma.article.findUnique({
+    where: { slug },
+    include: { category: true },
+  })
+  if (!article || !article.published) notFound()
 
-  const category = mockArticleCategories.find(
-    (c) => c.slug === article.category,
-  )
+  const category = article.category
 
-  const relatedArticles = mockArticles
-    .filter((a) => a.category === article.category && a.id !== article.id)
-    .slice(0, 3)
+  const relatedArticles = article.categoryId
+    ? await prisma.article.findMany({
+        where: {
+          categoryId: article.categoryId,
+          id: { not: article.id },
+          published: true,
+        },
+        include: { category: true },
+        take: 3,
+        orderBy: { createdAt: "desc" },
+      })
+    : []
 
   return (
     <main className="py-8 px-6">
@@ -143,7 +155,21 @@ export default async function ArticleDetailPage({
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedArticles.map((a) => (
-              <ArticleCard key={a.id} article={a} />
+              <ArticleCard
+                key={a.id}
+                article={{
+                  id: a.id,
+                  title: a.title,
+                  slug: a.slug,
+                  excerpt: a.excerpt ?? undefined,
+                  coverImage: a.coverImage ?? undefined,
+                  countries: a.countries,
+                  createdAt: a.createdAt,
+                  readingTime: a.readingTime ?? undefined,
+                  category: a.category?.slug,
+                  categoryName: a.category?.name,
+                }}
+              />
             ))}
           </div>
         </section>
