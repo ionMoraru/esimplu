@@ -10,17 +10,29 @@ datasource db {
 // === Auth.js tables ===
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  accounts      Account[]
-  sessions      Session[]
-  services      ServiceListing[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id             String           @id @default(cuid())
+  name           String?
+  email          String?          @unique
+  emailVerified  DateTime?
+  image          String?
+  password       String?
+  role           UserRole         @default(CUSTOMER)
+  accounts       Account[]
+  sessions       Session[]
+  services       ServiceListing[]
+  sellerProfile  SellerProfile?
+  courierProfile CourierProfile?
+  customerOrders Order[]          @relation("CustomerOrders")
+  orderEvents    OrderEvent[]
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+}
+
+enum UserRole {
+  CUSTOMER
+  SELLER
+  COURIER
+  ADMIN
 }
 
 model Account {
@@ -72,20 +84,20 @@ model ArticleCategory {
 }
 
 model Article {
-  id          String           @id @default(cuid())
+  id          String   @id @default(cuid())
   title       String
-  slug        String           @unique
+  slug        String   @unique
   content     String
   excerpt     String?
   coverImage  String?
   countries   String[]
   readingTime Int?
-  published   Boolean          @default(false)
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-  categoryId  String?
-  category    ArticleCategory? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+  category   ArticleCategory? @relation(fields: [categoryId], references: [id])
 }
 
 model ServiceCategory {
@@ -96,7 +108,7 @@ model ServiceCategory {
 }
 
 model ServiceListing {
-  id          String          @id @default(cuid())
+  id          String        @id @default(cuid())
   userId      String
   title       String
   categoryId  String
@@ -108,9 +120,9 @@ model ServiceListing {
   email       String
   whatsapp    String?
   photo       String?
-  status      ServiceStatus   @default(PENDING)
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
+  status      ServiceStatus @default(PENDING)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
 
   user     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   category ServiceCategory @relation(fields: [categoryId], references: [id])
@@ -120,4 +132,153 @@ enum ServiceStatus {
   PENDING
   PUBLISHED
   REJECTED
+}
+
+// === Marketplace ===
+
+model SellerProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  displayName   String
+  slug          String  @unique
+  description   String?
+  city          String?
+  country       String
+  phone         String?
+  iban          String?
+  commissionPct Int     @default(12)
+
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  products Product[]
+  orders   Order[]
+}
+
+model CourierProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  displayName String
+  phone       String
+  baseCity    String?
+  baseCountry String
+
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders Order[]
+}
+
+model Product {
+  id       String        @id @default(cuid())
+  sellerId String
+  seller   SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+
+  name        String
+  description String
+  imageUrl    String?
+  priceCents  Int
+  currency    String  @default("EUR")
+  stock       Int     @default(1)
+
+  countriesAvailable String[]
+  category           String?
+
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  orderItems OrderItem[]
+
+  @@index([sellerId])
+  @@index([isPublished])
+}
+
+enum OrderStatus {
+  PENDING_PAYMENT
+  PAID
+  HANDED_OVER
+  COURIER_DELIVERED
+  DELIVERED
+  SETTLED
+  CANCELLED
+  DISPUTED
+}
+
+model Order {
+  id         String          @id @default(cuid())
+  customerId String
+  customer   User            @relation("CustomerOrders", fields: [customerId], references: [id])
+  sellerId   String
+  seller     SellerProfile   @relation(fields: [sellerId], references: [id])
+  courierId  String?
+  courier    CourierProfile? @relation(fields: [courierId], references: [id])
+
+  status OrderStatus @default(PENDING_PAYMENT)
+
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  deliveryAddress String
+  deliveryCity    String
+  deliveryCountry String
+  notes           String?
+
+  productsCents   Int
+  commissionCents Int
+  payoutCents     Int
+
+  paymentProvider String?
+  paymentRef      String?
+  paidAt          DateTime?
+
+  courierConfirmedAt  DateTime?
+  customerConfirmedAt DateTime?
+
+  settledAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items  OrderItem[]
+  events OrderEvent[]
+
+  @@index([customerId])
+  @@index([sellerId])
+  @@index([courierId])
+  @@index([status])
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  productName    String
+  unitPriceCents Int
+  quantity       Int    @default(1)
+
+  @@index([orderId])
+}
+
+model OrderEvent {
+  id      String @id @default(cuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  type        String
+  payload     Json?
+  actorUserId String?
+  actor       User?    @relation(fields: [actorUserId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@index([orderId])
 }
