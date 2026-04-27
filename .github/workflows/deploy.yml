@@ -22,7 +22,12 @@ jobs:
           script: |
             set -e
             cd ~/esimplu
-            git pull origin main
+            # La prod ne doit jamais avoir de modif locale persistante :
+            # main est la source de vérité. On force l'alignement strict
+            # avant chaque deploy pour éviter les "git pull conflicts"
+            # type package-lock.json modifié par un npm install manuel.
+            git fetch origin main
+            git reset --hard origin/main
             npm ci --include=dev
             npx prisma migrate deploy
             npm run build
