@@ -1,7 +1,7 @@
 # Roadmap eSimplu
 
 > Source de vérité pour le suivi du projet. Mise à jour à chaque merge dans `main`.
-> Dernière mise à jour : 2026-04-27
+> Dernière mise à jour : 2026-04-27 (post marketplace MVP)
 
 ## Légende
 
@@ -37,16 +37,25 @@
 
 ## Phase 2 — Marketplace
 
-UI partiellement implémentée en mock data ; backend (modèles, API, persistance) reste à faire.
+MVP « première vente » fonctionnel bout en bout (Lots 1–9 du plan, 6 PRs mergées). Stripe et Resend (Lots 10–11) restent à activer pour la production.
 
-- [x] UI listing marketplace + recherche
-- [x] UI détail produit
+- [x] UI listing marketplace + recherche (mock data — **listing public toujours en mock**, à brancher quand l'associé sera dispo)
+- [x] UI détail produit (DB-first, fallback mock)
 - [x] UI page producteur (story + grille produits)
-- [ ] Design spec marketplace (tables Seller, Product, Order)
-- [ ] Modèles Prisma + migrations (Seller, Product, Order)
-- [ ] Interface vendeur (création produits, gestion commandes)
-- [ ] Interface acheteur (panier, checkout)
-- [ ] Filtrage par pays de livraison (`deliveriesTo[]`)
+- [x] Spec design + plan d'implémentation (`docs/superpowers/specs|plans/2026-04-27-marketplace-mvp*`)
+- [x] Modèles Prisma + migration (`SellerProfile`, `CourierProfile`, `Product`, `Order`, `OrderItem`, `OrderEvent`, enums `UserRole` + `OrderStatus`)
+- [x] Services métier (`lib/services/orders|products|payment|email`) avec state machine + audit trail
+- [x] API routes (18) — public, seller, courier, admin
+- [x] Dashboard vendeur (création produit, édition, liste commandes)
+- [x] Dashboard livreur (Pris en charge / Livré, double validation avec client)
+- [x] Dashboard admin (approve seller/courier, mark-paid, assign-courier, settle)
+- [x] Checkout customer (formulaire + provider abstraction `mock` / `manual` / `stripe`)
+- [x] Page de suivi client `/orders/[id]` avec confirmation de réception
+- [x] Filtrage par pays de livraison (`countriesAvailable[]`)
+- [ ] Stripe Connect / Stripe Checkout réel (Lot 11) — abstraction prête
+- [ ] Resend pour emails réels (Lot 10) — abstraction prête, mode console pour l'instant
+- [ ] Variantes produit (tailles, déclinaisons) — workaround : 1 produit = 1 variante
+- [ ] Panier multi-produits — MVP = 1 commande = 1 produit, 1 vendeur
 
 ## Phase 3 — Delivery
 
