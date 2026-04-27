@@ -1,12 +1,14 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ProductCard } from "@/components/shared/cards/product-card"
+import { DbProductDetail } from "@/components/marketplace/db-product-detail"
 import {
   mockProducts,
   mockProducers,
   mockProductCategories,
 } from "@/lib/mock-data"
 import { COUNTRIES } from "@/lib/countries"
+import { prisma } from "@/lib/prisma"
 
 export default async function ProductDetailPage({
   params,
@@ -14,6 +16,15 @@ export default async function ProductDetailPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
+
+  // Try DB first (real seller-published products use cuid IDs).
+  const dbProduct = await prisma.product.findUnique({
+    where: { id },
+    include: { seller: true },
+  })
+  if (dbProduct && dbProduct.isPublished) {
+    return <DbProductDetail product={dbProduct} seller={dbProduct.seller} />
+  }
 
   const product = mockProducts.find((p) => p.id === id)
   if (!product) notFound()
