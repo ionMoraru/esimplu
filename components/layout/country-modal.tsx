@@ -1,25 +1,16 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { COUNTRIES, COUNTRY_COOKIE, COUNTRY_COOKIE_MAX_AGE } from "@/lib/countries"
+import { COUNTRIES, readCountryCookie, writeCountryCookie } from "@/lib/countries"
 import type { Country } from "@/types"
 
 export function CountryModal() {
-  const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const hasCountry = document.cookie
-      .split("; ")
-      .some((c) => c.startsWith(`${COUNTRY_COOKIE}=`))
-    if (!hasCountry) {
-      setOpen(true)
-    }
-  }, [])
+  const [open, setOpen] = useState(() => readCountryCookie() === null)
 
   function selectCountry(code: Country) {
-    document.cookie = `${COUNTRY_COOKIE}=${code}; path=/; max-age=${COUNTRY_COOKIE_MAX_AGE}`
+    writeCountryCookie(code)
     setOpen(false)
     window.location.reload()
   }
