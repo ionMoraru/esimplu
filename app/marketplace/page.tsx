@@ -92,7 +92,7 @@ export default function MarketplacePage() {
             />
             {searchResults.length === 0 ? (
               <div className="text-center py-12 text-muted-foreground">
-                <p className="text-lg">Niciun produs găsit pentru "{query}".</p>
+                <p className="text-lg">Niciun produs găsit pentru &ldquo;{query}&rdquo;.</p>
                 <p className="text-sm mt-2">
                   Încearcă un alt termen sau explorează catalogul mai jos.
                 </p>
