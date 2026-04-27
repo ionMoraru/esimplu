@@ -1,12 +1,12 @@
 import Link from "next/link"
 import { COUNTRIES } from "@/lib/countries"
-import { mockArticleCategories } from "@/lib/mock-data"
 
 type Article = {
   id: string
   title: string
   slug: string
   category?: string
+  categoryName?: string
   excerpt?: string
   coverImage?: string
   countries: string[]
@@ -23,12 +23,8 @@ function getCountryLabel(code: string) {
   return COUNTRIES.find((c) => c.code === code)
 }
 
-function getCategoryName(slug?: string) {
-  return mockArticleCategories.find((c) => c.slug === slug)?.name
-}
-
 export function ArticleCard({ article }: { article: Article }) {
-  const categoryName = getCategoryName(article.category)
+  const categoryName = article.categoryName
 
   return (
     <Link
