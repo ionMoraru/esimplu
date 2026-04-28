@@ -1,0 +1,133 @@
+"use client"
+
+import { useState } from "react"
+import Link from "next/link"
+import { ServiceCard } from "@/components/shared/cards/service-card"
+import { FilterPill } from "@/components/shared/navigation/filter-pill"
+import { COUNTRIES } from "@/lib/countries"
+import { CATEGORY_ICONS } from "@/lib/service-category-icons"
+
+type Service = {
+  id: string
+  title: string
+  description: string
+  languages: string[]
+  city: string
+  countries: string[]
+  phone: string
+  email: string
+  whatsapp: string | null
+  photo: string | null
+  category: { slug: string; name: string } | null
+}
+
+type Category = { slug: string; name: string }
+
+export function ServicesList({
+  services,
+  categories,
+}: {
+  services: Service[]
+  categories: Category[]
+}) {
+  const [selectedCategory, setSelectedCategory] = useState<string>("all")
+  const [selectedCountry, setSelectedCountry] = useState<string>("all")
+
+  const filtered = services.filter((service) => {
+    const categoryMatch =
+      selectedCategory === "all" || service.category?.slug === selectedCategory
+    const countryMatch =
+      selectedCountry === "all" || service.countries.includes(selectedCountry)
+    return categoryMatch && countryMatch
+  })
+
+  return (
+    <>
+      <div className="flex items-center gap-2 flex-wrap mb-3">
+        <FilterPill
+          active={selectedCategory === "all"}
+          onClick={() => setSelectedCategory("all")}
+        >
+          Toate categoriile
+        </FilterPill>
+        {categories.map((cat) => (
+          <FilterPill
+            key={cat.slug}
+            active={selectedCategory === cat.slug}
+            onClick={() => setSelectedCategory(cat.slug)}
+          >
+            {CATEGORY_ICONS[cat.slug] ?? "📁"} {cat.name}
+          </FilterPill>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-2 flex-wrap mb-8">
+        <FilterPill
+          active={selectedCountry === "all"}
+          onClick={() => setSelectedCountry("all")}
+        >
+          Toate țările
+        </FilterPill>
+        {COUNTRIES.map((c) => (
+          <FilterPill
+            key={c.code}
+            active={selectedCountry === c.code}
+            onClick={() => setSelectedCountry(c.code)}
+          >
+            {c.flag} {c.name}
+          </FilterPill>
+        ))}
+      </div>
+
+      <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
+        <p className="text-sm text-muted-foreground">
+          {filtered.length} serviciu
+          {filtered.length !== 1 ? "ri" : ""} disponibil
+          {filtered.length !== 1 ? "e" : ""}
+        </p>
+        <Link
+          href="/services/new"
+          className="flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
+        >
+          + Propune un serviciu
+        </Link>
+      </div>
+
+      {filtered.length === 0 ? (
+        <div className="text-center py-20 text-muted-foreground">
+          <p className="text-lg">
+            Niciun serviciu găsit pentru filtrele selectate.
+          </p>
+          <button
+            onClick={() => {
+              setSelectedCategory("all")
+              setSelectedCountry("all")
+            }}
+            className="mt-4 text-sm text-primary hover:underline"
+          >
+            Resetează filtrele
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((service) => (
+            <ServiceCard
+              key={service.id}
+              service={{
+                id: service.id,
+                title: service.title,
+                description: service.description,
+                languages: service.languages,
+                city: service.city,
+                countries: service.countries,
+                phone: service.phone,
+                email: service.email,
+                category: service.category,
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </>
+  )
+}
