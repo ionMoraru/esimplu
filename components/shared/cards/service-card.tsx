@@ -1,10 +1,10 @@
 import { COUNTRIES } from "@/lib/countries"
-import { mockServiceCategories } from "@/lib/mock-data"
+import { CATEGORY_ICONS } from "@/lib/service-category-icons"
 
 type Service = {
   id: string
   title: string
-  category: string
+  category: { slug: string; name: string } | null
   description: string
   languages: string[]
   city: string
@@ -23,7 +23,8 @@ const LANGUAGE_LABELS: Record<string, string> = {
 }
 
 export function ServiceCard({ service }: { service: Service }) {
-  const category = mockServiceCategories.find((c) => c.slug === service.category)
+  const category = service.category
+  const icon = category ? CATEGORY_ICONS[category.slug] ?? "📁" : null
 
   return (
     <div
@@ -34,7 +35,7 @@ export function ServiceCard({ service }: { service: Service }) {
       <div className="flex items-start justify-between gap-3">
         {category && (
           <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">
-            {category.icon} {category.name}
+            {icon} {category.name}
           </span>
         )}
         <span className="text-xs text-muted-foreground flex items-center gap-1 shrink-0">
