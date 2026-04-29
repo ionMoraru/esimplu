@@ -136,6 +136,96 @@ export function tplAdminNewSellerRequest(vars: {
   }
 }
 
+export function tplCourierNewBookingRequest(vars: {
+  bookingId: string
+  tripId: string
+  type: "PASSENGER" | "PARCEL"
+  quantity: number
+  originCity: string
+  destinationCity: string
+  departureDate: string
+  customerName: string
+  customerPhone: string
+  customerMessage: string | null
+  reviewUrl: string
+}): EmailMessage {
+  const typeLabel = vars.type === "PASSENGER" ? `${vars.quantity} place(s) passager` : `colis de ${vars.quantity} kg`
+  return {
+    to: "",
+    subject: `Nouvelle demande sur votre trajet ${vars.originCity} → ${vars.destinationCity}`,
+    text: [
+      `Bonjour,`,
+      ``,
+      `Vous avez reçu une nouvelle demande de réservation.`,
+      ``,
+      `Trajet : ${vars.originCity} → ${vars.destinationCity}`,
+      `Départ : ${vars.departureDate}`,
+      `Demande : ${typeLabel}`,
+      `Client : ${vars.customerName} (${vars.customerPhone})`,
+      vars.customerMessage ? `Message : ${vars.customerMessage}` : "",
+      ``,
+      `Validez ou refusez la demande ici : ${vars.reviewUrl}`,
+      `eSimplu`,
+    ].filter(Boolean).join("\n"),
+  }
+}
+
+export function tplCustomerBookingConfirmed(vars: {
+  bookingId: string
+  originCity: string
+  destinationCity: string
+  departureDate: string
+  courierName: string
+  courierPhone: string
+  trackingUrl: string
+}): EmailMessage {
+  return {
+    to: "",
+    subject: `Réservation confirmée — ${vars.originCity} → ${vars.destinationCity}`,
+    text: [
+      `Bonjour,`,
+      ``,
+      `Bonne nouvelle : votre demande de réservation a été acceptée par le transporteur.`,
+      ``,
+      `Trajet : ${vars.originCity} → ${vars.destinationCity}`,
+      `Départ : ${vars.departureDate}`,
+      ``,
+      `Coordonnées du transporteur :`,
+      `  ${vars.courierName}`,
+      `  ${vars.courierPhone}`,
+      ``,
+      `Contactez-le directement pour finaliser les détails (lieu de RDV, paiement).`,
+      `eSimplu n'intervient ni dans le paiement ni dans la livraison.`,
+      ``,
+      `Suivi : ${vars.trackingUrl}`,
+      `eSimplu`,
+    ].join("\n"),
+  }
+}
+
+export function tplCustomerBookingRejected(vars: {
+  bookingId: string
+  originCity: string
+  destinationCity: string
+  reason: string | null
+  trackingUrl: string
+}): EmailMessage {
+  return {
+    to: "",
+    subject: `Réservation refusée — ${vars.originCity} → ${vars.destinationCity}`,
+    text: [
+      `Bonjour,`,
+      ``,
+      `Votre demande de réservation pour ${vars.originCity} → ${vars.destinationCity} a été refusée par le transporteur.`,
+      vars.reason ? `Raison : ${vars.reason}` : "",
+      ``,
+      `Vous pouvez chercher d'autres trajets disponibles sur eSimplu.`,
+      `Suivi : ${vars.trackingUrl}`,
+      `eSimplu`,
+    ].filter(Boolean).join("\n"),
+  }
+}
+
 export function tplCustomerCourierDelivered(vars: OrderEmailVars & { trackingUrl: string }): EmailMessage {
   return {
     to: "",

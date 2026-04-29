@@ -14,6 +14,8 @@ const STATUS_LABELS: Record<string, string> = {
   DISPUTED: "Litige",
 }
 
+export const dynamic = "force-dynamic"
+
 export default async function CourierDashboard() {
   const { courier } = await requireCourierSession()
   const orders = await prisma.order.findMany({
@@ -28,6 +30,11 @@ export default async function CourierDashboard() {
     take: 10,
     include: { seller: true },
   })
+
+  const [tripsCount, pendingBookingsCount] = await Promise.all([
+    prisma.trip.count({ where: { courierId: courier.id, status: { in: ["PUBLISHED", "FULL"] } } }),
+    prisma.booking.count({ where: { trip: { courierId: courier.id }, status: "PENDING" } }),
+  ])
 
   return (
     <main className="max-w-5xl mx-auto p-6 space-y-6">
@@ -45,8 +52,29 @@ export default async function CourierDashboard() {
         </Link>
       </header>
 
+      <section className="grid gap-3 sm:grid-cols-2">
+        <Link
+          href="/dashboard/courier/trips"
+          className="rounded border p-4 hover:bg-muted/30 transition-colors"
+        >
+          <div className="text-sm text-muted-foreground">Trajets publiés</div>
+          <div className="text-2xl font-semibold mt-1">{tripsCount}</div>
+          <div className="text-sm text-emerald-700 mt-1">Gérer mes trajets →</div>
+        </Link>
+        <Link
+          href="/dashboard/courier/bookings"
+          className="rounded border p-4 hover:bg-muted/30 transition-colors"
+        >
+          <div className="text-sm text-muted-foreground">Demandes en attente</div>
+          <div className={`text-2xl font-semibold mt-1 ${pendingBookingsCount > 0 ? "text-amber-700" : ""}`}>
+            {pendingBookingsCount}
+          </div>
+          <div className="text-sm text-emerald-700 mt-1">Voir les demandes →</div>
+        </Link>
+      </section>
+
       <section>
-        <h2 className="text-lg font-medium mb-3">À traiter ({orders.length})</h2>
+        <h2 className="text-lg font-medium mb-3">Commandes marketplace à traiter ({orders.length})</h2>
         {orders.length === 0 ? (
           <p className="text-sm text-muted-foreground">Aucune commande en cours.</p>
         ) : (
