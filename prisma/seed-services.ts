@@ -14,6 +14,7 @@ const categories = [
   { slug: "frizer", name: "Frizer / Coafor / Unghii" },
   { slug: "transport", name: "Transport pasageri" },
   { slug: "livrare", name: "Livrare colete" },
+  { slug: "mutari-transport", name: "Mutări & Transport" },
   { slug: "restaurant", name: "Restaurant" },
   { slug: "traducator", name: "Traducător autorizat" },
   { slug: "contabil", name: "Contabil" },

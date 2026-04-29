@@ -118,21 +118,53 @@ model ServiceListing {
   city        String
   countries   String[]
   phone       String
-  email       String
+  email       String?
   whatsapp    String?
   photo       String?
   status      ServiceStatus @default(PENDING)
+
+  // Claim flow (drafts pré-remplis à partir d'infos publiques)
+  claimToken     String?   @unique
+  claimExpiresAt DateTime?
+  claimedAt      DateTime?
+  claimMethod    String?
+  sourceUrl      String?
+  deletedAt      DateTime?
+
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
 
-  user     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  category ServiceCategory @relation(fields: [categoryId], references: [id])
+  user     User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category ServiceCategory      @relation(fields: [categoryId], references: [id])
+  events   ServiceClaimEvent[]
+
+  @@index([status])
+  @@index([claimExpiresAt])
 }
 
 enum ServiceStatus {
+  DRAFT
   PENDING
   PUBLISHED
   REJECTED
+  OWNER_REFUSED
+  EXPIRED
+}
+
+model ServiceClaimEvent {
+  id        String   @id @default(cuid())
+  serviceId String
+  service   ServiceListing @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  type      String
+  payload   Json?
+  ip        String?
+  userAgent String?
+
+  createdAt DateTime @default(now())
+
+  @@index([serviceId])
+  @@index([type])
 }
 
 // === Marketplace ===
