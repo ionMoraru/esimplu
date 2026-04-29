@@ -4,11 +4,8 @@ export const CATEGORY_ICONS: Record<string, string> = {
   magazin: "🛒",
   traducator: "🈯",
   livrare: "📦",
+  transport: "🚌",
+  restaurant: "🍽️",
   medic: "🩺",
   frizer: "💇",
-  consulat: "🏛️",
-  "administratie-publica": "📋",
-  urgenta: "🚨",
-  "sanatate-publica": "🏥",
-  asociatie: "🤝",
 }
