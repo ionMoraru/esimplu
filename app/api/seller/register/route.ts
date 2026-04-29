@@ -5,7 +5,20 @@ import { handleApiError, jsonError, readJson } from "@/lib/api/respond"
 import { getEmailService, tplAdminNewSellerRequest } from "@/lib/services/email"
 
 const ALLOWED_COUNTRIES = ["fr", "de", "it", "uk", "md", "ro"]
-const SLUG_REGEX = /^[a-z0-9](?:[a-z0-9-]{1,48}[a-z0-9])?$/
+// H2 fix: slug accepte 1 à 50 chars (lettres minuscules, chiffres, tirets), pas
+// de tiret en début/fin. Permet displayName de 2 chars sans rejet incompréhensible.
+const SLUG_REGEX = /^[a-z0-9](?:[a-z0-9-]{0,48}[a-z0-9])?$/
+
+// H3 fix: caps explicites pour éviter l'accumulation silencieuse en DB.
+const MAX_DISPLAY_NAME = 80
+const MAX_CITY = 80
+const MAX_PHONE = 30
+const MAX_IBAN = 34 // norme ISO 13616
+const MAX_DESCRIPTION = 2000
+
+// H4 fix: regex IBAN structurelle. Ne valide PAS la checksum mod-97 (à faire
+// au moment du payout), mais bloque les valeurs garbage type "<script>".
+const IBAN_REGEX = /^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$/
 
 interface RegisterBody {
   displayName: string
@@ -18,13 +31,19 @@ interface RegisterBody {
 }
 
 function slugify(input: string): string {
-  return input
+  const base = input
     .toLowerCase()
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 50)
+  // H2 fix: si le résultat est vide ou < 2 chars (ex: displayName "@@"),
+  // fallback sur un slug aléatoire pour ne pas casser l'inscription.
+  if (base.length < 2) {
+    return `vendeur-${Math.random().toString(36).slice(2, 8)}`
+  }
+  return base
 }
 
 export async function POST(request: Request) {
@@ -40,14 +59,34 @@ export async function POST(request: Request) {
     const body = await readJson<RegisterBody>(request)
 
     const displayName = body.displayName?.trim()
-    if (!displayName || displayName.length < 2 || displayName.length > 80) {
-      return jsonError("Nom commercial requis (2 à 80 caractères)", 400)
+    if (!displayName || displayName.length < 2 || displayName.length > MAX_DISPLAY_NAME) {
+      return jsonError(`Nom commercial requis (2 à ${MAX_DISPLAY_NAME} caractères)`, 400)
     }
     const city = body.city?.trim()
     if (!city) return jsonError("Ville requise", 400)
+    if (city.length > MAX_CITY) {
+      return jsonError(`Ville trop longue (max ${MAX_CITY} caractères)`, 400)
+    }
     const country = body.country?.trim().toLowerCase()
     if (!country || !ALLOWED_COUNTRIES.includes(country)) {
       return jsonError(`Pays non supporté. Acceptés : ${ALLOWED_COUNTRIES.join(", ")}`, 400)
+    }
+    const phone = body.phone?.trim() || null
+    if (phone && phone.length > MAX_PHONE) {
+      return jsonError(`Téléphone trop long (max ${MAX_PHONE} caractères)`, 400)
+    }
+    const iban = body.iban?.trim().replace(/\s+/g, "").toUpperCase() || null
+    if (iban) {
+      if (iban.length > MAX_IBAN) {
+        return jsonError(`IBAN trop long (max ${MAX_IBAN} caractères)`, 400)
+      }
+      if (!IBAN_REGEX.test(iban)) {
+        return jsonError("Format IBAN invalide (ex: FR76...)", 400)
+      }
+    }
+    const description = body.description?.trim() || null
+    if (description && description.length > MAX_DESCRIPTION) {
+      return jsonError(`Description trop longue (max ${MAX_DESCRIPTION} caractères)`, 400)
     }
 
     let slug = body.slug?.trim().toLowerCase()
@@ -72,19 +111,23 @@ export async function POST(request: Request) {
         slug,
         city,
         country,
-        phone: body.phone?.trim() || null,
-        iban: body.iban?.trim().replace(/\s+/g, "") || null,
-        description: body.description?.trim() || null,
+        phone,
+        iban,
+        description,
         approved: false,
       },
     })
 
-    // On bascule le rôle SELLER tout de suite — l'accès aux routes seller
-    // reste bloqué tant que `approved=false` (cf. requireSeller).
-    await prisma.user.update({
-      where: { id: user.id },
-      data: { role: "SELLER" },
-    })
+    // H1 fix: ne JAMAIS rétrograder un ADMIN ou un COURIER existant.
+    // Bascule SELLER uniquement pour les CUSTOMER (rôle par défaut).
+    // L'accès aux routes seller reste de toute façon bloqué tant que
+    // approved=false (cf. requireSeller).
+    if (user.role === "CUSTOMER") {
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { role: "SELLER" },
+      })
+    }
 
     // Notifie l'admin (mode console pour l'instant). En prod, l'email
     // partira via le mailer configuré quand on aura un EmailService réel.
