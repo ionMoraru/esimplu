@@ -2,6 +2,8 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ProductCard } from "@/components/shared/cards/product-card"
 import { mockProducers, mockProducts } from "@/lib/mock-data"
+import { prisma } from "@/lib/prisma"
+import { DbProducerDetail } from "@/components/marketplace/db-producer-detail"
 
 export default async function ProducerPage({
   params,
@@ -9,6 +11,22 @@ export default async function ProducerPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
+
+  // DB-first lookup. Si on trouve un seller approuvé avec ce slug,
+  // on rend la fiche DB. Sinon on retombe sur les mock producers
+  // existants (démos qui restent visibles).
+  const seller = await prisma.sellerProfile.findUnique({
+    where: { slug },
+    include: {
+      products: {
+        where: { isPublished: true },
+        orderBy: { createdAt: "desc" },
+      },
+    },
+  })
+  if (seller && seller.approved) {
+    return <DbProducerDetail seller={seller} products={seller.products} />
+  }
 
   const producer = mockProducers.find((p) => p.slug === slug)
   if (!producer) notFound()
@@ -18,7 +36,6 @@ export default async function ProducerPage({
   return (
     <main className="py-8 px-6">
       <div className="max-w-6xl mx-auto">
-        {/* Breadcrumb */}
         <nav className="text-sm text-muted-foreground mb-6 flex items-center gap-2 flex-wrap">
           <Link
             href="/marketplace"
@@ -32,9 +49,9 @@ export default async function ProducerPage({
           <span className="text-foreground font-medium">{producer.name}</span>
         </nav>
 
-        {/* Hero producteur */}
         <section className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-10 mb-16">
           <div className="aspect-square bg-muted rounded-2xl overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={producer.image}
               alt={producer.name}
@@ -82,7 +99,6 @@ export default async function ProducerPage({
           </div>
         </section>
 
-        {/* Grille de produits */}
         <section className="border-t pt-12">
           <div className="flex items-baseline justify-between mb-6 flex-wrap gap-2">
             <h2

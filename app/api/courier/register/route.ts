@@ -6,6 +6,11 @@ import { getEmailService, tplAdminNewSellerRequest } from "@/lib/services/email"
 
 const ALLOWED_COUNTRIES = ["fr", "de", "it", "uk", "md", "ro"]
 
+// H3 fix: caps explicites pour éviter le stockage abusif.
+const MAX_DISPLAY_NAME = 80
+const MAX_CITY = 80
+const MAX_PHONE = 30
+
 interface RegisterBody {
   displayName: string
   phone: string
@@ -25,12 +30,19 @@ export async function POST(request: Request) {
     const body = await readJson<RegisterBody>(request)
 
     const displayName = body.displayName?.trim()
-    if (!displayName || displayName.length < 2 || displayName.length > 80) {
-      return jsonError("Nom commercial requis (2 à 80 caractères)", 400)
+    if (!displayName || displayName.length < 2 || displayName.length > MAX_DISPLAY_NAME) {
+      return jsonError(`Nom commercial requis (2 à ${MAX_DISPLAY_NAME} caractères)`, 400)
     }
     const phone = body.phone?.trim()
     if (!phone || phone.length < 6) {
       return jsonError("Téléphone requis (au moins 6 caractères)", 400)
+    }
+    if (phone.length > MAX_PHONE) {
+      return jsonError(`Téléphone trop long (max ${MAX_PHONE} caractères)`, 400)
+    }
+    const baseCity = body.baseCity?.trim() || null
+    if (baseCity && baseCity.length > MAX_CITY) {
+      return jsonError(`Ville trop longue (max ${MAX_CITY} caractères)`, 400)
     }
     const baseCountry = body.baseCountry?.trim().toLowerCase()
     if (!baseCountry || !ALLOWED_COUNTRIES.includes(baseCountry)) {
@@ -42,7 +54,7 @@ export async function POST(request: Request) {
         userId: user.id,
         displayName,
         phone,
-        baseCity: body.baseCity?.trim() || null,
+        baseCity,
         baseCountry,
         approved: false,
       },
