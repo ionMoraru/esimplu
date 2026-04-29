@@ -33,76 +33,76 @@ export class TripValidationError extends Error {
 
 function checkCity(label: string, value: string): string {
   const v = value.trim()
-  if (!v) throw new TripValidationError(`${label} requis`)
-  if (v.length > MAX_CITY) throw new TripValidationError(`${label} trop long (max ${MAX_CITY})`)
+  if (!v) throw new TripValidationError(`${label} este obligatoriu`)
+  if (v.length > MAX_CITY) throw new TripValidationError(`${label} prea lung (maxim ${MAX_CITY})`)
   return v
 }
 
 function checkCountry(label: string, value: string): string {
   const v = value.trim().toLowerCase()
   if (!ALLOWED_COUNTRIES.includes(v)) {
-    throw new TripValidationError(`${label} non supporté (acceptés : ${ALLOWED_COUNTRIES.join(", ")})`)
+    throw new TripValidationError(`${label} nu este acceptată (acceptate: ${ALLOWED_COUNTRIES.join(", ")})`)
   }
   return v
 }
 
 export function validateCreateTripInput(input: CreateTripInput): CreateTripInput {
-  const originCity = checkCity("Ville de départ", input.originCity)
-  const originCountry = checkCountry("Pays de départ", input.originCountry)
-  const destinationCity = checkCity("Ville d'arrivée", input.destinationCity)
-  const destinationCountry = checkCountry("Pays d'arrivée", input.destinationCountry)
+  const originCity = checkCity("Orașul de plecare", input.originCity)
+  const originCountry = checkCountry("Țara de plecare", input.originCountry)
+  const destinationCity = checkCity("Orașul de sosire", input.destinationCity)
+  const destinationCountry = checkCountry("Țara de sosire", input.destinationCountry)
 
   if (originCity.toLowerCase() === destinationCity.toLowerCase() && originCountry === destinationCountry) {
-    throw new TripValidationError("Origine et destination identiques")
+    throw new TripValidationError("Plecarea și sosirea sunt identice")
   }
 
   const departureDate = new Date(input.departureDate)
   if (Number.isNaN(departureDate.getTime())) {
-    throw new TripValidationError("Date de départ invalide")
+    throw new TripValidationError("Data de plecare nevalidă")
   }
   if (departureDate.getTime() < Date.now() - 60 * 60 * 1000) {
-    throw new TripValidationError("La date de départ ne peut pas être dans le passé")
+    throw new TripValidationError("Data de plecare nu poate fi în trecut")
   }
   let arrivalDate: Date | null = null
   if (input.arrivalDate) {
     arrivalDate = new Date(input.arrivalDate)
     if (Number.isNaN(arrivalDate.getTime())) {
-      throw new TripValidationError("Date d'arrivée invalide")
+      throw new TripValidationError("Data de sosire nevalidă")
     }
     if (arrivalDate < departureDate) {
-      throw new TripValidationError("La date d'arrivée doit être après la date de départ")
+      throw new TripValidationError("Data de sosire trebuie să fie după data de plecare")
     }
   }
 
   if (!ALLOWED_VEHICLES.includes(input.vehicleType)) {
-    throw new TripValidationError("Type de véhicule invalide")
+    throw new TripValidationError("Tip de vehicul nevalid")
   }
 
   const passengerSeatsOffered = Math.max(0, input.passengerSeatsOffered ?? 0)
   const parcelCapacityKg = Math.max(0, input.parcelCapacityKg ?? 0)
   if (passengerSeatsOffered === 0 && parcelCapacityKg === 0) {
-    throw new TripValidationError("Indiquez au moins une capacité passager OU colis")
+    throw new TripValidationError("Indică cel puțin o capacitate pentru pasageri SAU pentru colete")
   }
   if (passengerSeatsOffered > MAX_PASSENGER_SEATS) {
-    throw new TripValidationError(`Trop de places (max ${MAX_PASSENGER_SEATS})`)
+    throw new TripValidationError(`Prea multe locuri (maxim ${MAX_PASSENGER_SEATS})`)
   }
   if (parcelCapacityKg > MAX_CAPACITY_KG) {
-    throw new TripValidationError(`Capacité colis trop élevée (max ${MAX_CAPACITY_KG} kg)`)
+    throw new TripValidationError(`Capacitate colete prea mare (maxim ${MAX_CAPACITY_KG} kg)`)
   }
 
   function checkPrice(label: string, v: number | null | undefined): number | null {
     if (v === null || v === undefined) return null
-    if (!Number.isInteger(v) || v < 0) throw new TripValidationError(`${label} doit être un entier positif (en cents)`)
-    if (v > MAX_PRICE_CENTS) throw new TripValidationError(`${label} dépasse le maximum`)
+    if (!Number.isInteger(v) || v < 0) throw new TripValidationError(`${label} trebuie să fie un întreg pozitiv (în cenți)`)
+    if (v > MAX_PRICE_CENTS) throw new TripValidationError(`${label} depășește maximul`)
     return v
   }
-  const pricePerSeatCents = checkPrice("Prix passager", input.pricePerSeatCents)
-  const pricePerKgCents = checkPrice("Prix par kg", input.pricePerKgCents)
+  const pricePerSeatCents = checkPrice("Preț pasager", input.pricePerSeatCents)
+  const pricePerKgCents = checkPrice("Preț per kg", input.pricePerKgCents)
 
   let notes: string | null = null
   if (input.notes !== undefined && input.notes !== null) {
     const n = input.notes.trim()
-    if (n.length > MAX_NOTES) throw new TripValidationError(`Notes trop longues (max ${MAX_NOTES})`)
+    if (n.length > MAX_NOTES) throw new TripValidationError(`Note prea lungi (maxim ${MAX_NOTES})`)
     notes = n || null
   }
 

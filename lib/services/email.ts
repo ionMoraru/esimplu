@@ -149,22 +149,22 @@ export function tplCourierNewBookingRequest(vars: {
   customerMessage: string | null
   reviewUrl: string
 }): EmailMessage {
-  const typeLabel = vars.type === "PASSENGER" ? `${vars.quantity} place(s) passager` : `colis de ${vars.quantity} kg`
+  const typeLabel = vars.type === "PASSENGER" ? `${vars.quantity} loc(uri) pasager` : `colet de ${vars.quantity} kg`
   return {
     to: "",
-    subject: `Nouvelle demande sur votre trajet ${vars.originCity} → ${vars.destinationCity}`,
+    subject: `Cerere nouă pe cursa ${vars.originCity} → ${vars.destinationCity}`,
     text: [
-      `Bonjour,`,
+      `Bună ziua,`,
       ``,
-      `Vous avez reçu une nouvelle demande de réservation.`,
+      `Ai primit o nouă cerere de rezervare.`,
       ``,
-      `Trajet : ${vars.originCity} → ${vars.destinationCity}`,
-      `Départ : ${vars.departureDate}`,
-      `Demande : ${typeLabel}`,
-      `Client : ${vars.customerName} (${vars.customerPhone})`,
-      vars.customerMessage ? `Message : ${vars.customerMessage}` : "",
+      `Cursă: ${vars.originCity} → ${vars.destinationCity}`,
+      `Plecare: ${vars.departureDate}`,
+      `Cerere: ${typeLabel}`,
+      `Client: ${vars.customerName} (${vars.customerPhone})`,
+      vars.customerMessage ? `Mesaj: ${vars.customerMessage}` : "",
       ``,
-      `Validez ou refusez la demande ici : ${vars.reviewUrl}`,
+      `Validează sau refuză cererea aici: ${vars.reviewUrl}`,
       `eSimplu`,
     ].filter(Boolean).join("\n"),
   }
@@ -181,23 +181,23 @@ export function tplCustomerBookingConfirmed(vars: {
 }): EmailMessage {
   return {
     to: "",
-    subject: `Réservation confirmée — ${vars.originCity} → ${vars.destinationCity}`,
+    subject: `Rezervare confirmată — ${vars.originCity} → ${vars.destinationCity}`,
     text: [
-      `Bonjour,`,
+      `Bună ziua,`,
       ``,
-      `Bonne nouvelle : votre demande de réservation a été acceptée par le transporteur.`,
+      `Vești bune: cererea ta de rezervare a fost acceptată de transportator.`,
       ``,
-      `Trajet : ${vars.originCity} → ${vars.destinationCity}`,
-      `Départ : ${vars.departureDate}`,
+      `Cursă: ${vars.originCity} → ${vars.destinationCity}`,
+      `Plecare: ${vars.departureDate}`,
       ``,
-      `Coordonnées du transporteur :`,
+      `Date de contact transportator:`,
       `  ${vars.courierName}`,
       `  ${vars.courierPhone}`,
       ``,
-      `Contactez-le directement pour finaliser les détails (lieu de RDV, paiement).`,
-      `eSimplu n'intervient ni dans le paiement ni dans la livraison.`,
+      `Contactează-l direct pentru a stabili detaliile (locul de întâlnire, plata).`,
+      `eSimplu nu intervine nici în plată, nici în livrare.`,
       ``,
-      `Suivi : ${vars.trackingUrl}`,
+      `Urmărire: ${vars.trackingUrl}`,
       `eSimplu`,
     ].join("\n"),
   }
@@ -212,15 +212,15 @@ export function tplCustomerBookingRejected(vars: {
 }): EmailMessage {
   return {
     to: "",
-    subject: `Réservation refusée — ${vars.originCity} → ${vars.destinationCity}`,
+    subject: `Rezervare refuzată — ${vars.originCity} → ${vars.destinationCity}`,
     text: [
-      `Bonjour,`,
+      `Bună ziua,`,
       ``,
-      `Votre demande de réservation pour ${vars.originCity} → ${vars.destinationCity} a été refusée par le transporteur.`,
-      vars.reason ? `Raison : ${vars.reason}` : "",
+      `Cererea ta de rezervare pentru ${vars.originCity} → ${vars.destinationCity} a fost refuzată de transportator.`,
+      vars.reason ? `Motiv: ${vars.reason}` : "",
       ``,
-      `Vous pouvez chercher d'autres trajets disponibles sur eSimplu.`,
-      `Suivi : ${vars.trackingUrl}`,
+      `Poți căuta alte curse disponibile pe eSimplu.`,
+      `Urmărire: ${vars.trackingUrl}`,
       `eSimplu`,
     ].filter(Boolean).join("\n"),
   }

@@ -21,7 +21,7 @@ export function CourierBookingActions({ bookingId }: { bookingId: string }) {
       })
       const json = (await res.json()) as { error?: string }
       if (!res.ok) {
-        setError(json.error ?? "Erreur")
+        setError(json.error ?? "Eroare")
         return
       }
       router.refresh()
@@ -32,7 +32,7 @@ export function CourierBookingActions({ bookingId }: { bookingId: string }) {
     <div className="space-y-2 pt-1">
       <div className="flex gap-2">
         <Button size="sm" onClick={() => call("accept")} disabled={pending}>
-          Accepter
+          Acceptă
         </Button>
         <Button
           variant="outline"
@@ -40,7 +40,7 @@ export function CourierBookingActions({ bookingId }: { bookingId: string }) {
           onClick={() => setShowReject(!showReject)}
           disabled={pending}
         >
-          Refuser
+          Refuză
         </Button>
       </div>
       {showReject && (
@@ -51,7 +51,7 @@ export function CourierBookingActions({ bookingId }: { bookingId: string }) {
             rows={2}
             maxLength={500}
             className="w-full rounded border px-3 py-2 text-sm"
-            placeholder="Raison du refus (facultatif, visible par le client)"
+            placeholder="Motivul refuzului (opțional, vizibil pentru client)"
           />
           <Button
             variant="destructive"
@@ -59,7 +59,7 @@ export function CourierBookingActions({ bookingId }: { bookingId: string }) {
             onClick={() => call("reject", reason ? { reason } : undefined)}
             disabled={pending}
           >
-            Confirmer le refus
+            Confirmă refuzul
           </Button>
         </div>
       )}

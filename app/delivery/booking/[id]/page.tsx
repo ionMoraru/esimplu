@@ -7,10 +7,10 @@ import { CustomerCancelBookingButton } from "@/components/delivery/customer-canc
 export const dynamic = "force-dynamic"
 
 const STATUS_LABELS: Record<string, string> = {
-  PENDING: "En attente de validation",
-  CONFIRMED: "Confirmée",
-  REJECTED: "Refusée",
-  CANCELLED: "Annulée",
+  PENDING: "În așteptare validare",
+  CONFIRMED: "Confirmată",
+  REJECTED: "Refuzată",
+  CANCELLED: "Anulată",
 }
 
 export default async function BookingTrackingPage({
@@ -33,22 +33,21 @@ export default async function BookingTrackingPage({
   if (!booking) notFound()
   if (booking.customerId !== user.id && user.role !== "ADMIN") notFound()
 
-  // Coordonnées courier visibles seulement après CONFIRMED.
   const showContact = booking.status === "CONFIRMED"
 
   return (
     <main className="max-w-3xl mx-auto p-6 space-y-6">
       <nav className="text-sm text-muted-foreground">
         <Link href="/delivery" className="hover:text-foreground transition-colors">
-          ← Rechercher d&apos;autres trajets
+          ← Caută alte curse
         </Link>
       </nav>
 
       <header className="space-y-1">
-        <h1 className="text-2xl font-semibold">Ma réservation</h1>
+        <h1 className="text-2xl font-semibold">Rezervarea mea</h1>
         <p className="text-sm text-muted-foreground">
           {booking.trip.originCity} → {booking.trip.destinationCity} ·{" "}
-          {new Date(booking.trip.departureDate).toLocaleString("fr-FR")}
+          {new Date(booking.trip.departureDate).toLocaleString("ro-RO")}
         </p>
       </header>
 
@@ -64,17 +63,17 @@ export default async function BookingTrackingPage({
         <p className="font-medium">{STATUS_LABELS[booking.status]}</p>
         {booking.status === "PENDING" && (
           <p className="text-sm mt-1">
-            Le transporteur a 48 h pour vous répondre. Vous serez notifié(e) par email.
+            Transportatorul are 48 h să-ți răspundă. Vei fi notificat(ă) pe email.
           </p>
         )}
         {booking.status === "REJECTED" && booking.rejectionReason && (
-          <p className="text-sm mt-1">Raison : {booking.rejectionReason}</p>
+          <p className="text-sm mt-1">Motiv: {booking.rejectionReason}</p>
         )}
       </section>
 
       {showContact && (
         <section className="rounded border p-4 space-y-2">
-          <h2 className="font-medium">Coordonnées du transporteur</h2>
+          <h2 className="font-medium">Date de contact transportator</h2>
           <p className="text-sm">
             <strong>{booking.trip.courier.displayName}</strong> ({booking.trip.courier.user.name ?? ""})
           </p>
@@ -83,27 +82,27 @@ export default async function BookingTrackingPage({
             <p className="text-sm">✉️ {booking.trip.courier.user.email}</p>
           )}
           <p className="text-xs text-muted-foreground mt-2">
-            Contactez-le directement pour finaliser les détails (lieu de RDV, paiement). eSimplu
-            n&apos;intervient ni dans le paiement ni dans la livraison.
+            Contactează-l direct pentru a stabili detaliile (locul de întâlnire, plata). eSimplu
+            nu intervine nici în plată, nici în livrare.
           </p>
         </section>
       )}
 
       <section className="rounded border p-4 space-y-2 text-sm">
-        <h2 className="font-medium">Détails de la demande</h2>
+        <h2 className="font-medium">Detalii cerere</h2>
         <div>
-          Type : {booking.type === "PASSENGER" ? "Passagers" : "Colis"} · Quantité : {booking.quantity}
-          {booking.type === "PASSENGER" ? " place(s)" : " kg"}
+          Tip: {booking.type === "PASSENGER" ? "Pasageri" : "Colet"} · Cantitate: {booking.quantity}
+          {booking.type === "PASSENGER" ? " loc(uri)" : " kg"}
         </div>
         {booking.type === "PARCEL" && (
           <>
-            <div>Colis : {booking.parcelDescription}</div>
-            <div>Retrait : {booking.pickupAddress}</div>
-            <div>Livraison : {booking.dropoffAddress}</div>
+            <div>Colet: {booking.parcelDescription}</div>
+            <div>Ridicare: {booking.pickupAddress}</div>
+            <div>Livrare: {booking.dropoffAddress}</div>
           </>
         )}
         {booking.customerMessage && (
-          <div>Message envoyé : {booking.customerMessage}</div>
+          <div>Mesaj trimis: {booking.customerMessage}</div>
         )}
       </section>
 

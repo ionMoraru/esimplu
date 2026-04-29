@@ -28,16 +28,16 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
     setError(null)
     const q = Number.parseInt(quantity, 10)
     if (Number.isNaN(q) || q < 1) {
-      setError("Quantité invalide")
+      setError("Cantitate invalidă")
       return
     }
     if (!phone.trim() || phone.trim().length < 6) {
-      setError("Téléphone requis")
+      setError("Telefonul este obligatoriu")
       return
     }
     if (type === "PARCEL") {
       if (!parcelDescription.trim() || !pickupAddress.trim() || !dropoffAddress.trim()) {
-        setError("Description, adresse de retrait et de livraison requises pour un colis")
+        setError("Descrierea, adresa de ridicare și de livrare sunt obligatorii pentru un colet")
         return
       }
     }
@@ -59,7 +59,7 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
       })
       const json = (await res.json()) as { error?: string; booking?: { id: string } }
       if (!res.ok || !json.booking) {
-        setError(json.error ?? "Erreur lors de la réservation")
+        setError(json.error ?? "Eroare la rezervare")
         return
       }
       router.push(`/delivery/booking/${json.booking.id}`)
@@ -67,7 +67,7 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
   }
 
   const maxQty = type === "PASSENGER" ? passengerSeatsOffered : parcelCapacityKg
-  const qLabel = type === "PASSENGER" ? "Nombre de passagers" : "Poids du colis (kg)"
+  const qLabel = type === "PASSENGER" ? "Număr de pasageri" : "Greutatea coletului (kg)"
 
   return (
     <form
@@ -78,7 +78,7 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
       className="space-y-5"
     >
       <section className="space-y-3">
-        <h2 className="font-medium">Type de demande</h2>
+        <h2 className="font-medium">Tip cerere</h2>
         <div className="flex gap-3">
           {passengerSeatsOffered > 0 && (
             <label className="flex items-center gap-2 text-sm">
@@ -90,7 +90,7 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
                   setQuantity("1")
                 }}
               />
-              Passagers
+              Pasageri
             </label>
           )}
           {parcelCapacityKg > 0 && (
@@ -103,7 +103,7 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
                   setQuantity("1")
                 }}
               />
-              Colis
+              Colet
             </label>
           )}
         </div>
@@ -122,7 +122,7 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
           />
         </div>
         <div>
-          <label className="block text-sm mb-1">Votre téléphone *</label>
+          <label className="block text-sm mb-1">Telefonul tău *</label>
           <Input
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
@@ -130,25 +130,25 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
             required
           />
           <p className="text-xs text-muted-foreground mt-1">
-            Communiqué au transporteur uniquement après acceptation.
+            Comunicat transportatorului doar după acceptare.
           </p>
         </div>
       </section>
 
       {type === "PARCEL" && (
         <section className="space-y-3">
-          <h2 className="font-medium">Détails du colis</h2>
+          <h2 className="font-medium">Detalii colet</h2>
           <div>
-            <label className="block text-sm mb-1">Description *</label>
+            <label className="block text-sm mb-1">Descriere *</label>
             <Input
               value={parcelDescription}
               onChange={(e) => setParcelDescription(e.target.value)}
-              placeholder="Documents, vêtements, médicaments..."
+              placeholder="Documente, haine, medicamente..."
               required
             />
           </div>
           <div>
-            <label className="block text-sm mb-1">Adresse de retrait *</label>
+            <label className="block text-sm mb-1">Adresa de ridicare *</label>
             <Input
               value={pickupAddress}
               onChange={(e) => setPickupAddress(e.target.value)}
@@ -156,7 +156,7 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
             />
           </div>
           <div>
-            <label className="block text-sm mb-1">Adresse de livraison *</label>
+            <label className="block text-sm mb-1">Adresa de livrare *</label>
             <Input
               value={dropoffAddress}
               onChange={(e) => setDropoffAddress(e.target.value)}
@@ -167,7 +167,7 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
       )}
 
       <section className="space-y-3">
-        <h2 className="font-medium">Message au transporteur (facultatif)</h2>
+        <h2 className="font-medium">Mesaj pentru transportator (opțional)</h2>
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
@@ -184,10 +184,10 @@ export function BookingForm({ tripId, defaultType, passengerSeatsOffered, parcel
       )}
 
       <Button type="submit" disabled={pending}>
-        {pending ? "Envoi..." : "Envoyer la demande"}
+        {pending ? "Se trimite..." : "Trimite cererea"}
       </Button>
       <p className="text-xs text-muted-foreground">
-        Le transporteur recevra votre demande par email. Il dispose ensuite de 48 h pour confirmer.
+        Transportatorul va primi cererea ta pe email. Are 48 h pentru a confirma.
       </p>
     </form>
   )

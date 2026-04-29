@@ -28,7 +28,6 @@ export default async function BookTripPage({
   }
 
   const requestedType = sp.type === "PASSENGER" || sp.type === "PARCEL" ? sp.type : undefined
-  // Si type demandé n'est pas disponible sur ce trajet, fallback au type dispo.
   const defaultType =
     requestedType === "PASSENGER" && trip.passengerSeatsOffered > 0
       ? "PASSENGER"
@@ -41,10 +40,10 @@ export default async function BookTripPage({
   return (
     <main className="max-w-2xl mx-auto p-6 space-y-6">
       <header>
-        <h1 className="text-2xl font-semibold">Réserver</h1>
+        <h1 className="text-2xl font-semibold">Rezervă</h1>
         <p className="text-sm text-muted-foreground">
           {trip.originCity} → {trip.destinationCity} ·{" "}
-          {new Date(trip.departureDate).toLocaleString("fr-FR")} · par {trip.courier.displayName}
+          {new Date(trip.departureDate).toLocaleString("ro-RO")} · de {trip.courier.displayName}
         </p>
       </header>
 

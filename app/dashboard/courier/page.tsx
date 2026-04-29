@@ -57,24 +57,24 @@ export default async function CourierDashboard() {
           href="/dashboard/courier/trips"
           className="rounded border p-4 hover:bg-muted/30 transition-colors"
         >
-          <div className="text-sm text-muted-foreground">Trajets publiés</div>
+          <div className="text-sm text-muted-foreground">Curse publicate</div>
           <div className="text-2xl font-semibold mt-1">{tripsCount}</div>
-          <div className="text-sm text-emerald-700 mt-1">Gérer mes trajets →</div>
+          <div className="text-sm text-emerald-700 mt-1">Gestionează cursele →</div>
         </Link>
         <Link
           href="/dashboard/courier/bookings"
           className="rounded border p-4 hover:bg-muted/30 transition-colors"
         >
-          <div className="text-sm text-muted-foreground">Demandes en attente</div>
+          <div className="text-sm text-muted-foreground">Cereri în așteptare</div>
           <div className={`text-2xl font-semibold mt-1 ${pendingBookingsCount > 0 ? "text-amber-700" : ""}`}>
             {pendingBookingsCount}
           </div>
-          <div className="text-sm text-emerald-700 mt-1">Voir les demandes →</div>
+          <div className="text-sm text-emerald-700 mt-1">Vezi cererile →</div>
         </Link>
       </section>
 
       <section>
-        <h2 className="text-lg font-medium mb-3">Commandes marketplace à traiter ({orders.length})</h2>
+        <h2 className="text-lg font-medium mb-3">Comenzi marketplace de tratat ({orders.length})</h2>
         {orders.length === 0 ? (
           <p className="text-sm text-muted-foreground">Aucune commande en cours.</p>
         ) : (

@@ -6,23 +6,23 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 const COUNTRIES = [
-  { code: "fr", label: "🇫🇷 France" },
-  { code: "de", label: "🇩🇪 Allemagne" },
-  { code: "it", label: "🇮🇹 Italie" },
-  { code: "uk", label: "🇬🇧 Royaume-Uni" },
-  { code: "ro", label: "🇷🇴 Roumanie" },
-  { code: "md", label: "🇲🇩 Moldavie" },
-  { code: "be", label: "🇧🇪 Belgique" },
-  { code: "es", label: "🇪🇸 Espagne" },
+  { code: "fr", label: "🇫🇷 Franța" },
+  { code: "de", label: "🇩🇪 Germania" },
+  { code: "it", label: "🇮🇹 Italia" },
+  { code: "uk", label: "🇬🇧 Marea Britanie" },
+  { code: "ro", label: "🇷🇴 România" },
+  { code: "md", label: "🇲🇩 Moldova" },
+  { code: "be", label: "🇧🇪 Belgia" },
+  { code: "es", label: "🇪🇸 Spania" },
 ]
 
 const VEHICLES = [
-  { value: "CAR", label: "🚗 Voiture" },
-  { value: "VAN", label: "🚐 Camionnette" },
-  { value: "BUS", label: "🚌 Bus" },
+  { value: "CAR", label: "🚗 Automobil" },
+  { value: "VAN", label: "🚐 Microbuz" },
+  { value: "BUS", label: "🚌 Autocar" },
   { value: "PLANE", label: "✈️ Avion" },
-  { value: "TRAIN", label: "🚆 Train" },
-  { value: "OTHER", label: "Autre" },
+  { value: "TRAIN", label: "🚆 Tren" },
+  { value: "OTHER", label: "Altul" },
 ]
 
 export function TripCreateForm() {
@@ -54,11 +54,11 @@ export function TripCreateForm() {
     const passengerSeatsN = Number.parseInt(passengerSeats, 10) || 0
     const parcelKgN = Number.parseInt(parcelKg, 10) || 0
     if (passengerSeatsN === 0 && parcelKgN === 0) {
-      setError("Indiquez au moins une capacité passager OU colis")
+      setError("Indică cel puțin o capacitate pentru pasageri SAU pentru colete")
       return
     }
     if (!departureDate) {
-      setError("Date de départ requise")
+      setError("Data plecării este obligatorie")
       return
     }
 
@@ -83,7 +83,7 @@ export function TripCreateForm() {
       })
       const json = (await res.json()) as { error?: string; trip?: { id: string } }
       if (!res.ok) {
-        setError(json.error ?? "Erreur lors de la création")
+        setError(json.error ?? "Eroare la creare")
         return
       }
       router.push("/dashboard/courier/trips")
@@ -100,14 +100,14 @@ export function TripCreateForm() {
       className="space-y-5"
     >
       <section className="space-y-3">
-        <h2 className="font-medium">Itinéraire</h2>
+        <h2 className="font-medium">Itinerariu</h2>
         <div className="grid grid-cols-[1fr_140px] gap-3">
           <div>
-            <label className="block text-sm mb-1">Ville de départ *</label>
+            <label className="block text-sm mb-1">Oraș plecare *</label>
             <Input value={originCity} onChange={(e) => setOriginCity(e.target.value)} required />
           </div>
           <div>
-            <label className="block text-sm mb-1">Pays *</label>
+            <label className="block text-sm mb-1">Țară *</label>
             <select
               value={originCountry}
               onChange={(e) => setOriginCountry(e.target.value)}
@@ -123,7 +123,7 @@ export function TripCreateForm() {
         </div>
         <div className="grid grid-cols-[1fr_140px] gap-3">
           <div>
-            <label className="block text-sm mb-1">Ville d&apos;arrivée *</label>
+            <label className="block text-sm mb-1">Oraș sosire *</label>
             <Input
               value={destinationCity}
               onChange={(e) => setDestinationCity(e.target.value)}
@@ -131,7 +131,7 @@ export function TripCreateForm() {
             />
           </div>
           <div>
-            <label className="block text-sm mb-1">Pays *</label>
+            <label className="block text-sm mb-1">Țară *</label>
             <select
               value={destinationCountry}
               onChange={(e) => setDestinationCountry(e.target.value)}
@@ -148,10 +148,10 @@ export function TripCreateForm() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-medium">Horaires</h2>
+        <h2 className="font-medium">Program</h2>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-sm mb-1">Départ *</label>
+            <label className="block text-sm mb-1">Plecare *</label>
             <Input
               type="datetime-local"
               value={departureDate}
@@ -160,7 +160,7 @@ export function TripCreateForm() {
             />
           </div>
           <div>
-            <label className="block text-sm mb-1">Arrivée (facultatif)</label>
+            <label className="block text-sm mb-1">Sosire (opțional)</label>
             <Input
               type="datetime-local"
               value={arrivalDate}
@@ -171,9 +171,9 @@ export function TripCreateForm() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-medium">Véhicule et capacité</h2>
+        <h2 className="font-medium">Vehicul și capacitate</h2>
         <div>
-          <label className="block text-sm mb-1">Type de véhicule</label>
+          <label className="block text-sm mb-1">Tip vehicul</label>
           <select
             value={vehicleType}
             onChange={(e) => setVehicleType(e.target.value)}
@@ -188,7 +188,7 @@ export function TripCreateForm() {
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-sm mb-1">Places passager</label>
+            <label className="block text-sm mb-1">Locuri pasageri</label>
             <Input
               type="number"
               min={0}
@@ -198,7 +198,7 @@ export function TripCreateForm() {
             />
           </div>
           <div>
-            <label className="block text-sm mb-1">Capacité colis (kg)</label>
+            <label className="block text-sm mb-1">Capacitate colete (kg)</label>
             <Input
               type="number"
               min={0}
@@ -209,19 +209,19 @@ export function TripCreateForm() {
           </div>
         </div>
         <p className="text-xs text-muted-foreground">
-          Indiquez 0 pour le service que vous ne proposez pas. Au moins l&apos;un des deux doit être &gt; 0.
+          Pune 0 pentru serviciul pe care nu îl oferi. Cel puțin unul dintre cele două trebuie să fie &gt; 0.
         </p>
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-medium">Tarifs indicatifs (optionnels)</h2>
+        <h2 className="font-medium">Tarife orientative (opționale)</h2>
         <p className="text-xs text-muted-foreground">
-          La plateforme ne perçoit pas de commission. Ces prix servent à informer le client avant
-          qu&apos;il vous contacte.
+          Platforma nu percepe comision. Aceste prețuri servesc la informarea clientului înainte
+          să te contacteze.
         </p>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-sm mb-1">Prix par place (EUR)</label>
+            <label className="block text-sm mb-1">Preț per loc (EUR)</label>
             <Input
               value={pricePerSeat}
               onChange={(e) => setPricePerSeat(e.target.value)}
@@ -229,7 +229,7 @@ export function TripCreateForm() {
             />
           </div>
           <div>
-            <label className="block text-sm mb-1">Prix par kg (EUR)</label>
+            <label className="block text-sm mb-1">Preț per kg (EUR)</label>
             <Input
               value={pricePerKg}
               onChange={(e) => setPricePerKg(e.target.value)}
@@ -240,14 +240,14 @@ export function TripCreateForm() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-medium">Notes (facultatif)</h2>
+        <h2 className="font-medium">Note (opțional)</h2>
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           maxLength={1000}
           rows={3}
           className="w-full rounded border px-3 py-2 text-sm"
-          placeholder="Pas de fumeurs, pas de produits frais, départ devant la gare..."
+          placeholder="Fără fumători, fără produse perisabile, plecare din fața gării..."
         />
       </section>
 
@@ -258,7 +258,7 @@ export function TripCreateForm() {
       )}
 
       <Button type="submit" disabled={pending}>
-        {pending ? "Publication..." : "Publier le trajet"}
+        {pending ? "Se publică..." : "Publică cursa"}
       </Button>
     </form>
   )
