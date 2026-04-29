@@ -1,5 +1,9 @@
 import { prisma } from "@/lib/prisma"
 import { mockProducts, mockProductCategories, mockProducers } from "@/lib/mock-data"
+
+// La page lit la DB à chaque requête : pas de prerender statique au build
+// (sinon Next essaie de connecter Prisma sans DATABASE_URL en CI).
+export const dynamic = "force-dynamic"
 import {
   dbProductToDisplayWithMeta,
   dbSellerToDisplayProducer,

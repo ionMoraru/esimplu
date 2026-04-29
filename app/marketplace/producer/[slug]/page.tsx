@@ -5,6 +5,9 @@ import { mockProducers, mockProducts } from "@/lib/mock-data"
 import { prisma } from "@/lib/prisma"
 import { DbProducerDetail } from "@/components/marketplace/db-producer-detail"
 
+// La page lit la DB pour résoudre le slug : pas de prerender statique au build.
+export const dynamic = "force-dynamic"
+
 export default async function ProducerPage({
   params,
 }: {
