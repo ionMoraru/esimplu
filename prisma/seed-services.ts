@@ -15,6 +15,7 @@ const categories = [
   { slug: "urgenta", name: "Urgențe" },
   { slug: "sanatate-publica", name: "Sănătate publică" },
   { slug: "asociatie", name: "Asociații diaspora" },
+  { slug: "mutari-transport", name: "Mutări & Transport" },
 ]
 
 type Service = {

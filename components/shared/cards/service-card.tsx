@@ -10,7 +10,7 @@ type Service = {
   city: string
   countries: string[]
   phone: string
-  email: string
+  email: string | null
 }
 
 const LANGUAGE_LABELS: Record<string, string> = {
@@ -84,12 +84,14 @@ export function ServiceCard({ service }: { service: Service }) {
         >
           📞 Sună
         </a>
-        <a
-          href={`mailto:${service.email}`}
-          className="flex-1 flex items-center justify-center gap-1.5 bg-card border border-border py-2 rounded-lg text-sm font-medium hover:border-primary hover:text-primary transition-colors"
-        >
-          ✉️ Email
-        </a>
+        {service.email && (
+          <a
+            href={`mailto:${service.email}`}
+            className="flex-1 flex items-center justify-center gap-1.5 bg-card border border-border py-2 rounded-lg text-sm font-medium hover:border-primary hover:text-primary transition-colors"
+          >
+            ✉️ Email
+          </a>
+        )}
       </div>
     </div>
   )

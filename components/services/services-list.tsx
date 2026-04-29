@@ -15,7 +15,7 @@ type Service = {
   city: string
   countries: string[]
   phone: string
-  email: string
+  email: string | null
   whatsapp: string | null
   photo: string | null
   category: { slug: string; name: string } | null
