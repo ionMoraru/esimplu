@@ -36,15 +36,15 @@ export default async function DeliverySearchPage({
   return (
     <main className="max-w-5xl mx-auto p-6 space-y-6">
       <header>
-        <h1 className="text-2xl font-semibold">Trouver un trajet</h1>
+        <h1 className="text-2xl font-semibold">Caută o cursă</h1>
         <p className="text-sm text-muted-foreground">
-          Voyage entre la diaspora et le pays. Transport de passagers ou colis.
+          Călătorie între diaspora și țară. Transport pentru pasageri sau colete.
         </p>
       </header>
 
       <form className="rounded border p-4 grid gap-3 sm:grid-cols-[1fr_1fr_180px_180px_auto]" method="get">
         <div>
-          <label className="block text-xs mb-1">Départ</label>
+          <label className="block text-xs mb-1">Plecare</label>
           <input
             name="originCity"
             defaultValue={sp.originCity ?? ""}
@@ -53,7 +53,7 @@ export default async function DeliverySearchPage({
           />
         </div>
         <div>
-          <label className="block text-xs mb-1">Arrivée</label>
+          <label className="block text-xs mb-1">Sosire</label>
           <input
             name="destinationCity"
             defaultValue={sp.destinationCity ?? ""}
@@ -62,7 +62,7 @@ export default async function DeliverySearchPage({
           />
         </div>
         <div>
-          <label className="block text-xs mb-1">À partir de</label>
+          <label className="block text-xs mb-1">Începând de la</label>
           <input
             type="date"
             name="fromDate"
@@ -71,15 +71,15 @@ export default async function DeliverySearchPage({
           />
         </div>
         <div>
-          <label className="block text-xs mb-1">Type</label>
+          <label className="block text-xs mb-1">Tip</label>
           <select
             name="type"
             defaultValue={type ?? ""}
             className="w-full rounded border px-3 py-2 text-sm bg-background"
           >
-            <option value="">Tous</option>
-            <option value="PASSENGER">Passagers</option>
-            <option value="PARCEL">Colis</option>
+            <option value="">Toate</option>
+            <option value="PASSENGER">Pasageri</option>
+            <option value="PARCEL">Colete</option>
           </select>
         </div>
         <div className="flex items-end">
@@ -87,16 +87,16 @@ export default async function DeliverySearchPage({
             type="submit"
             className="rounded-lg bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:bg-primary/90"
           >
-            Rechercher
+            Caută
           </button>
         </div>
       </form>
 
       <section>
-        <h2 className="text-lg font-medium mb-3">{trips.length} trajet(s) trouvé(s)</h2>
+        <h2 className="text-lg font-medium mb-3">{trips.length} cursă(e) găsită(e)</h2>
         {trips.length === 0 ? (
           <p className="text-sm text-muted-foreground">
-            Aucun trajet ne correspond à votre recherche. Essayez d&apos;élargir les critères.
+            Nu există curse care să corespundă căutării tale. Încearcă să lărgești criteriile.
           </p>
         ) : (
           <ul className="space-y-3">
@@ -111,14 +111,14 @@ export default async function DeliverySearchPage({
                           {VEHICLE_LABELS[t.vehicleType] ?? "•"} {t.originCity} → {t.destinationCity}
                         </div>
                         <div className="text-sm text-muted-foreground">
-                          {new Date(t.departureDate).toLocaleString("fr-FR")}
-                          {courier && ` · par ${courier.displayName}`}
+                          {new Date(t.departureDate).toLocaleString("ro-RO")}
+                          {courier && ` · de ${courier.displayName}`}
                         </div>
                       </div>
                       <div className="text-sm text-right shrink-0">
                         {t.passengerSeatsOffered > 0 && (
                           <div>
-                            {t.passengerSeatsOffered} place(s)
+                            {t.passengerSeatsOffered} loc(uri)
                             {t.pricePerSeatCents != null &&
                               ` · ${(t.pricePerSeatCents / 100).toFixed(2).replace(".", ",")} €`}
                           </div>

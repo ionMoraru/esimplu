@@ -6,10 +6,10 @@ import { CourierBookingActions } from "@/components/delivery/courier-booking-act
 export const dynamic = "force-dynamic"
 
 const STATUS_LABELS: Record<string, string> = {
-  PENDING: "En attente de votre validation",
-  CONFIRMED: "Confirmée",
-  REJECTED: "Refusée",
-  CANCELLED: "Annulée par le client",
+  PENDING: "În așteptarea validării",
+  CONFIRMED: "Confirmată",
+  REJECTED: "Refuzată",
+  CANCELLED: "Anulată de client",
 }
 
 export default async function CourierBookingsPage() {
@@ -29,16 +29,16 @@ export default async function CourierBookingsPage() {
   return (
     <main className="max-w-5xl mx-auto p-6 space-y-6">
       <header className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Demandes reçues</h1>
+        <h1 className="text-2xl font-semibold">Cereri primite</h1>
         <Link href="/dashboard/courier/trips" className="text-sm text-emerald-700 underline">
-          ← Mes trajets
+          ← Cursele mele
         </Link>
       </header>
 
       <section>
-        <h2 className="text-lg font-medium mb-3">À traiter ({pending.length})</h2>
+        <h2 className="text-lg font-medium mb-3">De tratat ({pending.length})</h2>
         {pending.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Aucune demande en attente.</p>
+          <p className="text-sm text-muted-foreground">Nicio cerere în așteptare.</p>
         ) : (
           <ul className="space-y-3">
             {pending.map((b) => (
@@ -49,32 +49,32 @@ export default async function CourierBookingsPage() {
                       {b.trip.originCity} → {b.trip.destinationCity}
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      {new Date(b.trip.departureDate).toLocaleString("fr-FR")}
+                      {new Date(b.trip.departureDate).toLocaleString("ro-RO")}
                     </div>
                   </div>
                   <div className="text-sm text-right">
                     <div className="font-medium">
                       {b.type === "PASSENGER"
-                        ? `${b.quantity} passager(s)`
+                        ? `${b.quantity} pasager(i)`
                         : `${b.quantity} kg`}
                     </div>
                   </div>
                 </div>
                 <div className="text-sm space-y-1">
                   <div>
-                    <span className="font-medium">Client :</span>{" "}
+                    <span className="font-medium">Client:</span>{" "}
                     {b.customer.name ?? b.customer.email} — {b.customerPhone}
                   </div>
                   {b.customerMessage && (
                     <div>
-                      <span className="font-medium">Message :</span> {b.customerMessage}
+                      <span className="font-medium">Mesaj:</span> {b.customerMessage}
                     </div>
                   )}
                   {b.type === "PARCEL" && (
                     <div className="text-xs text-muted-foreground">
-                      <div>Colis : {b.parcelDescription}</div>
-                      <div>De : {b.pickupAddress}</div>
-                      <div>Vers : {b.dropoffAddress}</div>
+                      <div>Colet: {b.parcelDescription}</div>
+                      <div>De la: {b.pickupAddress}</div>
+                      <div>Către: {b.dropoffAddress}</div>
                     </div>
                   )}
                 </div>
@@ -87,12 +87,12 @@ export default async function CourierBookingsPage() {
 
       {others.length > 0 && (
         <section>
-          <h2 className="text-lg font-medium mb-3">Historique</h2>
+          <h2 className="text-lg font-medium mb-3">Istoric</h2>
           <ul className="space-y-1 text-sm">
             {others.map((b) => (
               <li key={b.id} className="flex justify-between text-muted-foreground border-b py-2">
                 <span>
-                  {b.trip.originCity} → {b.trip.destinationCity} · {b.type === "PASSENGER" ? "passager" : "colis"}
+                  {b.trip.originCity} → {b.trip.destinationCity} · {b.type === "PASSENGER" ? "pasager" : "colet"}
                 </span>
                 <span>{STATUS_LABELS[b.status]}</span>
               </li>

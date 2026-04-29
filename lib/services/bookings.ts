@@ -37,45 +37,45 @@ export interface CreateBookingInput {
 function trimMax(label: string, v: string | undefined | null, max: number, required: boolean): string | null {
   const t = (v ?? "").trim()
   if (!t) {
-    if (required) throw new BookingValidationError(`${label} requis`)
+    if (required) throw new BookingValidationError(`${label} este obligatoriu`)
     return null
   }
-  if (t.length > max) throw new BookingValidationError(`${label} trop long (max ${max})`)
+  if (t.length > max) throw new BookingValidationError(`${label} prea lung (maxim ${max})`)
   return t
 }
 
 export async function createBooking(input: CreateBookingInput): Promise<Booking> {
   const trip = await prisma.trip.findUnique({ where: { id: input.tripId } })
-  if (!trip) throw new BookingValidationError("Trajet introuvable")
+  if (!trip) throw new BookingValidationError("Cursa nu a fost găsită")
   if (trip.status !== "PUBLISHED") {
-    throw new BookingValidationError(`Trajet non disponible (status : ${trip.status})`)
+    throw new BookingValidationError(`Cursă indisponibilă (status: ${trip.status})`)
   }
   if (trip.departureDate.getTime() < Date.now()) {
-    throw new BookingValidationError("Trajet déjà parti")
+    throw new BookingValidationError("Cursa a plecat deja")
   }
 
   if (input.type === "PASSENGER") {
     if (trip.passengerSeatsOffered <= 0) {
-      throw new BookingValidationError("Ce trajet ne propose pas de places passager")
+      throw new BookingValidationError("Această cursă nu oferă locuri pentru pasageri")
     }
     if (!Number.isInteger(input.quantity) || input.quantity < 1 || input.quantity > MAX_QUANTITY_PASSENGER) {
-      throw new BookingValidationError(`Nombre de passagers invalide (1-${MAX_QUANTITY_PASSENGER})`)
+      throw new BookingValidationError(`Număr de pasageri nevalid (1-${MAX_QUANTITY_PASSENGER})`)
     }
     if (input.quantity > trip.passengerSeatsOffered) {
-      throw new BookingValidationError(`Pas assez de places (offertes : ${trip.passengerSeatsOffered})`)
+      throw new BookingValidationError(`Locuri insuficiente (oferite: ${trip.passengerSeatsOffered})`)
     }
   } else if (input.type === "PARCEL") {
     if (trip.parcelCapacityKg <= 0) {
-      throw new BookingValidationError("Ce trajet ne propose pas de transport de colis")
+      throw new BookingValidationError("Această cursă nu oferă transport pentru colete")
     }
     if (!Number.isInteger(input.quantity) || input.quantity < 1 || input.quantity > MAX_QUANTITY_PARCEL_KG) {
-      throw new BookingValidationError(`Poids invalide (1-${MAX_QUANTITY_PARCEL_KG} kg)`)
+      throw new BookingValidationError(`Greutate nevalidă (1-${MAX_QUANTITY_PARCEL_KG} kg)`)
     }
     if (input.quantity > trip.parcelCapacityKg) {
-      throw new BookingValidationError(`Capacité insuffisante (max : ${trip.parcelCapacityKg} kg)`)
+      throw new BookingValidationError(`Capacitate insuficientă (maxim: ${trip.parcelCapacityKg} kg)`)
     }
   } else {
-    throw new BookingValidationError("Type de réservation invalide")
+    throw new BookingValidationError("Tip de rezervare nevalid")
   }
 
   // Empêche un user de booker plusieurs fois le même trip pour le même type
@@ -89,19 +89,19 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
     },
   })
   if (existing) {
-    throw new BookingValidationError("Vous avez déjà une demande active sur ce trajet pour ce type de service")
+    throw new BookingValidationError("Ai deja o cerere activă pe această cursă pentru acest tip de serviciu")
   }
 
-  const customerPhone = trimMax("Téléphone", input.customerPhone, MAX_PHONE, true)!
-  const customerMessage = trimMax("Message", input.customerMessage, MAX_MESSAGE, false)
+  const customerPhone = trimMax("Telefon", input.customerPhone, MAX_PHONE, true)!
+  const customerMessage = trimMax("Mesaj", input.customerMessage, MAX_MESSAGE, false)
   const parcelDescription = input.type === "PARCEL"
-    ? trimMax("Description du colis", input.parcelDescription, MAX_DESCRIPTION, true)
+    ? trimMax("Descrierea coletului", input.parcelDescription, MAX_DESCRIPTION, true)
     : null
   const pickupAddress = input.type === "PARCEL"
-    ? trimMax("Adresse de retrait", input.pickupAddress, MAX_ADDRESS, true)
+    ? trimMax("Adresa de ridicare", input.pickupAddress, MAX_ADDRESS, true)
     : null
   const dropoffAddress = input.type === "PARCEL"
-    ? trimMax("Adresse de livraison", input.dropoffAddress, MAX_ADDRESS, true)
+    ? trimMax("Adresa de livrare", input.dropoffAddress, MAX_ADDRESS, true)
     : null
 
   return prisma.booking.create({
@@ -126,12 +126,12 @@ export async function acceptBookingAsCourier(bookingId: string, courierUserId: s
       where: { id: bookingId },
       include: { trip: { include: { courier: true } } },
     })
-    if (!booking) throw new BookingStateError("Réservation introuvable")
+    if (!booking) throw new BookingStateError("Rezervarea nu a fost găsită")
     if (booking.trip.courier.userId !== courierUserId) {
-      throw new BookingStateError("Vous n'êtes pas le transporteur de ce trajet")
+      throw new BookingStateError("Nu ești transportatorul acestei curse")
     }
     if (booking.status !== "PENDING") {
-      throw new BookingStateError(`Réservation déjà ${booking.status}`)
+      throw new BookingStateError(`Rezervarea este deja ${booking.status}`)
     }
     return tx.booking.update({
       where: { id: bookingId },
@@ -150,12 +150,12 @@ export async function rejectBookingAsCourier(
       where: { id: bookingId },
       include: { trip: { include: { courier: true } } },
     })
-    if (!booking) throw new BookingStateError("Réservation introuvable")
+    if (!booking) throw new BookingStateError("Rezervarea nu a fost găsită")
     if (booking.trip.courier.userId !== courierUserId) {
-      throw new BookingStateError("Vous n'êtes pas le transporteur de ce trajet")
+      throw new BookingStateError("Nu ești transportatorul acestei curse")
     }
     if (booking.status !== "PENDING") {
-      throw new BookingStateError(`Réservation déjà ${booking.status}`)
+      throw new BookingStateError(`Rezervarea este deja ${booking.status}`)
     }
     const trimmedReason = reason?.trim().slice(0, MAX_MESSAGE) || null
     return tx.booking.update({
@@ -172,12 +172,12 @@ export async function rejectBookingAsCourier(
 export async function cancelBookingAsCustomer(bookingId: string, customerUserId: string): Promise<Booking> {
   return prisma.$transaction(async (tx) => {
     const booking = await tx.booking.findUnique({ where: { id: bookingId } })
-    if (!booking) throw new BookingStateError("Réservation introuvable")
+    if (!booking) throw new BookingStateError("Rezervarea nu a fost găsită")
     if (booking.customerId !== customerUserId) {
-      throw new BookingStateError("Vous n'êtes pas le client de cette réservation")
+      throw new BookingStateError("Nu ești clientul acestei rezervări")
     }
     if (booking.status === "REJECTED" || booking.status === "CANCELLED") {
-      throw new BookingStateError(`Réservation déjà ${booking.status}`)
+      throw new BookingStateError(`Rezervarea este deja ${booking.status}`)
     }
     return tx.booking.update({
       where: { id: bookingId },

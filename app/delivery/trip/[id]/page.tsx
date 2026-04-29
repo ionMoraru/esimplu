@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button"
 export const dynamic = "force-dynamic"
 
 const VEHICLE_LABELS: Record<string, string> = {
-  CAR: "🚗 Voiture",
-  VAN: "🚐 Camionnette",
-  BUS: "🚌 Bus",
+  CAR: "🚗 Automobil",
+  VAN: "🚐 Microbuz",
+  BUS: "🚌 Autocar",
   PLANE: "✈️ Avion",
-  TRAIN: "🚆 Train",
-  OTHER: "Autre",
+  TRAIN: "🚆 Tren",
+  OTHER: "Altul",
 }
 
 export default async function TripDetailPage({
@@ -36,7 +36,7 @@ export default async function TripDetailPage({
     <main className="max-w-3xl mx-auto p-6 space-y-6">
       <nav className="text-sm text-muted-foreground">
         <Link href="/delivery" className="hover:text-foreground transition-colors">
-          ← Tous les trajets
+          ← Toate cursele
         </Link>
       </nav>
 
@@ -45,12 +45,12 @@ export default async function TripDetailPage({
           {trip.originCity} → {trip.destinationCity}
         </h1>
         <p className="text-sm text-muted-foreground">
-          {VEHICLE_LABELS[trip.vehicleType]} · Départ{" "}
-          {new Date(trip.departureDate).toLocaleString("fr-FR")}
-          {trip.arrivalDate && ` · Arrivée ${new Date(trip.arrivalDate).toLocaleString("fr-FR")}`}
+          {VEHICLE_LABELS[trip.vehicleType]} · Plecare{" "}
+          {new Date(trip.departureDate).toLocaleString("ro-RO")}
+          {trip.arrivalDate && ` · Sosire ${new Date(trip.arrivalDate).toLocaleString("ro-RO")}`}
         </p>
         <p className="text-sm text-muted-foreground">
-          Transporteur : <span className="text-foreground">{trip.courier.displayName}</span>
+          Transportator: <span className="text-foreground">{trip.courier.displayName}</span>
           {trip.courier.baseCity && ` · ${trip.courier.baseCity}`}
         </p>
       </header>
@@ -58,36 +58,36 @@ export default async function TripDetailPage({
       <section className="grid gap-3 sm:grid-cols-2">
         {trip.passengerSeatsOffered > 0 && (
           <div className="rounded border p-4">
-            <h2 className="font-medium mb-2">Passagers</h2>
+            <h2 className="font-medium mb-2">Pasageri</h2>
             <p className="text-sm">
-              <strong>{trip.passengerSeatsOffered}</strong> place(s) disponible(s)
+              <strong>{trip.passengerSeatsOffered}</strong> loc(uri) disponibil(e)
             </p>
             {trip.pricePerSeatCents != null && (
               <p className="text-sm text-muted-foreground mt-1">
-                Tarif indicatif : {(trip.pricePerSeatCents / 100).toFixed(2).replace(".", ",")} € / place
+                Preț orientativ: {(trip.pricePerSeatCents / 100).toFixed(2).replace(".", ",")} € / loc
               </p>
             )}
             <Link href={`/delivery/book/${trip.id}?type=PASSENGER`}>
               <Button size="sm" className="mt-3">
-                Réserver une place
+                Rezervă un loc
               </Button>
             </Link>
           </div>
         )}
         {trip.parcelCapacityKg > 0 && (
           <div className="rounded border p-4">
-            <h2 className="font-medium mb-2">Colis</h2>
+            <h2 className="font-medium mb-2">Colete</h2>
             <p className="text-sm">
-              <strong>{trip.parcelCapacityKg}</strong> kg de capacité disponible
+              <strong>{trip.parcelCapacityKg}</strong> kg capacitate disponibilă
             </p>
             {trip.pricePerKgCents != null && (
               <p className="text-sm text-muted-foreground mt-1">
-                Tarif indicatif : {(trip.pricePerKgCents / 100).toFixed(2).replace(".", ",")} € / kg
+                Preț orientativ: {(trip.pricePerKgCents / 100).toFixed(2).replace(".", ",")} € / kg
               </p>
             )}
             <Link href={`/delivery/book/${trip.id}?type=PARCEL`}>
               <Button size="sm" className="mt-3">
-                Envoyer un colis
+                Trimite un colet
               </Button>
             </Link>
           </div>
@@ -96,17 +96,16 @@ export default async function TripDetailPage({
 
       {trip.notes && (
         <section className="rounded border bg-muted/30 p-4">
-          <h2 className="font-medium mb-2">Notes du transporteur</h2>
+          <h2 className="font-medium mb-2">Note de la transportator</h2>
           <p className="text-sm whitespace-pre-line">{trip.notes}</p>
         </section>
       )}
 
       <section className="rounded border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
-        <p className="font-medium">eSimplu = mise en relation</p>
+        <p className="font-medium">eSimplu = punere în legătură</p>
         <p className="mt-1">
-          La plateforme ne perçoit aucune commission et n&apos;intervient pas dans le paiement.
-          Les arrangements financiers et logistiques se font directement avec le transporteur
-          après confirmation de la réservation.
+          Platforma nu percepe niciun comision și nu intervine în plată. Detaliile financiare și
+          logistice se rezolvă direct cu transportatorul, după confirmarea rezervării.
         </p>
       </section>
     </main>

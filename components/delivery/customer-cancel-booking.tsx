@@ -10,13 +10,13 @@ export function CustomerCancelBookingButton({ bookingId }: { bookingId: string }
   const router = useRouter()
 
   function cancel() {
-    if (!confirm("Annuler cette réservation ?")) return
+    if (!confirm("Anulezi această rezervare?")) return
     setError(null)
     startTransition(async () => {
       const res = await fetch(`/api/delivery/bookings/${bookingId}/cancel`, { method: "POST" })
       const json = (await res.json()) as { error?: string }
       if (!res.ok) {
-        setError(json.error ?? "Erreur")
+        setError(json.error ?? "Eroare")
         return
       }
       router.refresh()
@@ -26,7 +26,7 @@ export function CustomerCancelBookingButton({ bookingId }: { bookingId: string }
   return (
     <div>
       <Button variant="outline" size="sm" onClick={cancel} disabled={pending}>
-        {pending ? "Annulation..." : "Annuler ma réservation"}
+        {pending ? "Se anulează..." : "Anulează rezervarea"}
       </Button>
       {error && <p className="text-xs text-red-700 mt-1">{error}</p>}
     </div>
