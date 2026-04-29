@@ -10,22 +10,23 @@ datasource db {
 // === Auth.js tables ===
 
 model User {
-  id             String           @id @default(cuid())
-  name           String?
-  email          String?          @unique
-  emailVerified  DateTime?
-  image          String?
-  password       String?
-  role           UserRole         @default(CUSTOMER)
-  accounts       Account[]
-  sessions       Session[]
-  services       ServiceListing[]
-  sellerProfile  SellerProfile?
-  courierProfile CourierProfile?
-  customerOrders Order[]          @relation("CustomerOrders")
-  orderEvents    OrderEvent[]
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
+  id               String           @id @default(cuid())
+  name             String?
+  email            String?          @unique
+  emailVerified    DateTime?
+  image            String?
+  password         String?
+  role             UserRole         @default(CUSTOMER)
+  accounts         Account[]
+  sessions         Session[]
+  services         ServiceListing[]
+  sellerProfile    SellerProfile?
+  courierProfile   CourierProfile?
+  customerOrders   Order[]          @relation("CustomerOrders")
+  customerBookings Booking[]        @relation("CustomerBookings")
+  orderEvents      OrderEvent[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
 }
 
 enum UserRole {
@@ -173,6 +174,7 @@ model CourierProfile {
   updatedAt DateTime @updatedAt
 
   orders Order[]
+  trips  Trip[]
 }
 
 model Product {
@@ -281,4 +283,111 @@ model OrderEvent {
   createdAt   DateTime @default(now())
 
   @@index([orderId])
+}
+
+// === Delivery (point-à-point, sans paiement plateforme) ===
+
+enum VehicleType {
+  CAR
+  VAN
+  BUS
+  PLANE
+  TRAIN
+  OTHER
+}
+
+enum TripStatus {
+  DRAFT
+  PUBLISHED
+  FULL
+  DEPARTED
+  COMPLETED
+  CANCELLED
+}
+
+model Trip {
+  id        String         @id @default(cuid())
+  courierId String
+  courier   CourierProfile @relation(fields: [courierId], references: [id], onDelete: Cascade)
+
+  // Itinéraire
+  originCity         String
+  originCountry      String
+  destinationCity    String
+  destinationCountry String
+
+  // Horaires
+  departureDate DateTime
+  arrivalDate   DateTime?
+
+  vehicleType VehicleType @default(CAR)
+
+  // Capacité offerte (0 = pas ce service sur ce trajet)
+  passengerSeatsOffered Int @default(0)
+  parcelCapacityKg      Int @default(0)
+
+  // Prix INDICATIFS — la plateforme ne perçoit rien, c'est juste pour informer
+  // le client avant qu'il contacte le transporteur. Cents EUR.
+  pricePerSeatCents Int?
+  pricePerKgCents   Int?
+
+  notes  String?
+  status TripStatus @default(PUBLISHED)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bookings Booking[]
+
+  @@index([originCity, destinationCity, departureDate])
+  @@index([courierId])
+  @@index([status])
+}
+
+enum BookingType {
+  PASSENGER
+  PARCEL
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  REJECTED
+  CANCELLED
+}
+
+model Booking {
+  id     String @id @default(cuid())
+  tripId String
+  trip   Trip   @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  customerId String
+  customer   User   @relation("CustomerBookings", fields: [customerId], references: [id])
+
+  type     BookingType
+  // Pour PASSENGER : nb de places. Pour PARCEL : kg du colis.
+  quantity Int
+
+  status BookingStatus @default(PENDING)
+
+  customerPhone   String
+  customerMessage String?
+
+  // PARCEL only
+  parcelDescription String?
+  pickupAddress     String?
+  dropoffAddress    String?
+
+  // Suivi
+  confirmedAt     DateTime?
+  rejectedAt      DateTime?
+  rejectionReason String?
+  cancelledAt     DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([tripId])
+  @@index([customerId])
+  @@index([status])
 }
