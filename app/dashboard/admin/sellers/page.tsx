@@ -22,18 +22,29 @@ export default async function AdminSellersPage() {
       <ul className="divide-y border rounded">
         {sellers.map((s) => (
           <li key={s.id} className="p-4 flex items-center justify-between gap-3">
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <div className="font-medium">{s.displayName}</div>
               <div className="text-sm text-muted-foreground">
                 {s.user.email} · {s.city ? `${s.city}, ` : ""}
                 {s.country.toUpperCase()} · commission {s.commissionPct}%
+                {!s.iban && (
+                  <span className="ml-2 text-xs text-amber-700">⚠ pas d&apos;IBAN</span>
+                )}
               </div>
             </div>
-            {s.approved ? (
-              <span className="text-xs text-emerald-700 font-medium">Approuvé</span>
-            ) : (
-              <ApproveButton resource="sellers" id={s.id} />
-            )}
+            <div className="flex items-center gap-3 shrink-0">
+              <Link
+                href={`/dashboard/admin/sellers/${s.id}/edit`}
+                className="text-sm text-emerald-700 underline"
+              >
+                Éditer
+              </Link>
+              {s.approved ? (
+                <span className="text-xs text-emerald-700 font-medium">Approuvé</span>
+              ) : (
+                <ApproveButton resource="sellers" id={s.id} />
+              )}
+            </div>
           </li>
         ))}
       </ul>
