@@ -64,11 +64,39 @@ export default async function DashboardHome({
           )}
           {!sellerProfile?.approved && !courierProfile?.approved && user.role !== "ADMIN" && (
             <li className="text-sm text-zinc-500">
-              Aucun espace privé pour l&apos;instant. Contactez un administrateur si vous souhaitez devenir vendeur ou livreur.
+              Aucun espace privé pour l&apos;instant.
             </li>
           )}
         </ul>
       </section>
+
+      {!sellerProfile && user.role !== "ADMIN" && (
+        <section className="rounded border p-4 space-y-2 bg-emerald-50/50">
+          <h2 className="font-medium">Vous produisez ou créez ?</h2>
+          <p className="text-sm text-zinc-700">
+            Proposez vos produits sur la marketplace eSimplu. Inscription en 2 minutes,
+            validation par notre équipe sous 48 h.
+          </p>
+          <Link
+            href="/seller/register"
+            className="inline-block rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+          >
+            Devenir vendeur →
+          </Link>
+        </section>
+      )}
+
+      {sellerProfile && !sellerProfile.approved && (
+        <section className="rounded border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+          <p className="font-medium">
+            Demande vendeur en cours de validation
+          </p>
+          <p className="mt-1">
+            Votre profil <strong>{sellerProfile.displayName}</strong> attend l&apos;approbation
+            de notre équipe. Vous serez notifié(e) par email dès qu&apos;il sera actif.
+          </p>
+        </section>
+      )}
     </main>
   )
 }

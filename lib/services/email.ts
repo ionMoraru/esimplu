@@ -111,6 +111,31 @@ export function tplCustomerHandedOver(vars: OrderEmailVars & { courierName: stri
   }
 }
 
+export function tplAdminNewSellerRequest(vars: {
+  sellerEmail: string
+  displayName: string
+  city: string
+  country: string
+  reviewUrl: string
+}): EmailMessage {
+  return {
+    to: "",
+    subject: `Nouvelle demande vendeur — ${vars.displayName}`,
+    text: [
+      `Bonjour,`,
+      ``,
+      `Une nouvelle demande de compte vendeur est en attente.`,
+      ``,
+      `Email : ${vars.sellerEmail}`,
+      `Nom commercial : ${vars.displayName}`,
+      `Ville/Pays : ${vars.city}, ${vars.country.toUpperCase()}`,
+      ``,
+      `Vérifiez et approuvez la demande ici : ${vars.reviewUrl}`,
+      `eSimplu`,
+    ].join("\n"),
+  }
+}
+
 export function tplCustomerCourierDelivered(vars: OrderEmailVars & { trackingUrl: string }): EmailMessage {
   return {
     to: "",
