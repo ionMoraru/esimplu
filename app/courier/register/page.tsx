@@ -17,13 +17,13 @@ export default async function CourierRegisterPage() {
     }
     return (
       <main className="max-w-2xl mx-auto p-6 space-y-4">
-        <h1 className="text-2xl font-semibold">Demande envoyée</h1>
+        <h1 className="text-2xl font-semibold">Cerere trimisă</h1>
         <p className="text-sm text-zinc-600">
-          Votre demande de compte livreur <strong>{existing.displayName}</strong> est en cours de
-          vérification. Vous serez notifié(e) par email dès qu&apos;elle sera approuvée.
+          Cererea ta de cont transportator <strong>{existing.displayName}</strong> este în curs de
+          verificare. Vei fi notificat(ă) pe email imediat ce va fi aprobată.
         </p>
         <Link href="/dashboard" className="text-sm text-emerald-700 underline">
-          ← Retour au tableau de bord
+          ← Înapoi la panou
         </Link>
       </main>
     )
@@ -32,11 +32,10 @@ export default async function CourierRegisterPage() {
   return (
     <main className="max-w-2xl mx-auto p-6 space-y-6">
       <header>
-        <h1 className="text-2xl font-semibold">Devenir livreur sur eSimplu</h1>
+        <h1 className="text-2xl font-semibold">Devino transportator pe eSimplu</h1>
         <p className="text-sm text-zinc-600 mt-1">
-          Acheminez les commandes des producteurs vers les clients de la diaspora. Vous êtes
-          payé(e) directement en espèces par le client à la livraison ; eSimplu ne prélève rien
-          sur votre course.
+          Transportă comenzile producătorilor către clienții din diaspora. Ești plătit(ă) direct
+          de către client la livrare; eSimplu nu reține nimic din cursa ta.
         </p>
       </header>
 

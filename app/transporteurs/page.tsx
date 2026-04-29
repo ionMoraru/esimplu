@@ -1,54 +1,54 @@
 import Link from "next/link"
 
 export const metadata = {
-  title: "Devenir transporteur — eSimplu",
+  title: "Devino transportator — eSimplu",
   description:
-    "Vous voyagez régulièrement entre la France/Allemagne/Italie/UK et la Moldavie ou la Roumanie ? Rejoignez gratuitement eSimplu et trouvez plus facilement des passagers et des colis pour rentabiliser votre trajet.",
+    "Călătorești regulat între Franța, Germania, Italia sau Marea Britanie și Moldova sau România? Înscrie-te gratuit pe eSimplu și găsește mai ușor pasageri și colete pentru a-ți rentabiliza cursa.",
 }
 
 const STEPS = [
   {
     n: 1,
-    title: "Inscrivez-vous en 2 minutes",
-    body: "Nom, téléphone, ville de base. Aucune commission, aucun abonnement.",
+    title: "Înscrie-te în 2 minute",
+    body: "Nume, telefon, oraș de bază. Fără comision, fără abonament.",
   },
   {
     n: 2,
-    title: "Publiez vos trajets à venir",
-    body: "Origine, destination, date, capacité passager et/ou colis, prix indicatifs. Vous pouvez modifier ou annuler à tout moment.",
+    title: "Publică-ți cursele viitoare",
+    body: "Plecare, sosire, dată, capacitate pasageri și/sau colete, prețuri orientative. Poți modifica sau anula oricând.",
   },
   {
     n: 3,
-    title: "Recevez les demandes par email",
-    body: "Pas besoin d'être collé à votre téléphone. Vous validez ou refusez chaque demande quand ça vous arrange.",
+    title: "Primești cererile pe email",
+    body: "Nu trebuie să stai lipit de telefon. Validezi sau refuzi fiecare cerere când îți convine.",
   },
   {
     n: 4,
-    title: "Vous gérez le reste directement",
-    body: "Une fois validée, le client reçoit vos coordonnées. Vous vous arrangez de gré à gré pour le RDV et le paiement. eSimplu n'intervient pas.",
+    title: "Restul îl gestionezi direct",
+    body: "Odată confirmată cererea, clientul primește datele tale de contact. Vă înțelegeți direct asupra întâlnirii și plății. eSimplu nu intervine.",
   },
 ]
 
 const FAQ = [
   {
-    q: "Combien ça coûte ?",
-    a: "Rien. Pas d'abonnement, pas de commission sur les courses. eSimplu est entièrement gratuit pour les transporteurs.",
+    q: "Cât costă?",
+    a: "Nimic. Fără abonament, fără comision pe cursă. eSimplu este complet gratuit pentru transportatori.",
   },
   {
-    q: "Comment je suis payé ?",
-    a: "Directement par le client, en espèces ou par virement, comme aujourd'hui dans les groupes Facebook. eSimplu se contente de mettre en relation, on n'est jamais entre vous et l'argent.",
+    q: "Cum sunt plătit?",
+    a: "Direct de către client, în numerar sau prin transfer bancar, exact ca în grupurile de Facebook. eSimplu doar facilitează contactul, nu intervine niciodată în partea financiară.",
   },
   {
-    q: "Mes coordonnées sont-elles publiques ?",
-    a: "Non. Votre nom et votre ville s'affichent sur l'annonce, mais votre téléphone n'est partagé qu'avec les clients dont vous avez accepté la demande. Personne d'autre ne peut le voir.",
+    q: "Datele mele sunt publice?",
+    a: "Nu. Numele și orașul tău apar pe anunț, dar numărul de telefon este partajat doar cu clienții pe care i-ai acceptat. Nimeni altcineva nu îl poate vedea.",
   },
   {
-    q: "Et si je veux retirer une annonce ?",
-    a: "Vous pouvez modifier ou annuler vos trajets à tout moment depuis votre tableau de bord. Vous pouvez aussi supprimer votre compte d'un clic.",
+    q: "Pot retrage un anunț?",
+    a: "Poți modifica sau anula cursele oricând din panoul tău. Poți, de asemenea, să-ți ștergi contul cu un singur click.",
   },
   {
-    q: "Mon compte est validé tout de suite ?",
-    a: "Notre équipe vérifie chaque inscription sous 48 h pour limiter les arnaqueurs. Une fois validé, vous pouvez publier sans limite.",
+    q: "Contul meu este validat imediat?",
+    a: "Echipa noastră verifică fiecare înscriere în 48 h pentru a limita escrocii. Odată validat, poți publica fără limită.",
   },
 ]
 
@@ -59,72 +59,71 @@ export default function TransporteursLandingPage() {
       <section className="px-6 py-16 sm:py-24 border-b bg-gradient-to-b from-emerald-50/50 to-background">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <p className="text-sm font-medium text-emerald-700 uppercase tracking-wide">
-            Pour transporteurs · gratuit
+            Pentru transportatori · gratuit
           </p>
           <h1
             className="text-4xl sm:text-5xl font-bold leading-tight"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Remplissez votre véhicule, sans réseau Facebook
+            Umple-ți vehiculul, fără rețele Facebook
           </h1>
           <p className="text-lg text-zinc-700 leading-relaxed">
-            Vous faites régulièrement la liaison entre la France, l&apos;Allemagne, l&apos;Italie ou
-            le Royaume-Uni et la Moldavie ou la Roumanie ? Publiez vos trajets sur eSimplu,
-            recevez les demandes de passagers et de colis par email, validez celles qui vous
-            arrangent. Le reste se gère directement avec le client, comme avant.
+            Faci regulat traseul între Franța, Germania, Italia sau Marea Britanie și Moldova sau
+            România? Publică-ți cursele pe eSimplu, primește cererile de pasageri și colete pe
+            email, validează cele care îți convin. Restul se rezolvă direct cu clientul, ca până acum.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
             <Link
               href="/courier/register"
               className="rounded-xl bg-primary text-primary-foreground px-6 py-3 text-base font-semibold hover:bg-primary/90"
             >
-              S&apos;inscrire gratuitement →
+              Înscrie-te gratuit →
             </Link>
             <Link
               href="/delivery"
               className="rounded-xl border px-6 py-3 text-base font-medium hover:bg-muted/30"
             >
-              Voir les trajets actuels
+              Vezi cursele actuale
             </Link>
           </div>
           <p className="text-xs text-muted-foreground pt-2">
-            Aucune commission. Aucun engagement. Désinscription en 1 clic.
+            Fără comision. Fără angajament. Dezabonare cu un singur click.
           </p>
         </div>
       </section>
 
-      {/* Why eSimplu vs Facebook */}
+      {/* De ce eSimplu vs Facebook */}
       <section className="px-6 py-16 border-b">
         <div className="max-w-4xl mx-auto">
           <h2
             className="text-2xl sm:text-3xl font-bold mb-8 text-center"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Pourquoi pas juste Facebook ?
+            De ce nu doar Facebook?
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
             <div className="rounded-2xl border p-6 space-y-2">
               <div className="text-3xl">🔍</div>
-              <h3 className="font-semibold">Vos annonces se perdent</h3>
+              <h3 className="font-semibold">Anunțurile tale se pierd</h3>
               <p className="text-sm text-muted-foreground">
-                Sur Facebook, votre post tombe en bas du fil en quelques heures. Sur eSimplu,
-                il reste visible jusqu&apos;à la date de départ.
+                Pe Facebook, postarea ta dispare în câteva ore din feed. Pe eSimplu, rămâne
+                vizibilă până la data plecării.
               </p>
             </div>
             <div className="rounded-2xl border p-6 space-y-2">
               <div className="text-3xl">📵</div>
-              <h3 className="font-semibold">Plus d&apos;appels intempestifs</h3>
+              <h3 className="font-semibold">Fără apeluri inoportune</h3>
               <p className="text-sm text-muted-foreground">
-                Votre numéro n&apos;est partagé qu&apos;avec les clients que vous avez vous-même
-                acceptés. Plus de gens qui appellent à 23h pour demander des infos basiques.
+                Numărul tău este partajat doar cu clienții pe care i-ai acceptat tu. Nu mai sunt
+                oameni care sună la ora 23 pentru informații de bază.
               </p>
             </div>
             <div className="rounded-2xl border p-6 space-y-2">
               <div className="text-3xl">⏱️</div>
-              <h3 className="font-semibold">Vous gardez le contrôle</h3>
+              <h3 className="font-semibold">Tu ai controlul</h3>
               <p className="text-sm text-muted-foreground">
-                Vous validez chaque demande, vous gérez le paiement vous-même, vous pouvez
-                annuler un trajet en 1 clic.
+                Validezi fiecare cerere, gestionezi singur plata, poți anula o cursă cu un singur
+                click.
               </p>
             </div>
           </div>
@@ -138,7 +137,7 @@ export default function TransporteursLandingPage() {
             className="text-2xl sm:text-3xl font-bold mb-8 text-center"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Comment ça marche
+            Cum funcționează
           </h2>
           <ol className="space-y-6">
             {STEPS.map((step) => (
@@ -163,7 +162,7 @@ export default function TransporteursLandingPage() {
             className="text-2xl sm:text-3xl font-bold mb-8 text-center"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Questions fréquentes
+            Întrebări frecvente
           </h2>
           <div className="space-y-4">
             {FAQ.map((item, i) => (
@@ -191,16 +190,16 @@ export default function TransporteursLandingPage() {
             className="text-2xl sm:text-3xl font-bold"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Prêt à publier votre prochain trajet ?
+            Gata să publici următoarea cursă?
           </h2>
           <p className="text-muted-foreground">
-            Inscription en 2 minutes. Vous publiez votre premier trajet juste après.
+            Înscriere în 2 minute. Publici prima cursă imediat după.
           </p>
           <Link
             href="/courier/register"
             className="inline-block rounded-xl bg-primary text-primary-foreground px-6 py-3 text-base font-semibold hover:bg-primary/90"
           >
-            Devenir transporteur →
+            Devino transportator →
           </Link>
         </div>
       </section>

@@ -10,8 +10,6 @@ export default async function SellerRegisterPage() {
     redirect("/login?callbackUrl=/seller/register")
   }
 
-  // Si l'utilisateur a déjà un profil vendeur, on l'envoie sur son dashboard
-  // (ou sur le hub avec le message d'attente d'approbation).
   const existing = await prisma.sellerProfile.findUnique({ where: { userId: user.id } })
   if (existing) {
     if (existing.approved) {
@@ -19,13 +17,13 @@ export default async function SellerRegisterPage() {
     }
     return (
       <main className="max-w-2xl mx-auto p-6 space-y-4">
-        <h1 className="text-2xl font-semibold">Demande envoyée</h1>
+        <h1 className="text-2xl font-semibold">Cerere trimisă</h1>
         <p className="text-sm text-zinc-600">
-          Votre demande de compte vendeur <strong>{existing.displayName}</strong> est en cours de
-          vérification par notre équipe. Vous serez notifié(e) par email dès qu&apos;elle sera approuvée.
+          Cererea ta de cont vânzător <strong>{existing.displayName}</strong> este în curs de
+          verificare de către echipa noastră. Vei fi notificat(ă) pe email imediat ce va fi aprobată.
         </p>
         <Link href="/dashboard" className="text-sm text-emerald-700 underline">
-          ← Retour au tableau de bord
+          ← Înapoi la panou
         </Link>
       </main>
     )
@@ -34,10 +32,10 @@ export default async function SellerRegisterPage() {
   return (
     <main className="max-w-2xl mx-auto p-6 space-y-6">
       <header>
-        <h1 className="text-2xl font-semibold">Devenir vendeur sur eSimplu</h1>
+        <h1 className="text-2xl font-semibold">Devino vânzător pe eSimplu</h1>
         <p className="text-sm text-zinc-600 mt-1">
-          Remplissez ce formulaire pour proposer vos produits sur la marketplace. Votre demande
-          sera examinée par notre équipe avant publication.
+          Completează acest formular pentru a-ți propune produsele pe marketplace. Cererea va fi
+          examinată de echipa noastră înainte de publicare.
         </p>
       </header>
 

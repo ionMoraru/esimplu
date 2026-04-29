@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 const COUNTRIES = [
-  { code: "fr", label: "🇫🇷 France" },
-  { code: "de", label: "🇩🇪 Allemagne" },
-  { code: "it", label: "🇮🇹 Italie" },
-  { code: "uk", label: "🇬🇧 Royaume-Uni" },
-  { code: "ro", label: "🇷🇴 Roumanie" },
-  { code: "md", label: "🇲🇩 Moldavie" },
+  { code: "fr", label: "🇫🇷 Franța" },
+  { code: "de", label: "🇩🇪 Germania" },
+  { code: "it", label: "🇮🇹 Italia" },
+  { code: "uk", label: "🇬🇧 Marea Britanie" },
+  { code: "ro", label: "🇷🇴 România" },
+  { code: "md", label: "🇲🇩 Moldova" },
 ]
 
 interface Props {
@@ -31,11 +31,11 @@ export function CourierRegisterForm({ defaultDisplayName, userEmail }: Props) {
   function submit() {
     setError(null)
     if (!displayName.trim() || displayName.trim().length < 2) {
-      setError("Nom requis (au moins 2 caractères)")
+      setError("Numele este obligatoriu (cel puțin 2 caractere)")
       return
     }
     if (!phone.trim() || phone.trim().length < 6) {
-      setError("Téléphone requis")
+      setError("Telefonul este obligatoriu")
       return
     }
     startTransition(async () => {
@@ -51,7 +51,7 @@ export function CourierRegisterForm({ defaultDisplayName, userEmail }: Props) {
       })
       const json = (await res.json()) as { error?: string }
       if (!res.ok) {
-        setError(json.error ?? "Erreur lors de l'inscription")
+        setError(json.error ?? "Eroare la înscriere")
         return
       }
       router.push("/courier/register")
@@ -68,13 +68,13 @@ export function CourierRegisterForm({ defaultDisplayName, userEmail }: Props) {
       className="space-y-5"
     >
       <section className="space-y-3">
-        <h2 className="font-medium">Identité</h2>
+        <h2 className="font-medium">Identitate</h2>
         <div>
-          <label className="block text-sm mb-1">Email du compte</label>
+          <label className="block text-sm mb-1">Email cont</label>
           <Input value={userEmail} disabled readOnly />
         </div>
         <div>
-          <label className="block text-sm mb-1">Nom affiché aux clients *</label>
+          <label className="block text-sm mb-1">Nume afișat clienților *</label>
           <Input
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
@@ -83,7 +83,7 @@ export function CourierRegisterForm({ defaultDisplayName, userEmail }: Props) {
           />
         </div>
         <div>
-          <label className="block text-sm mb-1">Téléphone *</label>
+          <label className="block text-sm mb-1">Telefon *</label>
           <Input
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
@@ -91,16 +91,16 @@ export function CourierRegisterForm({ defaultDisplayName, userEmail }: Props) {
             required
           />
           <p className="text-xs text-zinc-500 mt-1">
-            Visible par le vendeur et le client pour les communications de livraison.
+            Vizibil pentru vânzător și client pentru comunicările despre livrare.
           </p>
         </div>
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-medium">Zone d&apos;activité</h2>
+        <h2 className="font-medium">Zonă de activitate</h2>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-sm mb-1">Ville de base</label>
+            <label className="block text-sm mb-1">Oraș de bază</label>
             <Input
               value={baseCity}
               onChange={(e) => setBaseCity(e.target.value)}
@@ -108,7 +108,7 @@ export function CourierRegisterForm({ defaultDisplayName, userEmail }: Props) {
             />
           </div>
           <div>
-            <label className="block text-sm mb-1">Pays *</label>
+            <label className="block text-sm mb-1">Țară *</label>
             <select
               value={baseCountry}
               onChange={(e) => setBaseCountry(e.target.value)}
@@ -131,10 +131,10 @@ export function CourierRegisterForm({ defaultDisplayName, userEmail }: Props) {
       )}
 
       <Button type="submit" disabled={pending}>
-        {pending ? "Envoi..." : "Envoyer ma demande"}
+        {pending ? "Se trimite..." : "Trimite cererea"}
       </Button>
       <p className="text-xs text-zinc-500">
-        Notre équipe examine les demandes sous 48 h. Vous serez notifié(e) par email.
+        Echipa noastră examinează cererile în 48 h. Vei fi notificat(ă) pe email.
       </p>
     </form>
   )
