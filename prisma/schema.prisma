@@ -25,6 +25,7 @@ model User {
   customerOrders   Order[]          @relation("CustomerOrders")
   customerBookings Booking[]        @relation("CustomerBookings")
   orderEvents      OrderEvent[]
+  passwordResets   PasswordResetToken[]
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
 }
@@ -73,6 +74,19 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  token     String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
 }
 
 // === Content ===
