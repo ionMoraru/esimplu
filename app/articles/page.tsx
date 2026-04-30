@@ -1,10 +1,18 @@
+import { cookies } from "next/headers"
 import { ArticlesList } from "@/components/articles/articles-list"
 import { PageHero } from "@/components/shared/navigation/page-hero"
+import { COUNTRIES, COUNTRY_COOKIE } from "@/lib/countries"
 import { prisma } from "@/lib/prisma"
 
 export const dynamic = "force-dynamic"
 
 export default async function ArticlesPage() {
+  const cookieCountry = (await cookies()).get(COUNTRY_COOKIE)?.value
+  const initialCountry =
+    cookieCountry && COUNTRIES.some((c) => c.code === cookieCountry)
+      ? cookieCountry
+      : "all"
+
   const [articles, categories] = await Promise.all([
     prisma.article.findMany({
       where: { published: true },
@@ -28,6 +36,7 @@ export default async function ArticlesPage() {
           <ArticlesList
             articles={articles}
             categories={categories.map((c) => ({ slug: c.slug, name: c.name }))}
+            initialCountry={initialCountry}
           />
         </div>
       </section>

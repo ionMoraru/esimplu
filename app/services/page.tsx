@@ -1,10 +1,18 @@
+import { cookies } from "next/headers"
 import { ServicesList } from "@/components/services/services-list"
 import { PageHero } from "@/components/shared/navigation/page-hero"
+import { COUNTRIES, COUNTRY_COOKIE } from "@/lib/countries"
 import { prisma } from "@/lib/prisma"
 
 export const dynamic = "force-dynamic"
 
 export default async function ServicesPage() {
+  const cookieCountry = (await cookies()).get(COUNTRY_COOKIE)?.value
+  const initialCountry =
+    cookieCountry && COUNTRIES.some((c) => c.code === cookieCountry)
+      ? cookieCountry
+      : "all"
+
   const [services, categories] = await Promise.all([
     prisma.serviceListing.findMany({
       where: { status: "PUBLISHED" },
@@ -43,6 +51,7 @@ export default async function ServicesPage() {
                 : null,
             }))}
             categories={categories.map((c) => ({ slug: c.slug, name: c.name }))}
+            initialCountry={initialCountry}
           />
         </div>
       </section>

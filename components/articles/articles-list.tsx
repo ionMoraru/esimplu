@@ -22,11 +22,13 @@ type Category = { slug: string; name: string }
 export function ArticlesList({
   articles,
   categories,
+  initialCountry = "all",
 }: {
   articles: Article[]
   categories: Category[]
+  initialCountry?: string
 }) {
-  const [selectedCountry, setSelectedCountry] = useState<string>("all")
+  const [selectedCountry, setSelectedCountry] = useState<string>(initialCountry)
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
 
   const filtered = articles.filter((article) => {
