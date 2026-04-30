@@ -1,7 +1,7 @@
 # Roadmap eSimplu
 
 > Source de vérité pour le suivi du projet. Mise à jour à chaque merge dans `main`.
-> Dernière mise à jour : 2026-04-27 (post marketplace MVP)
+> Dernière mise à jour : 2026-04-30 (claim flow polymorphe + reset password)
 
 ## Légende
 
@@ -34,6 +34,9 @@
 - [x] Page `/design` — showcase du design system
 - [ ] Auth Facebook — en attente vérification identité Meta (bloqué)
 - [ ] Route RGPD `/api/auth/facebook/delete` — à faire quand Facebook OK
+- [ ] **PR #26 ouverte** — flow reset password (`/forgot-password` + `/reset-password/[token]`, modèle `PasswordResetToken`, envoi via Resend si `RESEND_API_KEY` set, sinon log console). Pas de rate-limit.
+- [ ] **PR #24 ouverte** — filtre pays par défaut depuis le cookie `country` sur `/articles` et `/services`.
+- [ ] **PR #25 ouverte** (basée sur #24) — claim flow polymorphe : nouveau modèle `Invitation` (targetType SERVICE | TRIP | PRODUCT), route générique `/claim/[token]`. Côté services : remplace `/services/claim/[token]`, drop des colonnes claim de `ServiceListing`, `ServiceStatus` simplifié à `PENDING|REJECTED` (visible publiquement = NOT REJECTED, donc les drafts pré-remplis sont visibles dès création). Cron `/api/admin/purge-expired-drafts` réécrit pour expirer les invitations.
 
 ## Phase 2 — Marketplace
 
@@ -65,6 +68,17 @@ MVP « première vente » fonctionnel bout en bout (Lots 1–9 du plan, 6 PRs me
 - [ ] Réservation
 - [ ] Filtres par ville départ/arrivée
 
+## Phase 4 — Espace utilisateur unifié
+
+Page « Mon compte » qui agrège tout ce que l'utilisateur peut publier sur la plateforme. Un même compte peut être prestataire de service ET vendeur ET transporteur — pas de profil distinct par rôle.
+
+- [ ] Page `/dashboard` — dashboard unifié (services + produits + trajets)
+- [ ] Section « Mes services » — liste des `ServiceListing` du user, avec édition / dépublier
+- [ ] Action contextuelle sur les services de catégorie `transport` / `mutari-transport` / `livrare` : bouton « Propune o cursă » qui ouvre le formulaire de création `Trip` (lien Service → Trip via le user, pas de FK directe)
+- [ ] Section « Mele produits » — onboarding `SellerProfile` (slug, IBAN, etc.) puis liste `Product` avec création / édition
+- [ ] Section « Mele trajets » — liste `Trip` du user avec création directe
+- [ ] Permissions : un service ne nécessite pas `SellerProfile` ; un produit le nécessite ; un trajet nécessite un `CourierProfile` (à créer si absent au moment de la première publication, comme le pattern existant)
+
 ---
 
 ## Infra & DevOps
@@ -85,3 +99,6 @@ MVP « première vente » fonctionnel bout en bout (Lots 1–9 du plan, 6 PRs me
 | Branche | Description | Statut |
 |---|---|---|
 | `main` | Production | Stable |
+| `feat/articles-services-default-country-filter` | Filtre pays pré-rempli depuis cookie sur articles/services | PR #24 ouverte |
+| `feat/polymorphic-invitation-flow` | Claim flow polymorphe (services PR1, prépare delivery / marketplace) | PR #25 ouverte (basée sur #24) |
+| `feat/password-reset` | Reset password (forgot + reset pages, modèle `PasswordResetToken`) | PR #26 ouverte |
