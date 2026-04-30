@@ -26,12 +26,14 @@ type Category = { slug: string; name: string }
 export function ServicesList({
   services,
   categories,
+  initialCountry = "all",
 }: {
   services: Service[]
   categories: Category[]
+  initialCountry?: string
 }) {
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
-  const [selectedCountry, setSelectedCountry] = useState<string>("all")
+  const [selectedCountry, setSelectedCountry] = useState<string>(initialCountry)
 
   const filtered = services.filter((service) => {
     const categoryMatch =
