@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma"
 
 export const dynamic = "force-dynamic"
 
+// Cron : passe les Invitations PENDING dont expiresAt < now en EXPIRED, et
+// soft-delete la cible si applicable (ex: ServiceListing → status REJECTED).
 export async function POST(req: NextRequest) {
   const secret = process.env.CRON_SECRET
   if (!secret) {
@@ -19,40 +21,47 @@ export async function POST(req: NextRequest) {
 
   const now = new Date()
 
-  const expired = await prisma.serviceListing.findMany({
+  const expired = await prisma.invitation.findMany({
     where: {
-      status: "DRAFT",
-      claimExpiresAt: { lt: now },
+      status: "PENDING",
+      expiresAt: { lt: now },
     },
-    select: { id: true },
+    select: { id: true, targetType: true, targetId: true },
   })
 
   if (expired.length === 0) {
     return NextResponse.json({ purged: 0 })
   }
 
-  const ids = expired.map((d) => d.id)
+  const ids = expired.map((i) => i.id)
+  const serviceIds = expired
+    .filter((i) => i.targetType === "SERVICE")
+    .map((i) => i.targetId)
 
   await prisma.$transaction([
-    prisma.serviceClaimEvent.createMany({
-      data: ids.map((serviceId) => ({
-        serviceId,
+    prisma.invitationEvent.createMany({
+      data: ids.map((invitationId) => ({
+        invitationId,
         type: "expired",
         payload: { purgedAt: now.toISOString() },
       })),
     }),
-    prisma.serviceListing.updateMany({
+    prisma.invitation.updateMany({
       where: { id: { in: ids } },
-      data: {
-        status: "EXPIRED",
-        deletedAt: now,
-        claimToken: null,
-      },
+      data: { status: "EXPIRED", expiredAt: now },
     }),
+    ...(serviceIds.length
+      ? [
+          prisma.serviceListing.updateMany({
+            where: { id: { in: serviceIds } },
+            data: { status: "REJECTED", deletedAt: now },
+          }),
+        ]
+      : []),
   ])
 
   return NextResponse.json({
     purged: ids.length,
-    ids,
+    invitationIds: ids,
   })
 }

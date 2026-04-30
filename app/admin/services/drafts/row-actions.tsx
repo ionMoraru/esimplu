@@ -2,27 +2,27 @@
 
 import { useState, useTransition } from "react"
 import {
-  regenerateClaimToken,
+  regenerateInvitationToken,
   markOutreachSent,
   deleteDraft,
 } from "./actions"
 
 export function DraftRowActions({
-  serviceId,
+  invitationId,
   claimUrl,
   status,
-  claimMethod,
+  outreachMethod,
 }: {
-  serviceId: string
+  invitationId: string
   claimUrl: string | null
   status: string
-  claimMethod: string | null
+  outreachMethod: string | null
 }) {
   const [pending, startTransition] = useTransition()
   const [copied, setCopied] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
 
-  if (status !== "DRAFT") {
+  if (status !== "PENDING") {
     return <span className="text-xs text-muted-foreground">—</span>
   }
 
@@ -43,54 +43,25 @@ export function DraftRowActions({
       )}
 
       <div className="flex gap-1">
-        <button
-          type="button"
-          disabled={pending || claimMethod === "sms"}
-          onClick={() =>
-            startTransition(async () => {
-              await markOutreachSent(serviceId, "sms")
-            })
-          }
-          className={`text-xs px-2 py-1 rounded border transition-colors disabled:opacity-50 ${
-            claimMethod === "sms"
-              ? "bg-green-50 border-green-300 text-green-700"
-              : "hover:border-primary"
-          }`}
-        >
-          SMS {claimMethod === "sms" && "✓"}
-        </button>
-        <button
-          type="button"
-          disabled={pending || claimMethod === "email"}
-          onClick={() =>
-            startTransition(async () => {
-              await markOutreachSent(serviceId, "email")
-            })
-          }
-          className={`text-xs px-2 py-1 rounded border transition-colors disabled:opacity-50 ${
-            claimMethod === "email"
-              ? "bg-green-50 border-green-300 text-green-700"
-              : "hover:border-primary"
-          }`}
-        >
-          Email {claimMethod === "email" && "✓"}
-        </button>
-        <button
-          type="button"
-          disabled={pending || claimMethod === "phone"}
-          onClick={() =>
-            startTransition(async () => {
-              await markOutreachSent(serviceId, "phone")
-            })
-          }
-          className={`text-xs px-2 py-1 rounded border transition-colors disabled:opacity-50 ${
-            claimMethod === "phone"
-              ? "bg-green-50 border-green-300 text-green-700"
-              : "hover:border-primary"
-          }`}
-        >
-          Tel {claimMethod === "phone" && "✓"}
-        </button>
+        {(["sms", "email", "phone"] as const).map((m) => (
+          <button
+            key={m}
+            type="button"
+            disabled={pending || outreachMethod === m}
+            onClick={() =>
+              startTransition(async () => {
+                await markOutreachSent(invitationId, m)
+              })
+            }
+            className={`text-xs px-2 py-1 rounded border transition-colors disabled:opacity-50 ${
+              outreachMethod === m
+                ? "bg-green-50 border-green-300 text-green-700"
+                : "hover:border-primary"
+            }`}
+          >
+            {m.toUpperCase()} {outreachMethod === m && "✓"}
+          </button>
+        ))}
       </div>
 
       <div className="flex gap-1">
@@ -99,7 +70,7 @@ export function DraftRowActions({
           disabled={pending}
           onClick={() =>
             startTransition(async () => {
-              await regenerateClaimToken(serviceId)
+              await regenerateInvitationToken(invitationId)
             })
           }
           className="text-xs px-2 py-1 rounded border hover:border-primary disabled:opacity-50"
@@ -122,7 +93,7 @@ export function DraftRowActions({
               disabled={pending}
               onClick={() =>
                 startTransition(async () => {
-                  await deleteDraft(serviceId)
+                  await deleteDraft(invitationId)
                 })
               }
               className="text-xs px-2 py-1 rounded bg-red-600 text-white hover:bg-red-700 disabled:opacity-50"

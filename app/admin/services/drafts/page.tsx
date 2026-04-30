@@ -4,18 +4,16 @@ import { prisma } from "@/lib/prisma"
 import { auth } from "@/lib/auth"
 import { PageHero } from "@/components/shared/navigation/page-hero"
 import { COUNTRIES } from "@/lib/countries"
-import { claimUrl } from "@/lib/services/claim"
+import { claimUrl } from "@/lib/invitations"
 import { DraftRowActions } from "./row-actions"
 
 export const dynamic = "force-dynamic"
 
 const STATUS_FILTERS = [
-  { key: "DRAFT", label: "Drafts" },
-  { key: "PUBLISHED", label: "Publicate" },
-  { key: "OWNER_REFUSED", label: "Refuzate de proprietar" },
+  { key: "PENDING", label: "În așteptare claim" },
+  { key: "CLAIMED", label: "Confirmate de proprietar" },
+  { key: "REFUSED", label: "Refuzate" },
   { key: "EXPIRED", label: "Expirate" },
-  { key: "REJECTED", label: "Șterse de admin" },
-  { key: "PENDING", label: "În așteptare admin" },
 ] as const
 
 export default async function AdminDraftsPage({
@@ -37,19 +35,31 @@ export default async function AdminDraftsPage({
   }
 
   const sp = await searchParams
-  const status = (sp.status ?? "DRAFT") as string
+  const status = (sp.status ?? "PENDING") as string
 
-  const services = await prisma.serviceListing.findMany({
-    where: { status: status as never },
+  const invitations = await prisma.invitation.findMany({
+    where: {
+      targetType: "SERVICE",
+      status: status as never,
+    },
     include: {
-      category: true,
-      events: { orderBy: { createdAt: "desc" }, take: 1 },
+      events: { orderBy: { createdAt: "desc" }, take: 5 },
     },
     orderBy: { updatedAt: "desc" },
   })
 
-  const counts = await prisma.serviceListing.groupBy({
+  const targetIds = invitations.map((i) => i.targetId)
+  const services = targetIds.length
+    ? await prisma.serviceListing.findMany({
+        where: { id: { in: targetIds } },
+        include: { category: true },
+      })
+    : []
+  const serviceById = new Map(services.map((s) => [s.id, s]))
+
+  const counts = await prisma.invitation.groupBy({
     by: ["status"],
+    where: { targetType: "SERVICE" },
     _count: { _all: true },
   })
   const countByStatus = Object.fromEntries(
@@ -67,7 +77,6 @@ export default async function AdminDraftsPage({
 
       <section className="py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col gap-6">
-          {/* Filters */}
           <div className="flex flex-wrap gap-2">
             {STATUS_FILTERS.map((f) => {
               const active = status === f.key
@@ -91,7 +100,6 @@ export default async function AdminDraftsPage({
             })}
           </div>
 
-          {/* Quick action: create a new draft */}
           <div className="rounded-xl bg-muted/40 border px-4 py-3 text-sm text-muted-foreground">
             Pour créer un nouveau draft, utilise la CLI :
             <code className="block mt-2 px-3 py-2 bg-background rounded text-xs font-mono">
@@ -99,10 +107,9 @@ export default async function AdminDraftsPage({
             </code>
           </div>
 
-          {/* Table */}
-          {services.length === 0 ? (
+          {invitations.length === 0 ? (
             <div className="text-center py-16 text-muted-foreground">
-              Nicio fișă cu acest status.
+              Nicio invitație cu acest status.
             </div>
           ) : (
             <div className="overflow-x-auto rounded-xl border bg-card">
@@ -113,62 +120,72 @@ export default async function AdminDraftsPage({
                     <th className="text-left px-4 py-3">Loc</th>
                     <th className="text-left px-4 py-3">Tel</th>
                     <th className="text-left px-4 py-3">Expiră</th>
-                    <th className="text-left px-4 py-3">Ultimul eveniment</th>
+                    <th className="text-left px-4 py-3">Ultim eveniment</th>
                     <th className="text-left px-4 py-3">Sursă</th>
                     <th className="text-right px-4 py-3">Acțiuni</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {services.map((s) => {
-                    const country = COUNTRIES.find(
-                      (c) => c.code === s.countries[0]
+                  {invitations.map((inv) => {
+                    const s = serviceById.get(inv.targetId)
+                    const country = s
+                      ? COUNTRIES.find((c) => c.code === s.countries[0])
+                      : null
+                    const lastEvent = inv.events[0]
+                    const lastOutreach = inv.events.find(
+                      (e) => e.type === "outreach_sent"
                     )
-                    const lastEvent = s.events[0]
+                    const outreachMethod =
+                      lastOutreach &&
+                      typeof lastOutreach.payload === "object" &&
+                      lastOutreach.payload !== null &&
+                      "method" in lastOutreach.payload
+                        ? String(
+                            (lastOutreach.payload as { method?: string }).method
+                          )
+                        : null
                     const daysLeft =
-                      s.claimExpiresAt && status === "DRAFT"
+                      status === "PENDING"
                         ? Math.ceil(
-                            (s.claimExpiresAt.getTime() - now.getTime()) /
+                            (inv.expiresAt.getTime() - now.getTime()) /
                               86400000
                           )
                         : null
-                    const url = s.claimToken ? claimUrl(s.claimToken) : null
+                    const url =
+                      inv.status === "PENDING" ? claimUrl(inv.token) : null
                     return (
-                      <tr key={s.id} className="border-t hover:bg-muted/20">
+                      <tr key={inv.id} className="border-t hover:bg-muted/20">
                         <td className="px-4 py-3">
-                          <div className="font-medium">{s.title}</div>
+                          <div className="font-medium">{s?.title ?? "—"}</div>
                           <div className="text-xs text-muted-foreground">
-                            {s.category?.name}
+                            {s?.category?.name}
                           </div>
                         </td>
                         <td className="px-4 py-3">
-                          {country?.flag} {s.city}
+                          {country?.flag} {s?.city}
                         </td>
-                        <td className="px-4 py-3 font-mono text-xs">{s.phone}</td>
+                        <td className="px-4 py-3 font-mono text-xs">
+                          {s?.phone}
+                        </td>
                         <td className="px-4 py-3">
-                          {s.claimExpiresAt ? (
-                            <div className="flex flex-col">
-                              <span>
-                                {s.claimExpiresAt
-                                  .toISOString()
-                                  .slice(0, 10)}
+                          <div className="flex flex-col">
+                            <span>
+                              {inv.expiresAt.toISOString().slice(0, 10)}
+                            </span>
+                            {daysLeft !== null && (
+                              <span
+                                className={`text-xs ${
+                                  daysLeft < 7
+                                    ? "text-amber-600"
+                                    : "text-muted-foreground"
+                                }`}
+                              >
+                                {daysLeft > 0
+                                  ? `dans ${daysLeft}j`
+                                  : "expiré"}
                               </span>
-                              {daysLeft !== null && (
-                                <span
-                                  className={`text-xs ${
-                                    daysLeft < 7
-                                      ? "text-amber-600"
-                                      : "text-muted-foreground"
-                                  }`}
-                                >
-                                  {daysLeft > 0
-                                    ? `dans ${daysLeft}j`
-                                    : "expiré"}
-                                </span>
-                              )}
-                            </div>
-                          ) : (
-                            <span className="text-muted-foreground">—</span>
-                          )}
+                            )}
+                          </div>
                         </td>
                         <td className="px-4 py-3 text-xs">
                           {lastEvent ? (
@@ -188,16 +205,16 @@ export default async function AdminDraftsPage({
                           )}
                         </td>
                         <td className="px-4 py-3">
-                          {s.sourceUrl ? (
+                          {inv.sourceUrl ? (
                             <a
-                              href={s.sourceUrl}
+                              href={inv.sourceUrl}
                               target="_blank"
                               rel="noreferrer"
                               className="text-primary underline text-xs"
                             >
                               {(() => {
                                 try {
-                                  return new URL(s.sourceUrl).hostname
+                                  return new URL(inv.sourceUrl).hostname
                                 } catch {
                                   return "lien"
                                 }
@@ -211,10 +228,10 @@ export default async function AdminDraftsPage({
                         </td>
                         <td className="px-4 py-3 text-right">
                           <DraftRowActions
-                            serviceId={s.id}
+                            invitationId={inv.id}
                             claimUrl={url}
-                            status={s.status}
-                            claimMethod={s.claimMethod}
+                            status={inv.status}
+                            outreachMethod={outreachMethod}
                           />
                         </td>
                       </tr>

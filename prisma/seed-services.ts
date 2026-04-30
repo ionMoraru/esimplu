@@ -1037,7 +1037,7 @@ async function main() {
       email: s.email,
       whatsapp: s.whatsapp ?? null,
       photo: s.photo ?? null,
-      status: "PUBLISHED" as const,
+      status: "PENDING" as const,
     }
 
     if (existing) {

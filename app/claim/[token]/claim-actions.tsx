@@ -24,7 +24,7 @@ export function ClaimActions({ token }: { token: string }) {
       </button>
 
       <Link
-        href={`/services/claim/${token}/edit`}
+        href={`/claim/${token}/edit`}
         className="w-full text-center bg-card border-2 border-primary text-primary py-3 rounded-lg font-semibold hover:bg-primary/5 transition-colors"
       >
         ✏️ Modifică, apoi publică (recomandat)
