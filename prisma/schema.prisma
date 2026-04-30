@@ -123,38 +123,75 @@ model ServiceListing {
   photo       String?
   status      ServiceStatus @default(PENDING)
 
-  // Claim flow (drafts pré-remplis à partir d'infos publiques)
-  claimToken     String?   @unique
-  claimExpiresAt DateTime?
-  claimedAt      DateTime?
-  claimMethod    String?
-  sourceUrl      String?
-  deletedAt      DateTime?
+  deletedAt DateTime?
 
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  user     User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  category ServiceCategory      @relation(fields: [categoryId], references: [id])
-  events   ServiceClaimEvent[]
+  user     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category ServiceCategory @relation(fields: [categoryId], references: [id])
 
   @@index([status])
-  @@index([claimExpiresAt])
 }
 
+// Visibilité publique :
+//   PENDING  = visible (défaut, fiches normales + drafts pré-remplis tant que l'invitation n'a pas été REFUSED/EXPIRED)
+//   REJECTED = caché (modération admin OU owner refused via invitation OU invitation expirée)
 enum ServiceStatus {
-  DRAFT
   PENDING
-  PUBLISHED
   REJECTED
-  OWNER_REFUSED
+}
+
+// === Invitation polymorphe ===
+//
+// Une Invitation lie un token public à une "cible" pré-remplie (ServiceListing,
+// Trip, Product…). Elle représente le cycle de vie de la prise de contrôle
+// (claim) par le propriétaire réel — distinct du cycle de vie métier de la
+// fiche. Pas de FK Prisma directe sur targetId : cascade applicative.
+
+model Invitation {
+  id           String               @id @default(cuid())
+  token        String               @unique
+  targetType   InvitationTargetType
+  targetId     String
+  status       InvitationStatus     @default(PENDING)
+  expiresAt    DateTime
+  sourceUrl    String?
+  contactPhone String?
+  contactEmail String?
+  contactName  String?
+  claimedAt    DateTime?
+  claimedById  String?
+  refusedAt    DateTime?
+  expiredAt    DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  events InvitationEvent[]
+
+  @@index([targetType, targetId])
+  @@index([status])
+  @@index([expiresAt])
+}
+
+enum InvitationTargetType {
+  SERVICE
+  TRIP
+  PRODUCT
+}
+
+enum InvitationStatus {
+  PENDING
+  CLAIMED
+  REFUSED
   EXPIRED
 }
 
-model ServiceClaimEvent {
-  id        String   @id @default(cuid())
-  serviceId String
-  service   ServiceListing @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+model InvitationEvent {
+  id           String     @id @default(cuid())
+  invitationId String
+  invitation   Invitation @relation(fields: [invitationId], references: [id], onDelete: Cascade)
 
   type      String
   payload   Json?
@@ -163,7 +200,7 @@ model ServiceClaimEvent {
 
   createdAt DateTime @default(now())
 
-  @@index([serviceId])
+  @@index([invitationId])
   @@index([type])
 }
 

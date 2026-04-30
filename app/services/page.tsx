@@ -13,14 +13,17 @@ export default async function ServicesPage() {
       ? cookieCountry
       : "all"
 
+  // Visible publiquement = tout sauf REJECTED. Inclut donc les drafts pré-remplis
+  // dont l'invitation est encore en cours (avant claim/refuse/expire).
+  const visible = { status: { not: "REJECTED" as const }, deletedAt: null }
   const [services, categories] = await Promise.all([
     prisma.serviceListing.findMany({
-      where: { status: "PUBLISHED" },
+      where: visible,
       orderBy: { createdAt: "desc" },
       include: { category: true },
     }),
     prisma.serviceCategory.findMany({
-      where: { services: { some: { status: "PUBLISHED" } } },
+      where: { services: { some: visible } },
       orderBy: { name: "asc" },
     }),
   ])

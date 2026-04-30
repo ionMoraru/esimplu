@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma"
 import { COUNTRIES } from "@/lib/countries"
 import { CATEGORY_ICONS } from "@/lib/service-category-icons"
 import { PageHero } from "@/components/shared/navigation/page-hero"
+import { findActiveInvitation } from "@/lib/invitations"
 import { ClaimActions } from "./claim-actions"
 import { logViewed } from "./actions"
 
@@ -17,29 +18,48 @@ export default async function ClaimPage({
 }) {
   const { token } = await params
 
+  const invitation = await findActiveInvitation(token)
+  if (!invitation) notFound()
+
+  await logViewed(token)
+
+  if (invitation.targetType !== "SERVICE") {
+    // Delivery / Marketplace claim UI: pas encore implémenté (PR2 / PR3).
+    return (
+      <main>
+        <PageHero
+          title="Confirmare în curând"
+          subtitle="Această invitație utilizează un tip de fișă care nu este încă disponibil online."
+        />
+        <section className="py-16 px-6 text-center text-sm text-muted-foreground">
+          Contactează-ne :{" "}
+          <a
+            href="mailto:contact@esimplu.com"
+            className="underline hover:text-primary"
+          >
+            contact@esimplu.com
+          </a>
+        </section>
+      </main>
+    )
+  }
+
   const draft = await prisma.serviceListing.findUnique({
-    where: { claimToken: token },
+    where: { id: invitation.targetId },
     include: { category: true },
   })
-
-  if (!draft || draft.status !== "DRAFT") notFound()
-  if (draft.claimExpiresAt && draft.claimExpiresAt < new Date()) notFound()
-
-  // Audit: log the view (fire and forget)
-  await logViewed(token)
+  if (!draft) notFound()
 
   const country = COUNTRIES.find((c) => c.code === draft.countries[0])
   const categoryIcon = draft.category
     ? CATEGORY_ICONS[draft.category.slug] ?? "📁"
     : "📁"
 
-  const expiresStr = draft.claimExpiresAt
-    ? new Date(draft.claimExpiresAt).toLocaleDateString("ro-RO", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    : null
+  const expiresStr = invitation.expiresAt.toLocaleDateString("ro-RO", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
 
   return (
     <main>
@@ -50,14 +70,12 @@ export default async function ClaimPage({
 
       <section className="py-10 px-6">
         <div className="max-w-2xl mx-auto flex flex-col gap-6">
-          {/* Bandeau brouillon */}
           <div className="rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-sm text-amber-900">
-            <strong>📝 Acest anunț este în stare de schiță (DRAFT)</strong> —
-            nu este vizibil public. Va fi șters automat dacă nu îl confirmi
-            până pe <strong>{expiresStr}</strong>.
+            <strong>📝 Acest anunț îți așteaptă confirmarea</strong> — va fi
+            șters automat dacă nu îl confirmi până pe{" "}
+            <strong>{expiresStr}</strong>.
           </div>
 
-          {/* Preview de la fiche */}
           <div
             className="flex flex-col rounded-2xl border bg-card overflow-hidden"
             style={{ boxShadow: "var(--shadow-sm)" }}
@@ -114,26 +132,30 @@ export default async function ClaimPage({
                 )}
               </div>
 
-              {draft.sourceUrl && (
+              {invitation.sourceUrl && (
                 <p className="text-xs text-muted-foreground pt-2 border-t">
                   Sursă date publice :{" "}
                   <a
-                    href={draft.sourceUrl}
+                    href={invitation.sourceUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="underline hover:text-primary"
                   >
-                    {new URL(draft.sourceUrl).hostname}
+                    {(() => {
+                      try {
+                        return new URL(invitation.sourceUrl).hostname
+                      } catch {
+                        return "lien"
+                      }
+                    })()}
                   </a>
                 </p>
               )}
             </div>
           </div>
 
-          {/* Actions */}
           <ClaimActions token={token} />
 
-          {/* Bas de page : RGPD */}
           <details className="rounded-lg border bg-muted/30 px-4 py-3 text-xs text-muted-foreground">
             <summary className="cursor-pointer font-medium">
               De ce am informațiile tale ? (RGPD)

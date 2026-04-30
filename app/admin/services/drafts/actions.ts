@@ -4,45 +4,40 @@ import { revalidatePath } from "next/cache"
 import { prisma } from "@/lib/prisma"
 import { requireAdmin } from "@/lib/auth/roles"
 import {
-  generateClaimToken,
-  claimExpiry,
-  CLAIM_TTL_DAYS,
-} from "@/lib/services/claim"
+  generateInvitationToken,
+  invitationExpiry,
+  INVITATION_TTL_DAYS,
+} from "@/lib/invitations"
 
-export async function regenerateClaimToken(serviceId: string) {
+export async function regenerateInvitationToken(invitationId: string) {
   await requireAdmin()
-  const token = generateClaimToken()
-  await prisma.serviceListing.update({
-    where: { id: serviceId },
-    data: {
-      claimToken: token,
-      claimExpiresAt: claimExpiry(),
-      status: "DRAFT",
-    },
-  })
-  await prisma.serviceClaimEvent.create({
-    data: {
-      serviceId,
-      type: "token_regenerated",
-      payload: { ttlDays: CLAIM_TTL_DAYS },
-    },
-  })
+  const token = generateInvitationToken()
+  const expiresAt = invitationExpiry()
+  await prisma.$transaction([
+    prisma.invitation.update({
+      where: { id: invitationId },
+      data: { token, expiresAt, status: "PENDING" },
+    }),
+    prisma.invitationEvent.create({
+      data: {
+        invitationId,
+        type: "token_regenerated",
+        payload: { ttlDays: INVITATION_TTL_DAYS },
+      },
+    }),
+  ])
   revalidatePath("/admin/services/drafts")
   return { token }
 }
 
 export async function markOutreachSent(
-  serviceId: string,
+  invitationId: string,
   method: "sms" | "email" | "phone"
 ) {
   await requireAdmin()
-  await prisma.serviceListing.update({
-    where: { id: serviceId },
-    data: { claimMethod: method },
-  })
-  await prisma.serviceClaimEvent.create({
+  await prisma.invitationEvent.create({
     data: {
-      serviceId,
+      invitationId,
       type: "outreach_sent",
       payload: { method },
     },
@@ -50,21 +45,30 @@ export async function markOutreachSent(
   revalidatePath("/admin/services/drafts")
 }
 
-export async function deleteDraft(serviceId: string) {
+export async function deleteDraft(invitationId: string) {
   await requireAdmin()
-  await prisma.serviceClaimEvent.create({
-    data: {
-      serviceId,
-      type: "deleted_by_admin",
-    },
+  const inv = await prisma.invitation.findUnique({
+    where: { id: invitationId },
+    select: { id: true, targetType: true, targetId: true },
   })
-  await prisma.serviceListing.update({
-    where: { id: serviceId },
-    data: {
-      status: "REJECTED",
-      deletedAt: new Date(),
-      claimToken: null,
-    },
-  })
+  if (!inv) return
+
+  await prisma.$transaction([
+    prisma.invitationEvent.create({
+      data: { invitationId, type: "deleted_by_admin" },
+    }),
+    prisma.invitation.update({
+      where: { id: invitationId },
+      data: { status: "REFUSED", refusedAt: new Date() },
+    }),
+    ...(inv.targetType === "SERVICE"
+      ? [
+          prisma.serviceListing.update({
+            where: { id: inv.targetId },
+            data: { status: "REJECTED", deletedAt: new Date() },
+          }),
+        ]
+      : []),
+  ])
   revalidatePath("/admin/services/drafts")
 }

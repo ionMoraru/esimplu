@@ -2,6 +2,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import { PageHero } from "@/components/shared/navigation/page-hero"
+import { findActiveInvitation } from "@/lib/invitations"
 import { updateAndPublishClaim } from "../actions"
 
 export const dynamic = "force-dynamic"
@@ -13,12 +14,13 @@ export default async function ClaimEditPage({
 }) {
   const { token } = await params
 
-  const draft = await prisma.serviceListing.findUnique({
-    where: { claimToken: token },
-  })
+  const invitation = await findActiveInvitation(token)
+  if (!invitation || invitation.targetType !== "SERVICE") notFound()
 
-  if (!draft || draft.status !== "DRAFT") notFound()
-  if (draft.claimExpiresAt && draft.claimExpiresAt < new Date()) notFound()
+  const draft = await prisma.serviceListing.findUnique({
+    where: { id: invitation.targetId },
+  })
+  if (!draft) notFound()
 
   async function action(formData: FormData) {
     "use server"
@@ -144,7 +146,7 @@ export default async function ClaimEditPage({
               Salvează și publică
             </button>
             <Link
-              href={`/services/claim/${token}`}
+              href={`/claim/${token}`}
               className="text-center text-sm text-muted-foreground hover:text-foreground"
             >
               ← Înapoi la previzualizare

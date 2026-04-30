@@ -1,23 +1,11 @@
-import { randomBytes } from "crypto"
 import { prisma } from "@/lib/prisma"
+import { claimUrl, createInvitation, INVITATION_TTL_DAYS } from "@/lib/invitations"
 
-export const CLAIM_TTL_DAYS = 60
 export const SYSTEM_USER_EMAIL = "system@esimplu.com"
 
-export function generateClaimToken(): string {
-  return randomBytes(24).toString("base64url")
-}
-
-export function claimUrl(token: string, baseUrl?: string): string {
-  const base = baseUrl ?? process.env.NEXTAUTH_URL ?? "http://localhost:3000"
-  return `${base.replace(/\/$/, "")}/services/claim/${token}`
-}
-
-export function claimExpiry(now: Date = new Date()): Date {
-  const d = new Date(now)
-  d.setDate(d.getDate() + CLAIM_TTL_DAYS)
-  return d
-}
+// Ré-exports historiques (utilisés par scripts/admin) — l'invitation est désormais
+// le source of truth, plus le ServiceListing.
+export { claimUrl, INVITATION_TTL_DAYS as CLAIM_TTL_DAYS }
 
 export type DraftInput = {
   title: string
@@ -30,6 +18,7 @@ export type DraftInput = {
   whatsapp?: string | null
   email?: string | null
   sourceUrl?: string | null
+  contactName?: string | null
 }
 
 export async function createServiceDraft(input: DraftInput) {
@@ -49,34 +38,48 @@ export async function createServiceDraft(input: DraftInput) {
     throw new Error(`Category not found: ${input.categorySlug}`)
   }
 
-  const token = generateClaimToken()
-  const expiresAt = claimExpiry()
-
-  const service = await prisma.serviceListing.create({
-    data: {
-      userId: systemUser.id,
-      categoryId: category.id,
-      title: input.title,
-      description: input.description,
-      languages: input.languages ?? ["ro"],
-      city: input.city,
-      countries: [input.country],
-      phone: input.phone,
-      email: input.email ?? null,
-      whatsapp: input.whatsapp ?? null,
-      photo: null,
-      status: "DRAFT",
-      claimToken: token,
-      claimExpiresAt: expiresAt,
-      sourceUrl: input.sourceUrl ?? null,
-      events: {
-        create: {
-          type: "draft_created",
-          payload: { sourceUrl: input.sourceUrl ?? null },
-        },
+  const { service, invitation } = await prisma.$transaction(async (tx) => {
+    const service = await tx.serviceListing.create({
+      data: {
+        userId: systemUser.id,
+        categoryId: category.id,
+        title: input.title,
+        description: input.description,
+        languages: input.languages ?? ["ro"],
+        city: input.city,
+        countries: [input.country],
+        phone: input.phone,
+        email: input.email ?? null,
+        whatsapp: input.whatsapp ?? null,
+        photo: null,
+        status: "PENDING",
       },
-    },
+    })
+
+    const invitation = await createInvitation(tx, {
+      targetType: "SERVICE",
+      targetId: service.id,
+      sourceUrl: input.sourceUrl ?? null,
+      contactPhone: input.phone,
+      contactEmail: input.email ?? null,
+      contactName: input.contactName ?? null,
+    })
+
+    await tx.invitationEvent.create({
+      data: {
+        invitationId: invitation.id,
+        type: "draft_created",
+        payload: { sourceUrl: input.sourceUrl ?? null },
+      },
+    })
+
+    return { service, invitation }
   })
 
-  return { service, claimUrl: claimUrl(token), expiresAt }
+  return {
+    service,
+    invitation,
+    claimUrl: claimUrl(invitation.token),
+    expiresAt: invitation.expiresAt,
+  }
 }
