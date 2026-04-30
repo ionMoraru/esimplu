@@ -1,4 +1,3 @@
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { OAuthButtons } from "@/components/shared/forms/oauth-buttons"
 import { AlertBanner } from "@/components/shared/forms/alert-banner"
@@ -8,10 +7,15 @@ import { login } from "./actions"
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ registered?: string; error?: string }>
+  searchParams: Promise<{
+    registered?: string
+    error?: string
+    reset?: string
+  }>
 }) {
   const params = await searchParams
   const justRegistered = params.registered === "1"
+  const justReset = params.reset === "1"
   const hasError = params.error === "invalid"
 
   return (
@@ -25,6 +29,10 @@ export default async function LoginPage({
 
           {justRegistered && (
             <AlertBanner variant="success">Cont creat cu succes! Conectați-vă mai jos.</AlertBanner>
+          )}
+
+          {justReset && (
+            <AlertBanner variant="success">Parolă schimbată. Conectați-vă cu noua parolă.</AlertBanner>
           )}
 
           {/* Brand */}
@@ -64,6 +72,14 @@ export default async function LoginPage({
               required
               autoComplete="current-password"
             />
+            <div className="flex justify-end -mt-2">
+              <a
+                href="/forgot-password"
+                className="text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
+              >
+                Ai uitat parola ?
+              </a>
+            </div>
             <Button type="submit" size="lg" className="w-full h-11 mt-1">
               Conectare
             </Button>
