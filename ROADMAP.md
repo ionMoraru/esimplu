@@ -1,7 +1,7 @@
 # Roadmap eSimplu
 
 > Source de vérité pour le suivi du projet. Mise à jour à chaque merge dans `main`.
-> Dernière mise à jour : 2026-04-30 (claim flow polymorphe + reset password)
+> Dernière mise à jour : 2026-05-04 (rattrapage : delivery MVP, pages despre/cum-functioneaza/legal redesign, RGPD foundation, user dropdown logout, PRs #24/#26/#28 mergées)
 
 ## Légende
 
@@ -32,17 +32,20 @@
 - [x] Page services (répertoire avec filtres catégorie/pays)
 - [x] Formulaire soumission service (`/services/new` avec validation)
 - [x] Page `/design` — showcase du design system
+- [x] Reset password (PR #26) — `/forgot-password` + `/reset-password/[token]`, modèle `PasswordResetToken`, envoi via Resend si `RESEND_API_KEY` set sinon log console. Pas de rate-limit.
+- [x] Filtre pays par défaut depuis cookie `country` sur `/articles` et `/services` (PR #24)
+- [x] Claim flow polymorphe (PR #28, anciennement #25) — modèle `Invitation` (targetType SERVICE | TRIP | PRODUCT), route générique `/claim/[token]`. Côté services : remplace `/services/claim/[token]`, drop des colonnes claim de `ServiceListing`, `ServiceStatus` simplifié à `PENDING|REJECTED`. Cron `/api/admin/purge-expired-drafts` réécrit pour expirer les invitations.
+- [x] Pages institutionnelles redesign — `/despre` (hero, stats, pillars, values, steps), `/cum-functioneaza` (sectioned design), `/contact`, `/confidentialitate`, `/termeni`
+- [x] Foundation RGPD — pages légales conformes + claim invitation sur les cards de services (`feat/rgpd-foundation`)
+- [x] Navbar — lien "Despre" desktop + sheet mobile, dropdown utilisateur avec logout
 - [ ] Auth Facebook — en attente vérification identité Meta (bloqué)
 - [ ] Route RGPD `/api/auth/facebook/delete` — à faire quand Facebook OK
-- [ ] **PR #26 ouverte** — flow reset password (`/forgot-password` + `/reset-password/[token]`, modèle `PasswordResetToken`, envoi via Resend si `RESEND_API_KEY` set, sinon log console). Pas de rate-limit.
-- [ ] **PR #24 ouverte** — filtre pays par défaut depuis le cookie `country` sur `/articles` et `/services`.
-- [ ] **PR #25 ouverte** (basée sur #24) — claim flow polymorphe : nouveau modèle `Invitation` (targetType SERVICE | TRIP | PRODUCT), route générique `/claim/[token]`. Côté services : remplace `/services/claim/[token]`, drop des colonnes claim de `ServiceListing`, `ServiceStatus` simplifié à `PENDING|REJECTED` (visible publiquement = NOT REJECTED, donc les drafts pré-remplis sont visibles dès création). Cron `/api/admin/purge-expired-drafts` réécrit pour expirer les invitations.
 
 ## Phase 2 — Marketplace
 
-MVP « première vente » fonctionnel bout en bout (Lots 1–9 du plan, 6 PRs mergées). Stripe et Resend (Lots 10–11) restent à activer pour la production.
+MVP « première vente » fonctionnel bout en bout (Lots 1–9 du plan, 6 PRs mergées). Stripe (Lot 11) intégré ; Resend (Lot 10) reste à activer pleinement en prod.
 
-- [x] UI listing marketplace + recherche (mock data — **listing public toujours en mock**, à brancher quand l'associé sera dispo)
+- [x] UI listing marketplace + recherche (DB-first depuis PR #18 — fini le mock public)
 - [x] UI détail produit (DB-first, fallback mock)
 - [x] UI page producteur (story + grille produits)
 - [x] Spec design + plan d'implémentation (`docs/superpowers/specs|plans/2026-04-27-marketplace-mvp*`)
@@ -55,18 +58,24 @@ MVP « première vente » fonctionnel bout en bout (Lots 1–9 du plan, 6 PRs me
 - [x] Checkout customer (formulaire + provider abstraction `mock` / `manual` / `stripe`)
 - [x] Page de suivi client `/orders/[id]` avec confirmation de réception
 - [x] Filtrage par pays de livraison (`countriesAvailable[]`)
-- [ ] Stripe Connect / Stripe Checkout réel (Lot 11) — abstraction prête
-- [ ] Resend pour emails réels (Lot 10) — abstraction prête, mode console pour l'instant
+- [x] Marketplace public listing sur DB + security hardening H1-H4 (PR #18)
+- [x] Stripe Checkout + webhook + admin seller editor (PR #16, Lot 11)
+- [x] Self-service registration vendeur + livreur (PR #17)
+- [ ] Resend pour emails réels (Lot 10) — abstraction prête, mode console pour l'instant (utilisé déjà par reset password si clé set)
 - [ ] Variantes produit (tailles, déclinaisons) — workaround : 1 produit = 1 variante
 - [ ] Panier multi-produits — MVP = 1 commande = 1 produit, 1 vendeur
 
 ## Phase 3 — Delivery
 
-- [ ] Design spec delivery (tables Carrier, Trip, Booking)
-- [ ] Modèles Prisma + migrations
-- [ ] Publication de trajets
-- [ ] Réservation
-- [ ] Filtres par ville départ/arrivée
+MVP point-à-point fonctionnel. Plateforme de mise en relation : transporteurs publient des trajets, clients réservent (passagers OU colis), email au transporteur, validation manuelle, coordonnées partagées au client après acceptation. eSimplu ne perçoit aucune commission et n'intervient pas dans le paiement.
+
+- [x] Modèles Prisma + migration `add_delivery_models` — `Trip` (vehicleType, capacités passagers/colis, prix indicatifs, status `DRAFT/PUBLISHED/FULL/DEPARTED/COMPLETED/CANCELLED`), `Booking` (`PASSENGER|PARCEL`, status `PENDING/CONFIRMED/REJECTED/CANCELLED`) (PR #19)
+- [x] Services métier `lib/services/trips.ts` + `lib/services/bookings.ts` (validation, state machine, doublons, capacité) (PR #19)
+- [x] API routes publiques + courier (`/api/delivery/trips`, `/api/delivery/bookings`, accept/reject/cancel) (PR #19)
+- [x] UI publication de trajets + recherche + détail trip + booking (PR #19)
+- [x] Filtres ville départ/arrivée + date (index Prisma `(originCity, destinationCity, departureDate)`) (PR #19)
+- [x] Landing `/transporteurs` pour acquisition légale des transporteurs (PR #20)
+- [x] i18n roumain pour pages publiques delivery + emails + messages (PR #22)
 
 ## Phase 4 — Espace utilisateur unifié
 
@@ -90,6 +99,7 @@ Page « Mon compte » qui agrège tout ce que l'utilisateur peut publier sur la 
 - [x] Corriger `deploy.yml` — chemins et nom PM2
 - [x] GitHub Secrets configurés (`VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`) — CI/CD auto actif
 - [x] Postinstall hook : `prisma generate` automatique au `npm install`
+- [x] Scripts `db:seed` et `db:reset` (npm), avec `db:seed` qui marche sur VPS sans `.env.local`
 - [ ] Redirection `esimplu.fr` → `esimplu.com`
 
 ---
@@ -99,6 +109,3 @@ Page « Mon compte » qui agrège tout ce que l'utilisateur peut publier sur la 
 | Branche | Description | Statut |
 |---|---|---|
 | `main` | Production | Stable |
-| `feat/articles-services-default-country-filter` | Filtre pays pré-rempli depuis cookie sur articles/services | PR #24 ouverte |
-| `feat/polymorphic-invitation-flow` | Claim flow polymorphe (services PR1, prépare delivery / marketplace) | PR #25 ouverte (basée sur #24) |
-| `feat/password-reset` | Reset password (forgot + reset pages, modèle `PasswordResetToken`) | PR #26 ouverte |
