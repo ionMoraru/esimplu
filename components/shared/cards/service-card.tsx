@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { COUNTRIES } from "@/lib/countries"
 import { CATEGORY_ICONS } from "@/lib/service-category-icons"
 
@@ -93,6 +94,13 @@ export function ServiceCard({ service }: { service: Service }) {
           </a>
         )}
       </div>
+
+      <Link
+        href="/cum-functioneaza"
+        className="text-[11px] text-muted-foreground/70 hover:text-primary transition-colors text-center -mt-1"
+      >
+        Ești proprietarul? Revendică sau cere eliminarea →
+      </Link>
     </div>
   )
 }

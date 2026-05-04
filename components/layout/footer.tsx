@@ -9,6 +9,7 @@ const footerLinks = {
   ],
   info: [
     { href: "/despre", label: "Despre noi" },
+    { href: "/cum-functioneaza", label: "Cum funcționează" },
     { href: "/contact", label: "Contact" },
     { href: "/confidentialitate", label: "Confidențialitate" },
     { href: "/termeni", label: "Termeni" },
