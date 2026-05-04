@@ -7,7 +7,6 @@ import {
   Heart,
   Users,
   ShieldCheck,
-  Sparkles,
   ArrowRight,
 } from "lucide-react"
 import { prisma } from "@/lib/prisma"
@@ -72,11 +71,6 @@ const VALUES = [
     icon: ShieldCheck,
     title: "Transparent și legal",
     text: "Folosim doar date publice, oferim posibilitatea de revendicare sau eliminare a oricărui anunț, respectăm GDPR.",
-  },
-  {
-    icon: Sparkles,
-    title: "Mereu gratuit",
-    text: "Toate articolele și directorul de servicii sunt și vor rămâne gratuite. Vrem să fim utili, nu să facem profit pe spatele tău.",
   },
   {
     icon: Users,
