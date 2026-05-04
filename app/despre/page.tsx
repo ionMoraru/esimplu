@@ -142,7 +142,7 @@ export default async function DesprePage() {
 
       {/* STATS */}
       <section className="py-12 px-6 border-y bg-card">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
           <div className="flex flex-col gap-1">
             <span className="text-3xl sm:text-4xl font-bold text-primary" style={{ fontFamily: "var(--font-playfair), serif" }}>
               {articleCount}
@@ -160,12 +160,6 @@ export default async function DesprePage() {
               4
             </span>
             <span className="text-sm text-muted-foreground">Țări acoperite</span>
-          </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-3xl sm:text-4xl font-bold text-primary" style={{ fontFamily: "var(--font-playfair), serif" }}>
-              100%
-            </span>
-            <span className="text-sm text-muted-foreground">Gratuit, fără reclame</span>
           </div>
         </div>
       </section>
