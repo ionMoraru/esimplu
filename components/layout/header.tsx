@@ -18,6 +18,7 @@ const navLinks = [
   { href: "/services", label: "Servicii" },
   { href: "/marketplace", label: "Marketplace" },
   { href: "/delivery", label: "Livrare" },
+  { href: "/despre", label: "Despre" },
 ]
 
 export function Header() {
