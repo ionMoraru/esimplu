@@ -2,9 +2,10 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useSession } from "next-auth/react"
-import { Menu } from "lucide-react"
+import { useSession, signOut } from "next-auth/react"
+import { LogOut, Menu } from "lucide-react"
 import { CountrySelector } from "@/components/layout/country-selector"
+import { UserMenu } from "@/components/layout/user-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import {
@@ -69,14 +70,12 @@ export function Header() {
           {/* Auth — desktop */}
           <div className="hidden md:block">
             {session?.user ? (
-              <Link href="/profil">
-                <Avatar className="h-8 w-8 cursor-pointer hover:ring-2 hover:ring-primary transition-all">
-                  <AvatarImage src={session.user.image ?? undefined} alt={session.user.name ?? "Profil"} />
-                  <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
-                    {session.user.name?.charAt(0).toUpperCase() ?? "U"}
-                  </AvatarFallback>
-                </Avatar>
-              </Link>
+              <UserMenu
+                name={session.user.name}
+                email={session.user.email}
+                image={session.user.image}
+                isAdmin={(session.user as { role?: string }).role === "ADMIN"}
+              />
             ) : (
               <Link
                 href="/login"
@@ -118,16 +117,36 @@ export function Header() {
 
                 {/* Auth mobile */}
                 {session?.user ? (
-                  <div className="flex items-center gap-3">
-                    <Avatar className="h-8 w-8">
-                      <AvatarImage src={session.user.image ?? undefined} />
-                      <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
-                        {session.user.name?.charAt(0).toUpperCase() ?? "U"}
-                      </AvatarFallback>
-                    </Avatar>
-                    <span className="text-sm font-medium text-foreground truncate">
-                      {session.user.name ?? session.user.email}
-                    </span>
+                  <div className="flex flex-col gap-3">
+                    <Link
+                      href="/profil"
+                      className="flex items-center gap-3 p-2 rounded-md hover:bg-muted transition-colors"
+                    >
+                      <Avatar className="h-9 w-9">
+                        <AvatarImage src={session.user.image ?? undefined} />
+                        <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
+                          {session.user.name?.charAt(0).toUpperCase() ?? "U"}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-sm font-medium truncate">
+                          {session.user.name ?? "Profilul meu"}
+                        </span>
+                        {session.user.email && (
+                          <span className="text-xs text-muted-foreground truncate">
+                            {session.user.email}
+                          </span>
+                        )}
+                      </div>
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => signOut({ callbackUrl: "/" })}
+                      className="flex items-center justify-center gap-2 text-sm font-medium border border-border text-rose-600 px-4 py-2.5 rounded-lg hover:bg-rose-50 hover:border-rose-300 transition-colors"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      Deconectare
+                    </button>
                   </div>
                 ) : (
                   <Link
