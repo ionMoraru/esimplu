@@ -325,17 +325,17 @@ export default async function DesprePage() {
               În ce credem
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {VALUES.map((v) => {
               const Icon = v.icon
               return (
                 <div
                   key={v.title}
-                  className="flex gap-4 p-6 rounded-2xl bg-card border"
+                  className="flex flex-col gap-4 p-6 rounded-2xl bg-card border text-center items-center"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5" />
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                    <Icon className="w-6 h-6" />
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <h3 className="text-lg font-semibold leading-tight">
