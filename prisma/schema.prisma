@@ -474,3 +474,31 @@ model Booking {
   @@index([customerId])
   @@index([status])
 }
+
+// === Admin import audit ===
+//
+// Trace chaque appel à /api/admin/import/* (création de service, vendeur,
+// produit, livreur, trajet via le token Bearer). L'objectif est de pouvoir
+// retracer "qui a importé quoi quand" même quand l'import vient d'un script
+// CLI ou d'un copilote IA externe.
+
+model ImportLog {
+  id String @id @default(cuid())
+
+  type   String // "service" | "seller" | "product" | "courier" | "trip"
+  action String // "created" | "duplicate"
+
+  targetId    String? // ID de l'entité créée ou existante
+  targetSlug  String? // slug ou clé naturelle (lookup humain)
+  payloadHash String  // SHA-256 du JSON reçu, pour détecter les rejouages
+  ip          String?
+  userAgent   String?
+  status      Int     // HTTP status renvoyé
+
+  createdAt DateTime @default(now())
+
+  @@index([type])
+  @@index([createdAt])
+  @@index([targetId])
+}
+

@@ -1,7 +1,7 @@
 # Roadmap eSimplu
 
 > Source de vérité pour le suivi du projet. Mise à jour à chaque merge dans `main`.
-> Dernière mise à jour : 2026-05-04 (rattrapage : delivery MVP, pages despre/cum-functioneaza/legal redesign, RGPD foundation, user dropdown logout, PRs #24/#26/#28 mergées)
+> Dernière mise à jour : 2026-05-05 (admin import API : services / vendeurs / produits / livreurs / trajets via Bearer token)
 
 ## Légende
 
@@ -101,6 +101,12 @@ Page « Mon compte » qui agrège tout ce que l'utilisateur peut publier sur la 
 - [x] Postinstall hook : `prisma generate` automatique au `npm install`
 - [x] Scripts `db:seed` et `db:reset` (npm), avec `db:seed` qui marche sur VPS sans `.env.local`
 - [ ] Redirection `esimplu.fr` → `esimplu.com`
+
+## Outils admin / contenu
+
+- [x] **Admin Import API** (`/api/admin/import/*`, doc `docs/import-api.md`) — 5 endpoints (`service`, `seller`, `product`, `courier`, `trip`) protégés par Bearer token (`ADMIN_IMPORT_TOKEN`, comparaison constant-time). Idempotents par clé naturelle (titre+ville+pays pour service, email pour seller/courier, sellerSlug+nom pour product, courier+villes+date pour trip). Audit complet via modèle `ImportLog` (SHA-256 du payload, IP, status). `seller`/`courier` génèrent un `claimUrl` 30 jours pour que la personne pose son mot de passe via `/reset-password/<token>`.
+- [ ] Workflow articles Markdown — `content/articles/*.md` + `npm run content:sync` lancé en CI après build (à venir, demande utilisateur du 2026-05-05)
+- [ ] Snapshot prod → local anonymisé — pour développer contre des données proches de la réalité sans copier de PII (RGPD)
 
 ---
 
